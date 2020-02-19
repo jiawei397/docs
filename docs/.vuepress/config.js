@@ -9,7 +9,8 @@ module.exports = {
       {text: '持续集成', link: '/cicd/'},
       {text: 'js', link: '/js/'},
       {text: 'github', link: 'https://github.com/jiawei397'}
-    ]
+    ],
+    sidebar: 'auto'
   },
   markdown: {
     toc: {includeLevel: [2, 3]}
