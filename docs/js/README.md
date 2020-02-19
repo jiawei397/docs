@@ -8,6 +8,7 @@ sidebar: false
 ### [原型链继承](./common/prototype)
 ### [umd模板](./common/umd)
 ### [ajax成功状态](./common/ajax)
+### [隐式转换](./common/equal)
 
 ## nodejs ##
 ### [使用express来代理服务](./nodejs/express)
