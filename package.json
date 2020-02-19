@@ -1,19 +1,16 @@
 {
   "name": "docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "博客",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/jiawei397/docs.git"
+  "devDependencies": {
+    "@vuepress/theme-blog": "^2.1.0",
+    "vuepress": "^1.3.0"
   },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/jiawei397/docs/issues"
-  },
-  "homepage": "https://github.com/jiawei397/docs#readme"
+  "author": "jw",
+  "license": "ISC"
 }
