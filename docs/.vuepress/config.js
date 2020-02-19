@@ -5,10 +5,13 @@ module.exports = {
   base: '/docs/',
   themeConfig: {
     nav: [
-      { text: '主页', link: '/' },
-      { text: '持续集成', link: '/cicd/' },
-      { text: 'js', link: '/js/' },
-      { text: 'github', link: 'https://github.com/jiawei397' },
+      {text: '主页', link: '/'},
+      {text: '持续集成', link: '/cicd/'},
+      {text: 'js', link: '/js/'},
+      {text: 'github', link: 'https://github.com/jiawei397'}
     ]
+  },
+  markdown: {
+    toc: {includeLevel: [2, 3]}
   }
 };
