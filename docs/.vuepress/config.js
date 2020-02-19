@@ -7,8 +7,8 @@ module.exports = {
     nav: [
       {text: '主页', link: '/'},
       {text: '持续集成', link: '/cicd/'},
-      {text: 'js', link: '/js/'},
-      {text: 'github', link: 'https://github.com/jiawei397'}
+      {text: 'javascript', link: '/js/'}
+      // {text: 'github', link: 'https://github.com/jiawei397'}
     ],
     lastUpdated: 'Last Updated', // string | boolean
     sidebar: 'auto',
