@@ -928,6 +928,13 @@
   dependencies:
     lodash.debounce "^4.0.8"
 
+"@vuepress/plugin-back-to-top@^1.3.0":
+  version "1.3.0"
+  resolved "https://registry.npm.taobao.org/@vuepress/plugin-back-to-top/download/@vuepress/plugin-back-to-top-1.3.0.tgz#0193858287d6c18b30e31c4730ecaecef7c8d7b5"
+  integrity sha1-AZOFgofWwYsw4xxHMOyuzvfI17U=
+  dependencies:
+    lodash.debounce "^4.0.8"
+
 "@vuepress/plugin-blog@^1.9.2":
   version "1.9.2"
   resolved "https://registry.npm.taobao.org/@vuepress/plugin-blog/download/@vuepress/plugin-blog-1.9.2.tgz#d463a218bf54b51a07b87eb703dc1cc9eddeef3c"

@@ -35,5 +35,6 @@ module.exports = {
   },
   markdown: {
     toc: {includeLevel: [2, 3]}
-  }
+  },
+  plugins: ['@vuepress/back-to-top']
 };
