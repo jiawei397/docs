@@ -10,6 +10,7 @@ module.exports = {
       {text: 'js', link: '/js/'},
       {text: 'github', link: 'https://github.com/jiawei397'}
     ],
+    lastUpdated: 'Last Updated', // string | boolean
     sidebar: 'auto'
   },
   markdown: {
