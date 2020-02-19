@@ -1,37 +1,11 @@
 ## [Array.sort排序问题](./sort)
 
-::: tip
-这是一个提示
-:::
+## [使用express来代理服务](./express)
 
-::: warning
-这是一个警告
-:::
+## [es6函数判断问题](./func)
 
-::: danger
-这是一个危险警告
-:::
+## [es6装饰器异步使用](./descriptor)
 
-::: details
-这是一个详情块，在 IE / Edge 中不生效
-:::
+## [es6代码不再打包为es5](./es5)
 
-::: tip
-这是一个提示
-:::
-
-::: warning
-这是一个警告
-:::
-
-::: danger
-这是一个危险警告
-:::
-
-::: details
-这是一个详情块，在 IE / Edge 中不生效
-:::
-
-## tip
-
-
+## [原型链继承](./prototype)
