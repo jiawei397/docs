@@ -1,19 +1,8 @@
-# [js](./one.html)
-``` js
-export default {
-  name: 'MyComponent',
-  // ...
-}
-```
+## [持续集成之.gitlab-ci.yml篇](./gitlab.html)
 
-# [html](./tip.html)
-``` html
-<ul>
-  <li
-    v-for="todo in todos"
-    :key="todo.id"
-  >
-    {{ todo.text }}
-  </li>
-</ul>
-```
+
+## [持续集成之测试篇](./test.html)
+
+## [gulp小结](./gulp.html)
+
+## [docker](./docker.html)
