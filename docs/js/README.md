@@ -6,6 +6,7 @@ sidebar: false
 ### [Array.sort排序问题](./sort)
 ### [原型链继承](./prototype)
 ### [umd模板](./umd)
+### [ajax成功状态](./ajax)
 
 ## nodejs ##
 ### [使用express来代理服务](./express)
