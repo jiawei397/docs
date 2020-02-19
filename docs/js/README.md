@@ -7,6 +7,7 @@ sidebar: false
 ### [原型链继承](./prototype)
 ### [umd模板](./umd)
 ### [ajax成功状态](./ajax)
+### [promisify的实现](./promisify)
 
 ## nodejs ##
 ### [使用express来代理服务](./express)
