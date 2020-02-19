@@ -1,7 +1,10 @@
-## [持续集成之.gitlab-ci.yml篇](./gitlab.html)
+---
+sidebar: false
+---
 
+## [.gitlab-ci.yml配置](./gitlab.html)
 
-## [持续集成之测试篇](./test.html)
+## [单元测试](./test.html)
 
 ## [gulp小结](./gulp.html)
 
