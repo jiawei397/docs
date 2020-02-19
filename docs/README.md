@@ -3,8 +3,8 @@ home: true
 heroImage: /test.png
 heroText: 博客
 tagline:
-actionText: 测试 →
-actionLink: /foo/
+actionText: 笔记 →
+actionLink: /cicd/
 features:
 - title: 简洁至上
   details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。

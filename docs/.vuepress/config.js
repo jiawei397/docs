@@ -6,7 +6,8 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: '主页', link: '/' },
-      { text: '指南', link: '/foo/' },
+      { text: '持续集成', link: '/cicd/' },
+      { text: 'js', link: '/js/' },
       { text: 'github', link: 'https://github.com/jiawei397' },
     ]
   }
