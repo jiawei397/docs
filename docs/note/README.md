@@ -10,7 +10,7 @@
 ### [umd模板](./js/common/umd)
 ### [ajax成功状态](./js/common/ajax)
 ### [隐式转换](./js/common/equal)
-### [js常用技巧](./js/common/skill)
+### [数组常用技巧](./js/common/array)
 
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)

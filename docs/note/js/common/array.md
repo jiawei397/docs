@@ -1,4 +1,4 @@
-# js常用技巧
+# 数组常用技巧
 
 ## 伪数组转换为真数组
 数组的`slice`方法可以将`类似数组的对象`（比如`document.getElementsByName('li')`）变成真正的数组。
