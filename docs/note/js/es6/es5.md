@@ -7,7 +7,7 @@
 碎碎念了一段时间，这两天终于有时间看了下。其实挺简单，把`babel`配置的`presets`去掉就好了，之后是`plugins`缺什么补什么。
 
 这是我项目中例子：
-```
+``` js
 module.exports = {
     // presets: [
     //     '@vue/app',
@@ -41,12 +41,12 @@ last 2 Chrome versions
 ## gulp改造 ##
 `gulp`也类似，这次学乖了，先看的文档。
 我用的是插件是：`gulp-uglify`。原来是这样写的：
-```
+``` js
 const uglify = require('gulp-uglify');
 ...
 ```
 api里有个例子：
-```
+``` js
 const uglifyEs  = require('uglify-es');
 const composer = require('gulp-uglify/composer');
 const uglify = composer(uglifyEs, console);

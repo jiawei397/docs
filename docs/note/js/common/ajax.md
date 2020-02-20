@@ -9,7 +9,7 @@ sidebar: false
 
 来一段原始的ajax：
 
-```
+``` js
 var xhr = new XMLHttpRequest();
 xhr.open('GET', url, false);
 xhr.onreadystatechange = function () {

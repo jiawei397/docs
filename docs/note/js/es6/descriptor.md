@@ -16,6 +16,7 @@
 
 一般用这个日志模块来举例，不过它是同步的
 
+``` js
 	class Math {
 	  @log
 	  add(a, b) {
@@ -38,9 +39,11 @@
 
 	// passed parameters should get logged now
 	math.add(2, 4);
+```
 
 ### 修改为异步 ###
 
+``` js
 	let init = 0;
 	class Maths {
 	  @log
@@ -70,5 +73,5 @@
 	  let a = await math.add(2, 4);
 	  console.log(a);
 	})();
-
+```
 在具体函数前加了装饰器后，会先执行`log`方法，这样缓存的变量就修改了。虽然结果变成异步的，但也满足我的需要了。

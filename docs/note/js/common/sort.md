@@ -7,11 +7,12 @@ sidebar: false
 
 原来写法：
 
-	var arr = [300, 20, 10, 1, 2];
-	arr.sort(function(a, b){
-		return a > b;
-	});
-
+``` js
+var arr = [300, 20, 10, 1, 2];
+arr.sort(function(a, b){
+	return a > b;
+});
+```
 期望返回值是`[300, 20, 10, 2, 1]`（chrome下），结果是`[300, 20, 10, 1, 2]`（IE下）
 
 比较函数的返回值应该是数字（正数降序，负数升序，0不动），而我写成了bool，导致排序失败。chrome下可能做过兼容处理。

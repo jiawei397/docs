@@ -5,7 +5,7 @@ sidebar: false
 
 受原来数组判断影响，代码里判断函数原来是这样的：
 
-```
+``` js
 isFunction = (obj)=> {
     return Object.prototype.toString.call(obj) === '[object Function]';
 }
@@ -16,7 +16,7 @@ isFunction = (obj)=> {
 
 但遇到一个问题，追查后再发现是这里判断的锅。
 因为这样：
-```
+``` js
 aa = async () =>{}
 Object.prototype.toString.call(aa) //结果是：[object AsyncFunction]
 ```
@@ -24,7 +24,7 @@ Object.prototype.toString.call(aa) //结果是：[object AsyncFunction]
 真是没想到。
 
 最终抄`jquery`大法，修改为：
-```
+``` js
 isFunction = (obj)=> {
     // In some browsers, typeof returns "function" for HTML <object> elements
     // (i.e., `typeof document.createElement( "object" ) === "function"`).

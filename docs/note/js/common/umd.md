@@ -4,7 +4,7 @@ sidebar: false
 # umd模板
 
 以名称为`AI`为例：
-```
+``` js
 (function (root, factory) {
   if (typeof exports === 'object' && typeof module === 'object') {
     module.exports = factory()

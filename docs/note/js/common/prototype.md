@@ -15,7 +15,7 @@ js的继承是原型链继承，其机制主要是利用`__proto__`，表面上�
 :::
 
 ## 题目
-```
+``` js
 var AA = function () {
     this.d  = 'dddd';
 };
@@ -53,7 +53,7 @@ aa是实例化了AA，它也继承Object，所以`Object.prototype`上的属性�
 - `AA`则是找自己的父亲`Function.prototype`、爷爷`Object.protoype`。
 
 ## 常见的继承关系
-```
+``` js
 aa.__proto__ === AA.prototype
 AA.prototype.__proto__ === Object.prototype
 Function.prototype.__proto__ === Object.prototype

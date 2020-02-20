@@ -3,7 +3,7 @@
 
 ## 本地服务
 
-```
+``` js
 const express = require('express')
 const app = express()
 
@@ -35,7 +35,7 @@ app.listen(4000, () => console.log('Example app listening on port 4000!'))
 
 ## 与request配合使用
 这样就将其它服务器的请求代理过来了
-```
+``` js
 const request = require('request');
 app.use('/base/', function (req, res) {
     let url = 'http://localhost:3000/base' + req.url;
@@ -44,7 +44,7 @@ app.use('/base/', function (req, res) {
 ```
 
 ## 使用http-proxy-middleware
-```
+``` js
 const http_proxy = require('http-proxy-middleware');
 const proxy = {
   '/tarsier-dcv/': {
@@ -63,8 +63,8 @@ for (let key in proxy) {
 
 ## 监听本地文件变化
 使用`nodemon`插件。
-`--watch test`指监听根目录下test文件夹的所有文件，有变化就会重启服务。
-```
+`--watch test`指监听根目录下`test`文件夹的所有文件，有变化就会重启服务。
+``` js
 "scripts": {
   "server": "nodemon --watch build --watch test src/server.js"
 }
