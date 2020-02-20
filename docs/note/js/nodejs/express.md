@@ -1,5 +1,5 @@
 # express代理服务
-nodejs和nginx都可以反向代理，解决跨域问题。
+`nodejs`和`nginx`都可以反向代理，解决跨域问题。平时工作中，使用`express`就可以很短的代码，搭建一个服务器。
 
 ## 本地服务
 
@@ -62,7 +62,7 @@ for (let key in proxy) {
 ```
 
 ## 监听本地文件变化
-使用nodemon插件。
+使用`nodemon`插件。
 `--watch test`指监听根目录下test文件夹的所有文件，有变化就会重启服务。
 ```
 "scripts": {

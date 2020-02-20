@@ -4,7 +4,7 @@
 
 # 目录
 
-## 基础 ##
+## js基础 ##
 ### [Array.sort排序问题](./js/common/sort)
 ### [原型链继承](./js/common/prototype)
 ### [umd模板](./js/common/umd)
@@ -14,6 +14,9 @@
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
 
+## web ##
+### [常用跨域解决方案](./web/cors)
+
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
 ### [es6装饰器异步使用](./js/es6/descriptor)
@@ -22,10 +25,7 @@
 
 ## 持续集成
 ### [.gitlab-ci.yml配置](./cicd/gitlab.html)
-
 ### [单元测试](./cicd/test.html)
-
 ### [gulp小结](./cicd/gulp.html)
-
 ### [docker](./cicd/docker.html)
 
