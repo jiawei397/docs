@@ -53,3 +53,41 @@ console.log(arr1.slice(-1)[0]);
 console.timeEnd('b');
 ```
 
+## 截断数组
+比如，当数组中有 10 个元素，而你只想获取其中前 5 个的话，你可以截断数组，通过设置 `array.length = 5` 使其更小。
+
+```
+var array = [1,2,3,4,5,6];
+console.log( array.length );
+// 6
+array.length = 3;
+console.log( array.length );
+ // 3
+console.log( array );
+// [1,2,3]
+```
+
+## 合并数组
+一般合并两个数组的话，通常会使用 `Array.concat()`。
+
+```
+var array1 = [1,2,3];
+var array2 = [4,5,6];
+console.log(array1.concat(array2)); // [1,2,3,4,5,6];
+```
+然而，这个函数并不适用于合并大的数组，因为它需要创建一个新的数组，而这会消耗很多内存。
+
+这时，你可以使用 `Array.prototype.push.apply( arr1, arr2 )` 来代替创建新的数组，它可以把第二个数组合并到第一个中，从而较少内存消耗：
+```
+var array1 = [1,2,3];
+var array2 = [4,5,6];
+Array.prototype.push.apply(array1, array2);
+console.log(array1);  // [1,2,3,4,5,6];
+```
+对于es6，可以使用扩展符：
+```
+var array1 = [1,2,3];
+var array2 = [4,5,6];
+array1.push(...array2);
+console.log(array1);  // [1,2,3,4,5,6];
+```
