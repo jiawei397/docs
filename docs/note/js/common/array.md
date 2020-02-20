@@ -12,7 +12,7 @@ var arr = [].slice.call( arrayLike);
 var arr = Array.from(arrayLike);
 ```
 
-## 获取数组中最后的元素
+## 获取数组最后的元素
 大多数人的做法：
 ``` js
 var arr = [123, 456, 789];
@@ -54,17 +54,14 @@ console.timeEnd('b');
 ```
 
 ## 截断数组
-比如，当数组中有 10 个元素，而你只想获取其中前 5 个的话，你可以截断数组，通过设置 `array.length = 5` 使其更小。
+比如，当数组中有 `10` 个元素，而你只想获取其中前 `5` 个的话，你可以截断数组，通过设置 `array.length = 5` 使其更小。
 
 ``` js
 var array = [1, 2, 3, 4, 5, 6];
-console.log( array.length );
-// 6
+console.log( array.length ); // 6
 array.length = 3;
-console.log( array.length );
- // 3
-console.log( array );
-// [1,2,3]
+console.log( array.length ); // 3
+console.log( array ); // [1,2,3]
 ```
 
 ## 合并数组
@@ -92,7 +89,7 @@ array1.push(...array2);
 console.log(array1);  // [1,2,3,4,5,6];
 ```
 
-## 如何实现数组的随机排序？
+## 数组的随机排序
 
 方法一：
 ``` js
@@ -131,4 +128,47 @@ arr.sort(function () {
   return Math.random() - 0.5;
 });
 console.log(arr);
+```
+
+## 数组扁平化
+
+完成一个`flatten`的函数，实现`拍平`一个`多维数组`为`一维`。示例如下：
+
+``` js
+var testArr1 = [[0, 1], [2, 3], [4, 5]];
+var testArr2 = [0, [1, [2, [3, [4, [5]]]]]];
+flatten(testArr1) // [0, 1, 2, 3, 4, 5]
+flatten(testArr2) // [0, 1, 2, 3, 4, 5]
+```
+
+对于`testArr1`，现在`es6`已有内置的`flat`方法：
+``` js
+var testArr1 = [[0, 1], [2, 3], [4, 5]];
+testArr1.flat() // [0, 1, 2, 3, 4, 5]
+```
+但它对`testArr2`就无能为力了。
+
+先来一个最简单的解法：
+``` js
+flatten = (arr) => arr.toString().split(',').map((val) => parseInt(val));
+```
+它是利用数组`toString`的特殊性，很巧妙地处理。
+
+再来一种：
+``` js
+flatten2 = function (arr) {
+  return arr.reduce(function (pre, val) {
+    console.log(pre, val);
+    if (!Array.isArray(val)) {
+      pre.push(val);
+    } else {
+      pre.push(...flatten2(val));
+    }
+    return pre;
+  }, []);
+};
+```
+也能简写为：
+``` js
+flatten2 = (arr) => arr.reduce((pre, val) => pre.concat(Array.isArray(val) ? flatten2(val) : val), []);
 ```
