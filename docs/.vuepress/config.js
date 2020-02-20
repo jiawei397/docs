@@ -8,10 +8,11 @@ module.exports = {
       {text: '主页', link: '/'},
       {
         text: '技术',
-        items: [
-          {text: '持续集成', link: '/cicd/'},
-          {text: 'javascript', link: '/js/'}
-        ]
+        link: '/note/'
+        // items: [
+        //   {text: '持续集成', link: '/cicd/'},
+        //   {text: 'javascript', link: '/js/'}
+        // ]
       }
       // {text: 'github', link: 'https://github.com/jiawei397'}
     ],
