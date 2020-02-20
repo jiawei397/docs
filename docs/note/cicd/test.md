@@ -11,94 +11,92 @@
 
 以下是我们项目中使用的主要配置信息：
 
-	/**
-     * 测试启动的浏览器
-     * 可用的浏览器：https://npmjs.org/browse/keyword/karma-launcher
-     */
-    browsers: ['PhantomJS'],
-    /**
-     * 测试框架
-     * 可用的框架：https://npmjs.org/browse/keyword/karma-adapter
-     */
-    frameworks: ['mocha', 'chai'],
-    /**
-     * 需要加载到浏览器的文件列表
-     */
-    files: [
-      '../../src/dcv/plugins/jquery/jquery-1.8.1.min.js',
-      '../../src/dcv/plugins/common/mock.min.js',
-      '../../src/dcv/plugins/common/bluebird.min.js',
-      '../../src/dcv/javascripts/uinv.js',
-      '../../src/dcv/javascripts/uinv_util.js',
-      '../../src/dcv/javascripts/browser/uinv_browser.js',
-      'specs/validators.js'
-    ],
-    /**
-     * 排除的文件列表
-     */
-    exclude: [
-    ],
-    /**
-     * 在浏览器使用之前处理匹配的文件
-     * 可用的预处理: https://npmjs.org/browse/keyword/karma-preprocessor
-     */
-    preprocessors: { //报告覆盖
-      "../../src/dcv/javascripts/**/*.js": ["coverage"]
-    },
-    /**
-     * 使用测试结果报告者
-     * 可能的值: "dots", "progress"
-     * 可用的报告者：https://npmjs.org/browse/keyword/karma-reporter
-     */
-    reporters: ['spec', 'coverage'],
-    /**
-     * 使用reporters为"coverage"时报告输出的类型和那目录
-     */
-    coverageReporter: {
-      type: 'html',
-      dir: 'coverage/'
-    },
-    /**
-     * 服务端口号
-     */
-    port: 9876,
+``` js
+/**
+ * 测试启动的浏览器
+ * 可用的浏览器：https://npmjs.org/browse/keyword/karma-launcher
+ */
+browsers: ['PhantomJS'],
+/**
+ * 测试框架
+ * 可用的框架：https://npmjs.org/browse/keyword/karma-adapter
+ */
+frameworks: ['mocha', 'chai'],
+/**
+ * 需要加载到浏览器的文件列表
+ */
+files: [
+  '../../src/plugins/jquery/jquery-1.8.1.min.js',
+  '../../src/plugins/common/bluebird.min.js',
+  'specs/validators.js'
+],
+/**
+ * 排除的文件列表
+ */
+exclude: [
+],
+/**
+ * 在浏览器使用之前处理匹配的文件
+ * 可用的预处理: https://npmjs.org/browse/keyword/karma-preprocessor
+ */
+preprocessors: { //报告覆盖
+  "../../src/javascripts/**/*.js": ["coverage"]
+},
+/**
+ * 使用测试结果报告者
+ * 可能的值: "dots", "progress"
+ * 可用的报告者：https://npmjs.org/browse/keyword/karma-reporter
+ */
+reporters: ['spec', 'coverage'],
+/**
+ * 使用reporters为"coverage"时报告输出的类型和那目录
+ */
+coverageReporter: {
+  type: 'html',
+  dir: 'coverage/'
+},
+/**
+ * 服务端口号
+ */
+port: 9876,
 
-    /**
-     * 启用或禁用输出报告或者日志中的颜色
-     */
-    colors: true,
-    /**
-     * 日志等级
-     * 可能的值：
-     * config.LOG_DISABLE //不输出信息
-     * config.LOG_ERROR    //只输出错误信息
-     * config.LOG_WARN //只输出警告信息
-     * config.LOG_INFO //输出全部信息
-     * config.LOG_DEBUG //输出调试信息
-     */
-    logLevel: config.LOG_INFO,
+/**
+ * 启用或禁用输出报告或者日志中的颜色
+ */
+colors: true,
+/**
+ * 日志等级
+ * 可能的值：
+ * config.LOG_DISABLE //不输出信息
+ * config.LOG_ERROR    //只输出错误信息
+ * config.LOG_WARN //只输出警告信息
+ * config.LOG_INFO //输出全部信息
+ * config.LOG_DEBUG //输出调试信息
+ */
+logLevel: config.LOG_INFO,
 
-    /**
-     * 启用或禁用自动检测文件变化进行测试
-     */
-    autoWatch: true,
-    /**
-     * 开启或禁用持续集成模式
-     * 设置为true, Karma将打开浏览器，执行测试并最后退出
-     */
-    // singleRun: true,
+/**
+ * 启用或禁用自动检测文件变化进行测试
+ */
+autoWatch: true,
+/**
+ * 开启或禁用持续集成模式
+ * 设置为true, Karma将打开浏览器，执行测试并最后退出
+ */
+// singleRun: true,
 
-    /**
-     * 并发级别（启动的浏览器数）
-     */
-    concurrency: Infinity
-
+/**
+ * 并发级别（启动的浏览器数）
+ */
+concurrency: Infinity
+```
 在`package.json`中配置如下：
 
-	"scripts": {
-		"unit": "./node_modules/.bin/karma start test/unit/karma.conf.js --single-run"
-	}
-
+``` json
+"scripts": {
+  "unit": "./node_modules/.bin/karma start test/unit/karma.conf.js --single-run"
+}
+```
 `--single-run`意思是单次执行测试，此处会覆盖上面的`singleRun`配置项。最终会在`test/unit/coverage`目录下生成测试覆盖率的html格式报告。
 
 ### mocha
@@ -114,52 +112,54 @@
 
 `describe` 表示测试套件，是一序列相关程序的测试；`it`表示单元测试(`unit test`)，也就是测试的最小单位。例：
 
-	describe("样例", function () {
-	  it("deep用法", function () {
-	    expect({a: 1}).to.deep.equal({a: 1});
-	    expect({a: 1}).to.not.equal({a: 1});
+``` js
+describe("样例", function () {
+  it("deep用法", function () {
+    expect({a: 1}).to.deep.equal({a: 1});
+    expect({a: 1}).to.not.equal({a: 1});
 
-	    expect([{a: 1}]).to.deep.include({a: 1});
-	    // expect([{a: 1}]).to.not.include({a: 1});
-	    expect([{a: 1}]).to.be.include({a: 1});
-	  });
-	});
-
+    expect([{a: 1}]).to.deep.include({a: 1});
+    // expect([{a: 1}]).to.not.include({a: 1});
+    expect([{a: 1}]).to.be.include({a: 1});
+  });
+});
+```
 `mocha`一共四个生命钩子
 
-`before()`：在该区块的所有测试用例之前执行
+- `before()`：在该区块的所有测试用例之前执行
 
-`after()`：在该区块的所有测试用例之后执行
+- `after()`：在该区块的所有测试用例之后执行
 
-`beforeEach()`：在每个单元测试前执行
+- `beforeEach()`：在每个单元测试前执行
 
-`afterEach()`：在每个单元测试后执行
+- `afterEach()`：在每个单元测试后执行
 
 利用`describe.skip`可以跳过测试，而不用注释大块代码；异步只需要在函数中增加`done`回调。例：
 
-	describe.skip('异步 beforeEach 示例', function () {
-	  var foo = false;
+``` js
+describe.skip('异步 beforeEach 示例', function () {
+  var foo = false;
 
-	  beforeEach(function (done) {
-	    setTimeout(function () {
-	      foo = true;
-	      done();
-	    }, 50);
-	  });
+  beforeEach(function (done) {
+    setTimeout(function () {
+      foo = true;
+      done();
+    }, 50);
+  });
 
-	  it('全局变量异步修改应该成功', function () {
-	    expect(foo).to.be.equal(true);
-	  });
+  it('全局变量异步修改应该成功', function () {
+    expect(foo).to.be.equal(true);
+  });
 
-	  it('read book async', function (done) {
-	    book.read((err, result) => {
-	      expect(err).equal(null);
-	      expect(result).to.be.a('string');
-	      done();
-	    })
-	  });
-	});
-
+  it('read book async', function (done) {
+    book.read((err, result) => {
+      expect(err).equal(null);
+      expect(result).to.be.a('string');
+      done();
+    })
+  });
+});
+```
 
 ### chai
 
@@ -171,44 +171,45 @@
 
 `should`例：
 
-	let num = 4+5
-	num.should.equal(9);
-	num.should.not.equal(10);
+``` js
+let num = 4+5
+num.should.equal(9);
+num.should.not.equal(10);
 
-	//boolean
-	'ok'.should.to.be.ok;
-	false.should.to.not.be.ok;
+//boolean
+'ok'.should.to.be.ok;
+false.should.to.not.be.ok;
 
-	//type
-	'test'.should.to.be.a('string');
-	({ foo: 'bar' }).should.to.be.an('object');
-
+//type
+'test'.should.to.be.a('string');
+({ foo: 'bar' }).should.to.be.an('object');
+```
 `expect`例：
 
+``` js
+// equal or no equal
+let num = 4+5
+expect(num).equal(9);
+expect(num).not.equal(10);
 
-	// equal or no equal
-	let num = 4+5
-	expect(num).equal(9);
-	expect(num).not.equal(10);
+//boolean
+expect('ok').to.be.ok;
+expect(false).to.not.be.ok;
 
-	//boolean
-	expect('ok').to.be.ok;
-	expect(false).to.not.be.ok;
-
-	//type
-	expect('test').to.be.a('string');
-	expect({ foo: 'bar' }).to.be.an('object');
-
+//type
+expect('test').to.be.a('string');
+expect({ foo: 'bar' }).to.be.an('object');
+```
 `assert`例：
 
+``` js
+// equal or no equal
+let num = 4+5
+assert.equal(num,9);
 
-	// equal or no equal
-	let num = 4+5
-	assert.equal(num,9);
-
-	//type
-	assert.typeOf('test', 'string', 'test is a string');
-
+//type
+assert.typeOf('test', 'string', 'test is a string');
+```
 
 ## 端到端测试（e2e）
 
@@ -230,77 +231,79 @@
 
 项目中`nightwatch.config.js`的主要配置如下：
 
-	{
-	  "src_folders": ["test/e2e/specs"],//测试代码所在文件夹
-	  "output_folder": "test/e2e/reports",//测试报告所在文件夹
-	  "globals_path": "test/e2e/global.js",//全局变量所在文件夹，可以通过browser.globals.XX来获取
-	  "custom_commands_path": ["node_modules/nightwatch-helpers/commands"],//自定义扩展命令
-	  "custom_assertions_path": ["node_modules/nightwatch-helpers/assertions"],//自定义扩展断言
+``` json
+{
+  "src_folders": ["test/e2e/specs"],//测试代码所在文件夹
+  "output_folder": "test/e2e/reports",//测试报告所在文件夹
+  "globals_path": "test/e2e/global.js",//全局变量所在文件夹，可以通过browser.globals.XX来获取
+  "custom_commands_path": ["node_modules/nightwatch-helpers/commands"],//自定义扩展命令
+  "custom_assertions_path": ["node_modules/nightwatch-helpers/assertions"],//自定义扩展断言
 
-	  "selenium": {
-	    "start_process": true,
-	    "server_path": seleniumServer.path,//selenium的服务所在地址，一般是个jar包
-	    "host": "127.0.0.1",
-	    "port": 4444,
-	    "cli_args": {
-	      "webdriver.chrome.driver": chromedriver.path,//谷歌浏览器的drvier地址，在windows下是个exe文件
-	      "webdriver.firefox.profile": "",
-	      "webdriver.ie.driver": "",
-	      "webdriver.phantomjs.driver": phantomjsDriver.path
-	    }
-	  },
+  "selenium": {
+    "start_process": true,
+    "server_path": seleniumServer.path,//selenium的服务所在地址，一般是个jar包
+    "host": "127.0.0.1",
+    "port": 4444,
+    "cli_args": {
+      "webdriver.chrome.driver": chromedriver.path,//谷歌浏览器的drvier地址，在windows下是个exe文件
+      "webdriver.firefox.profile": "",
+      "webdriver.ie.driver": "",
+      "webdriver.phantomjs.driver": phantomjsDriver.path
+    }
+  },
 
-	  "test_settings": {
-	    "phantomjs": {
-	      "desiredCapabilities": {
-	        "browserName": "phantomjs",
-	        "marionette": true,
-	        "acceptSslCerts": true,
-	        "phantomjs.binary.path": phantomjsDriver.path,
-	        "phantomjs.cli.args": ["--ignore-ssl-errors=false"]
-	      }
-	    },
+  "test_settings": {
+    "phantomjs": {
+      "desiredCapabilities": {
+        "browserName": "phantomjs",
+        "marionette": true,
+        "acceptSslCerts": true,
+        "phantomjs.binary.path": phantomjsDriver.path,
+        "phantomjs.cli.args": ["--ignore-ssl-errors=false"]
+      }
+    },
 
-	    "chrome": {
-	      "desiredCapabilities": {
-	        "browserName": "chrome",
-	        "javascriptEnabled": true,
-	        "acceptSslCerts": true,
-	        'chromeOptions': {
-	          'args': [
-	            // "start-fullscreen"
-	            // '--headless',	//开启无界面
-	            // '--disable-gpu'
-	          ]
-	        }
-	      }
-	    },
+    "chrome": {
+      "desiredCapabilities": {
+        "browserName": "chrome",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true,
+        'chromeOptions': {
+          'args': [
+            // "start-fullscreen"
+            // '--headless',	//开启无界面
+            // '--disable-gpu'
+          ]
+        }
+      }
+    },
 
-	    "firefox": {
-	      "desiredCapabilities": {
-	        "browserName": "firefox",
-	        "javascriptEnabled": true,
-	        "acceptSslCerts": true
-	      }
-	    },
+    "firefox": {
+      "desiredCapabilities": {
+        "browserName": "firefox",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    },
 
-	    "ie": {
-	      "desiredCapabilities": {
-	        "browserName": "internet explorer",
-	        "javascriptEnabled": true,
-	        "acceptSslCerts": true
-	      }
-	    }
-	  }
-	}
-
+    "ie": {
+      "desiredCapabilities": {
+        "browserName": "internet explorer",
+        "javascriptEnabled": true,
+        "acceptSslCerts": true
+      }
+    }
+  }
+}
+```
 在`package.json`中配置如下：
 
-	"scripts": {
-		"e2e_ci": "node test/e2e/runner.js --env phantomjs",
-		"e2e_parallel": "node test/e2e/runner.js --env phantomjs,chrome"
-	}
-
+``` json
+"scripts": {
+  "e2e_ci": "node test/e2e/runner.js --env phantomjs",
+  "e2e_parallel": "node test/e2e/runner.js --env phantomjs,chrome"
+}
+```
 以上2个命令都是执行`runner.js`文件，前者配置了个环境变量`phantomjs`，这样就会在上面查找`test_settings`中的`phantomjs`；后者并发执行，同时用`phantomjs`和`chrome`浏览器进行测试。
 
 ### 测试代码
@@ -310,121 +313,120 @@
 2. `@tags`标签，多个文件可以标记一样的标签。可以命令行中添加`--tag manager`，这样，只会测试标签为`manager`的`js`文件，其它都会略过
 3. 如果只是想跳过当前文件的某个测试方法，可以将`function`转换为字符串，比如
 
+``` js
+module.exports = {
+  'step1': function (browser) {
+  },
 
-
-		module.exports = {
-		  'step1': function (browser) {
-		  },
-
-		  'step2': "" + function (browser) {
-		  }
-		}
-
+  'step2': "" + function (browser) {
+  }
+}
+```
 以下是项目中一个样例，几乎涵盖了各种操作。具体可参看[http://nightwatchjs.org/api](http://nightwatchjs.org/api "官网api")
 
+``` js
+var path = require("path");
+module.exports = {
+  //'@disabled': true, //不执行这个测试模块
+  '@tags': ["manager"],//标签
+  'test manager': function (browser) {
+    const batchFile = browser.globals.batchFile;
+    const url = browser.globals.managerURL;
+    browser
+      .url(url)
+      .getCookie("token", function (result) {
+        if (result) {
+          // browser.deleteCookie("token");
+        } else {
+          this
+            .waitForElementVisible('#loginCode', 50)
+            .setValue('#loginCode', browser.globals.userName)
+            .setValue("#loginPwd", browser.globals.password)
+            .element("css selector", "#mntCode", function (res) {
+              if (res.status != -1) {
+                browser
+                  .click("#mntCode", function () {
+                    browser
+                      .assert.cssProperty("#mntList", "display", "block")
+                      .assert.elementPresent("#mntList li[value=aa]");
+                  })
+                  .pause(500)
+                  .moveToElement("#mntList li[value=aa]", 0, 0, function () { //将鼠标光标移动
+                    browser.click("#mntList li[value=aa]", function () {
+                      browser.assert.containsText("#mntCode", "abc");
+                    });
+                  });
+              }
+            })
+            .click("#fm-login-submit")
+            .pause(50)
+            .url(function (res) {
+              if (res.value !== url) {
+                //这个命令可以用来截图
+                browser.saveScreenshot(browser.globals.imagePath + "login.png");
+              }
+            })
+            .assert.urlContains(url, "判断有没有跳转成功，否则即是登陆失败");
+            .execute(function (param) {
+              //此处可以执行页面中的代码，且得到后面传递的参数
+              try {
+                return utils.data("token");
+              } catch (e) {
 
-	var path = require("path");
-	module.exports = {
-	  //'@disabled': true, //不执行这个测试模块
-	  '@tags': ["manager"],//标签
-	  'test manager': function (browser) {
-	    const batchFile = browser.globals.batchFile;
-	    const url = browser.globals.managerURL;
-	    browser
-	      .url(url)
-	      .getCookie("token", function (result) {
-	        if (result) {
-	          // browser.deleteCookie("token");
-	        } else {
-	          this
-	            .waitForElementVisible('#loginCode', 50)
-	            .setValue('#loginCode', browser.globals.userName)
-	            .setValue("#loginPwd", browser.globals.password)
-	            .element("css selector", "#mntCode", function (res) { //判断是否有多租户
-	              if (res.status != -1) {
-	                browser
-	                  .click("#mntCode", function () {
-	                    browser
-	                      .assert.cssProperty("#mntList", "display", "block") //展示多租户列表
-	                      .assert.elementPresent("#mntList li[value=uinnova]");
-	                  })
-	                  .pause(500)
-	                  .moveToElement("#mntList li[value=uinnova]", 0, 0, function () { //将鼠标光标移动到优锘
-	                    browser.click("#mntList li[value=uinnova]", function () {
-	                      browser.assert.containsText("#mntCode", "优锘科技");
-	                    });
-	                  });
-	              }
-	            })
-	            .click("#fm-login-submit")
-	            .pause(50)
-	            .url(function (res) {
-	              if (res.value !== url) {
-					//这个命令可以用来截图
-	                browser.saveScreenshot(browser.globals.imagePath + "login.png");
-	              }
-	            })
-	            .assert.urlContains(url, "判断有没有跳转成功，否则即是登陆失败");
-	            .execute(function (param) {
-				  //此处可以执行页面中的代码，且得到后面传递的参数
-	              try {
-	                return uinv.data3("token");
-	              } catch (e) {
-
-	              }
-	            }, ["param1"], function (res) {
-	          		//此处可以得到上面方法返回值
-	            });
-	        }
-	      })
-	      .maximizeWindow() //窗口最大化
-	      .waitForElementVisible("#app", 1000)
-	      .pause(1000)
-	      .elements("css selector", ".data .clear li", function (res) {
-	        var nums = res.value.length - 1; //获取到manage.html页面中场景的个数
-	        browser.expect.element('.data_num').text.to.equal('(' + nums + ')'); // 用来统计场景个数的sapn标签中的值是否等于实际的场景个数
-	        browser.pause(500);
-	      })
-	      .click(".clear .last .add_data")
-	      .waitForElementPresent("#dcControlFrame")
-	      .frame("dcControlFrame", function () { //定位到页面中的iframe，需要填写iframe的id（不需要加#）
-	        browser
-	          .waitForElementPresent("#dataCenterId")
-	          .saveScreenshot(browser.globals.imagePath + "dcControlFrame.png")
-	          .setValue("#dataCenterId", browser.globals.sceneId)
-	          .setValue("#dataCenterName", browser.globals.sceneName)
-	          .setValue("#dataCenterText", "欢迎光临")
-	          .setValue("#up_picture[type='file']", path.resolve(batchFile + '/color.png')) //上传图片
-	          .click(".group-btn .save", function () {
-	            browser
-	              .pause(1000)
-	              .click(".layui-layer-btn0");
-	          })
-	          .waitForElementVisible("#dataCenterMenu3", 1000)
-	          .pause(1500)
-	          //上传场景
-	          .click("#dataCenterMenu3", function () {
-	            browser
-	              .setValue("#img-3d-max-model input[type='file']", path.resolve(batchFile + '/20121115uinnovaDEMO.zip')) //上传场景文件
-	              .waitForElementVisible(".layui-layer-btn0", 20000, function () {
-	                browser
-	                  .click(".layui-layer-btn0");
-	              })
-	              .setValue("#img-3d-max-layout input[type='file']", path.resolve(batchFile + '/DEMO20140424-2016-01-14-17-48-17.js')) //上传布局文件
-	              .waitForElementVisible(".layui-layer-btn0", 5000, function () {
-	                browser
-	                  .click(".layui-layer-btn0");
-	              });
-	          })
-	          .pause(500)
-	          .saveScreenshot(browser.globals.imagePath + "frameParentBefore.png");
-	      })
-	      // .frameParent() //回到iframe的父级页面;//TODO 无界面下，frame退出有问题，所以暂时改用refresh重新刷新页面
-	      .refresh()
-	      .end();
-	  }
-	};
-
+              }
+            }, ["param1"], function (res) {
+              //此处可以得到上面方法返回值
+            });
+        }
+      })
+      .maximizeWindow() //窗口最大化
+      .waitForElementVisible("#app", 1000)
+      .pause(1000)
+      .elements("css selector", ".data .clear li", function (res) {
+        var nums = res.value.length - 1;
+        browser.expect.element('.data_num').text.to.equal('(' + nums + ')');
+        browser.pause(500);
+      })
+      .click(".clear .last .add_data")
+      .waitForElementPresent("#dcControlFrame")
+      .frame("dcControlFrame", function () { //定位到页面中的iframe，需要填写iframe的id（不需要加#）
+        browser
+          .waitForElementPresent("#dataCenterId")
+          .saveScreenshot(browser.globals.imagePath + "dcControlFrame.png")
+          .setValue("#dataCenterId", browser.globals.sceneId)
+          .setValue("#dataCenterName", browser.globals.sceneName)
+          .setValue("#dataCenterText", "欢迎光临")
+          .setValue("#up_picture[type='file']", path.resolve(batchFile + '/color.png')) //上传图片
+          .click(".group-btn .save", function () {
+            browser
+              .pause(1000)
+              .click(".layui-layer-btn0");
+          })
+          .waitForElementVisible("#dataCenterMenu3", 1000)
+          .pause(1500)
+          //上传
+          .click("#dataCenterMenu3", function () {
+            browser
+              .setValue("#img-3d-max-model input[type='file']", path.resolve(batchFile + '/demo.zip')) //上传文件
+              .waitForElementVisible(".layui-layer-btn0", 20000, function () {
+                browser
+                  .click(".layui-layer-btn0");
+              })
+              .setValue("#img-3d-max-layout input[type='file']", path.resolve(batchFile + '/demo.js')) //上传文件
+              .waitForElementVisible(".layui-layer-btn0", 5000, function () {
+                browser
+                  .click(".layui-layer-btn0");
+              });
+          })
+          .pause(500)
+          .saveScreenshot(browser.globals.imagePath + "frameParentBefore.png");
+      })
+      // .frameParent() //回到iframe的父级页面;//TODO 无界面下，frame退出有问题，所以暂时改用refresh重新刷新页面
+      .refresh()
+      .end();
+  }
+};
+```
 以下是XX同学的使用总结
 
 1. 有些情况下延时（`pause`）是必须的，比如在表单操作中需要上传图片，需要等文件上传成功后再点击保存按钮
@@ -466,98 +468,105 @@
 
 首先来看看 `chrome-remote-interface`
 
-	const chromeLauncher = require('chrome-launcher');
-	const CDP = require('chrome-remote-interface');
-	const fs = require('fs');
+``` js
+const chromeLauncher = require('chrome-launcher');
+const CDP = require('chrome-remote-interface');
+const fs = require('fs');
 
-	function launchChrome(headless=true) {
-		return chromeLauncher.launch({
-		// port: 9222, // Uncomment to force a specific port of your choice.
-		 chromeFlags: [
-		'--window-size=412,732',
-		'--disable-gpu',
-		   headless ? '--headless' : ''
-		]
-		});
-	}
-	(async function() {
-	  const chrome = await launchChrome();
-	  const protocol = await CDP({port: chrome.port});
-	  const {Page, Runtime} = protocol;
-	  await Promise.all([Page.enable(), Runtime.enable()]);
-	  Page.navigate({url: 'https://www.github.com/'});
-	  await Page.loadEventFired(
-	      console.log("start")
-	  );
-	  const {data} = await Page.captureScreenshot();
-	  fs.writeFileSync('example.png', Buffer.from(data, 'base64'));
-	  // Wait for window.onload before doing stuff.
-	   protocol.close();
-	   chrome.kill(); // Kill Chrome.
+function launchChrome(headless=true) {
+  return chromeLauncher.launch({
+  // port: 9222, // Uncomment to force a specific port of your choice.
+   chromeFlags: [
+  '--window-size=412,732',
+  '--disable-gpu',
+     headless ? '--headless' : ''
+  ]
+  });
+}
+(async function() {
+  const chrome = await launchChrome();
+  const protocol = await CDP({port: chrome.port});
+  const {Page, Runtime} = protocol;
+  await Promise.all([Page.enable(), Runtime.enable()]);
+  Page.navigate({url: 'https://www.github.com/'});
+  await Page.loadEventFired(
+      console.log("start")
+  );
+  const {data} = await Page.captureScreenshot();
+  fs.writeFileSync('example.png', Buffer.from(data, 'base64'));
+  // Wait for window.onload before doing stuff.
+   protocol.close();
+   chrome.kill(); // Kill Chrome.
+})();
+```
 再来看看 `puppeteer`
 
-	const puppeteer = require('puppeteer');
-	(async () => {
-	const browser = await puppeteer.launch();
-	const page = await browser.newPage();
-	await page.goto('https://www.github.com');
-	await page.screenshot({path: 'example.png'});
-	await browser.close();
-	})();
+``` js
+const puppeteer = require('puppeteer');
+(async () => {
+  const browser = await puppeteer.launch();
+  const page = await browser.newPage();
+  await page.goto('https://www.github.com');
+  await page.screenshot({path: 'example.png'});
+  await browser.close();
+})();
+```
 就是这么简短明了，更接近自然语言。没有`callback`，几行代码就能搞定我们所需的一切。
 
 再来段打印阮一峰大神的`《ECMAScript 6 入门》`的`pdf`文档的例子：
 
-	const puppeteer = require('puppeteer');
-	const getRootDir = require('root-directory');
+``` js
+const puppeteer = require('puppeteer');
+const getRootDir = require('root-directory');
 
-	(async () => {
-	    const rootDir = await getRootDir();
-	    let pdfDir = rootDir + "/public/pdf/es6-pdf/";
+(async () => {
+    const rootDir = await getRootDir();
+    let pdfDir = rootDir + "/public/pdf/es6-pdf/";
 
-	    const browser = await puppeteer.launch({
-	        headless: false,
-	        devtools: true //开发，在headless为true时很有用
-	    });
-	    let page = await browser.newPage();
+    const browser = await puppeteer.launch({
+        headless: false,
+        devtools: true //开发，在headless为true时很有用
+    });
+    let page = await browser.newPage();
 
-	    await page.goto('http://es6.ruanyifeng.com/#README');
-	    await page.waitFor(2000);
+    await page.goto('http://es6.ruanyifeng.com/#README');
+    await page.waitFor(2000);
 
-	    const aTags = await page.evaluate(() => {
-	        let as = [...document.querySelectorAll('ol li a')];
-	        return as.map((a) => {
-	            return {
-	                href: a.href.trim(),
-	                name: a.text
-	            };
-	        });
-	    });
+    const aTags = await page.evaluate(() => {
+        let as = [...document.querySelectorAll('ol li a')];
+        return as.map((a) => {
+            return {
+                href: a.href.trim(),
+                name: a.text
+            };
+        });
+    });
 
-	    if (!aTags) {
-	        browser.close();
-	        return;
-	    }
+    if (!aTags) {
+        browser.close();
+        return;
+    }
 
-	    await page.pdf({path: pdfDir + `${aTags[0].name}.pdf`});
-	    page.close();
+    await page.pdf({path: pdfDir + `${aTags[0].name}.pdf`});
+    page.close();
 
-	    // 这里也可以使用promise all，但cpu可能吃紧，谨慎操作
-	    for (var i = 1; i < aTags.length; i++) {
-	        page = await browser.newPage();
+    // 这里也可以使用promise all，但cpu可能吃紧，谨慎操作
+    for (var i = 1; i < aTags.length; i++) {
+        page = await browser.newPage();
 
-	        var a = aTags[i];
+        var a = aTags[i];
 
-	        await page.goto(a.href);
+        await page.goto(a.href);
 
-	        await page.waitFor(2000);
+        await page.waitFor(2000);
 
-	        await page.pdf({path: pdfDir + `${a.name}.pdf`});
+        await page.pdf({path: pdfDir + `${a.name}.pdf`});
 
-	        console.log(a.name);
+        console.log(a.name);
 
-	        page.close();
-	    }
+        page.close();
+    }
 
-	    browser.close();
-	})();
+    browser.close();
+})();
+```

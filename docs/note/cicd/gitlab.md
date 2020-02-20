@@ -18,35 +18,34 @@
 
 - 在`runner`运行的机器上，用命令行注册，比如：
 
-	    gitlab-runner register --name="XX"  --url="https://git.xx.com/" --token="XXX" --executor="shell"
+``` shell
+gitlab-runner register --name="XX"  --url="https://git.xx.com/" --token="XXX" --executor="shell"
+```
 
-
-   按照提示一步一步安装就可以了。其中，`executor`可以是多种类型，简单的话可以选`shell`。有熟悉`docker`的可以使用`docker`。
-
-
+按照提示一步一步安装就可以了。其中，`executor`可以是多种类型，简单的话可以选`shell`。有熟悉`docker`的可以使用`docker`。
 
 -  配置文件在`/etc/gitlab-runner/config.toml`
 
 	配置项类似下面，可能需要手动添加`builds_dir`和`cache_dir`这两个变量，再重启服务
 
-
-	    [[runners]]
-		  name = "216XX"
-		  url = "https://git.XX.com/"
-		  token = "XX"
-		  executor = "shell"
-		  builds_dir = "/home/gitlab-runner/builds"
-		  cache_dir = "/home/gitlab-runner/cache"
-		  [runners.cache]
-
+```
+[[runners]]
+name = "216XX"
+url = "https://git.XX.com/"
+token = "XX"
+executor = "shell"
+builds_dir = "/home/gitlab-runner/builds"
+cache_dir = "/home/gitlab-runner/cache"
+[runners.cache]
+```
 ### 常见命令
 
-
-		sudo gitlab-runner list 查看各个 Runner 的状态
-		sudo gitlab-runner stop 停止服务
-		sudo gitlab-runner start 启动服务
-		sudo gitlab-runner restart 重启服务
-
+``` shell
+sudo gitlab-runner list # 查看各个 Runner 的状态
+sudo gitlab-runner stop # 停止服务
+sudo gitlab-runner start # 启动服务
+sudo gitlab-runner restart # 重启服务
+```
 
 
 ## Stages
@@ -79,91 +78,94 @@
 
 ### 示例
 
-	# 定义 stages（阶段）。任务将按此顺序执行。
-	stages:
-	  - build
-	  - test
-	  - deploy
+``` yml
+# 定义 stages（阶段）。任务将按此顺序执行。
+stages:
+  - build
+  - test
+  - deploy
 
-	# 定义 job（任务）
-	job1:
-	  stage: test
-	  tags:
-		- XX #只有标签为XX的runner才会执行这个任务
-	  only:
-	    - dev	#只有dev分支提交代码才会执行这个任务。也可以是分支名称或触发器名称
-	    - /^future-.*$/ #正则表达式，只有future-开头的分支才会执行
-	  script:
-	    - echo "I am job1"
-	    - echo "I am in test stage"
+# 定义 job（任务）
+job1:
+  stage: test
+  tags:
+  - XX #只有标签为XX的runner才会执行这个任务
+  only:
+    - dev	#只有dev分支提交代码才会执行这个任务。也可以是分支名称或触发器名称
+    - /^future-.*$/ #正则表达式，只有future-开头的分支才会执行
+  script:
+    - echo "I am job1"
+    - echo "I am in test stage"
 
-	# 定义 job
-	job2:
-	  stage: test	#如果此处没有定义stage，其默认也是test
-	  only:
-	    - master	#只有master分支提交代码才会执行这个任务
-	  script:
-	    - echo "I am job2"
-	    - echo "I am in test stage"
-	  allow_failure: true #允许失败，即不影响下步构建
+# 定义 job
+job2:
+  stage: test	#如果此处没有定义stage，其默认也是test
+  only:
+    - master	#只有master分支提交代码才会执行这个任务
+  script:
+    - echo "I am job2"
+    - echo "I am in test stage"
+  allow_failure: true #允许失败，即不影响下步构建
 
-	# 定义 job
-	job3:
-	  stage: build
-	  except:
-		- dev #除了dev分支，其它分支提交代码都会执行这个任务
-	  script:
-	    - echo "I am job3"
-	    - echo "I am in build stage"
-	  when: always #不管前面几步成功与否，永远会执行这一步。它有几个值：on_success （默认值）\on_failure\always\manual（手动执行）
+# 定义 job
+job3:
+  stage: build
+  except:
+  - dev #除了dev分支，其它分支提交代码都会执行这个任务
+  script:
+    - echo "I am job3"
+    - echo "I am in build stage"
+  when: always #不管前面几步成功与否，永远会执行这一步。它有几个值：on_success （默认值）\on_failure\always\manual（手动执行）
 
-	# 定义 job
-	.job4:	#对于临时不想执行的job，可以选择在前面加个"."，这样就会跳过此步任务，否则你除了要注释掉这个jobj外，还需要注释上面为deploy的stage
-	  stage: deploy
-	  script:
-	    - echo "I am job4"
+# 定义 job
+.job4:	#对于临时不想执行的job，可以选择在前面加个"."，这样就会跳过此步任务，否则你除了要注释掉这个jobj外，还需要注释上面为deploy的stage
+  stage: deploy
+  script:
+    - echo "I am job4"
 
-	# 模板，相当于公用函数，有重复任务时很有用
-	.job_template: &job_definition  # 创建一个锚，'job_definition'
-	  image: ruby:2.1
-	  services:
-	    - postgres
-	    - redis
+# 模板，相当于公用函数，有重复任务时很有用
+.job_template: &job_definition  # 创建一个锚，'job_definition'
+  image: ruby:2.1
+  services:
+    - postgres
+    - redis
 
-	test1:
-	  <<: *job_definition           # 利用锚'job_definition'来合并
-	  script:
-	    - test1 project
+test1:
+  <<: *job_definition           # 利用锚'job_definition'来合并
+  script:
+    - test1 project
 
-	test2:
-	  <<: *job_definition           # 利用锚'job_definition'来合并
-	  script:
-	    - test2 project
+test2:
+  <<: *job_definition           # 利用锚'job_definition'来合并
+  script:
+    - test2 project
 
-	#下面几个都相当于全局变量，都可以添加到具体job中，这时会被子job的覆盖
+#下面几个都相当于全局变量，都可以添加到具体job中，这时会被子job的覆盖
 
-	before_script:
-	  - echo "每个job之前都会执行"
+before_script:
+  - echo "每个job之前都会执行"
 
-	after_script:
-	  - echo "每个job之后都会执行"
+after_script:
+  - echo "每个job之后都会执行"
 
-	variables:	#变量
-	  DATABASE_URL: "postgres://postgres@postgres/my_database"  #在job中可以用${DATABASE_URL}来使用这个变量。常用的预定义变量有CI_COMMIT_REF_NAME（项目所在的分支或标签名称），CI_JOB_NAME（任务名称），CI_JOB_STAGE（任务阶段）
-	  GIT_STRATEGY: "none" #GIT策略，定义拉取代码的方式，有3种：clone/fetch/none，默认为clone，速度最慢，每步job都会重新clone一次代码。我们一般将它设置为none，在具体任务里设置为fetch就可以满足需求，毕竟不是每步都需要新代码，那也不符合我们测试的流程
+variables:	#变量
+  DATABASE_URL: "postgres://postgres@postgres/my_database"  #在job中可以用${DATABASE_URL}来使用这个变量。常用的预定义变量有CI_COMMIT_REF_NAME（项目所在的分支或标签名称），CI_JOB_NAME（任务名称），CI_JOB_STAGE（任务阶段）
+  GIT_STRATEGY: "none" #GIT策略，定义拉取代码的方式，有3种：clone/fetch/none，默认为clone，速度最慢，每步job都会重新clone一次代码。我们一般将它设置为none，在具体任务里设置为fetch就可以满足需求，毕竟不是每步都需要新代码，那也不符合我们测试的流程
 
-	cache:	#缓存
-	  #因为缓存为不同管道和任务间共享，可能会覆盖，所以有时需要设置key
-	  key: ${CI_COMMIT_REF_NAME}  # 启用每分支缓存。
-	  #key: "$CI_JOB_NAME/$CI_COMMIT_REF_NAME" # 启用每个任务和每个分支缓存。需要注意的是，如果是在windows中运行这个脚本，需要把$换成%
-	  untracked: true	#缓存所有Git未跟踪的文件
-	  paths:	#以下2个文件夹会被缓存起来，下次构建会解压出来
-	    - node_modules/
-	    - dist/
-
+cache:	#缓存
+  #因为缓存为不同管道和任务间共享，可能会覆盖，所以有时需要设置key
+  key: ${CI_COMMIT_REF_NAME}  # 启用每分支缓存。
+  #key: "$CI_JOB_NAME/$CI_COMMIT_REF_NAME" # 启用每个任务和每个分支缓存。需要注意的是，如果是在windows中运行这个脚本，需要把$换成%
+  untracked: true	#缓存所有Git未跟踪的文件
+  paths:	#以下2个文件夹会被缓存起来，下次构建会解压出来
+    - node_modules/
+    - dist/
+```
 ### 验证gitlab-ci.yml
-	https://git.xx.com/ci/lint
 
+```
+https://git.xx.com/ci/lint
+```
 ### 跳过job
 
 如果你的`commit`信息包涵`[ci skip]`或者`[skip ci]`，不论大小写，这个`commit`将会被创建，但是`job`会被跳过
@@ -180,107 +182,108 @@
 #### 示例
 以下是我们项目中使用的`.gitlab-ci.yml`文件:
 
-	image: xx:1.0
+``` yml
+image: xx:1.0
 
-	stages:
-	  - jenkins_build
-	  - install
-	  - test
-	  - build
-	  - e2e
-	  - zip
-	  - copy
-	  - end
+stages:
+  - jenkins_build
+  - install
+  - test
+  - build
+  - e2e
+  - zip
+  - copy
+  - end
 
-	cache:
-	    policy: pull
-	    key: "$CI_COMMIT_REF_NAME"
-	    paths:
-	        - node_modules/
-	        - .eslintcache
+cache:
+    policy: pull
+    key: "$CI_COMMIT_REF_NAME"
+    paths:
+        - node_modules/
+        - .eslintcache
 
-	variables:
-	  DOCKER_DRIVER: overlay2
-	  GIT_STRATEGY: "fetch"
+variables:
+  DOCKER_DRIVER: overlay2
+  GIT_STRATEGY: "fetch"
 
-	.template: &templateDef  # 创建一个锚，'template'
-	  only:
-	      - master
-	      - release
-	      - dev
+.template: &templateDef  # 创建一个锚，'template'
+  only:
+      - master
+      - release
+      - dev
 
-	install:
-	  stage: install
-	  <<: *templateDef           # 利用锚'templateDef'来合并
-	  cache:
-	      key: "$CI_COMMIT_REF_NAME"
-	      paths:
-	          - node_modules
-	  script:
-	    - cnpm i
+install:
+  stage: install
+  <<: *templateDef           # 利用锚'templateDef'来合并
+  cache:
+      key: "$CI_COMMIT_REF_NAME"
+      paths:
+          - node_modules
+  script:
+    - cnpm i
 
-	eslint:
-	  stage: test
-	  <<: *templateDef
-	  script:
-	    - npm run eslint
+eslint:
+  stage: test
+  <<: *templateDef
+  script:
+    - npm run eslint
 
-	unit:
-	  stage: test
-	  <<: *templateDef
-	  script:
-	    - npm run unit
+unit:
+  stage: test
+  <<: *templateDef
+  script:
+    - npm run unit
 
-	build:
-	  stage: build
-	  <<: *templateDef
-	  only:
-	      - release
-	  script:
-	    - npm run clear_dist
-	    - npm run build
+build:
+  stage: build
+  <<: *templateDef
+  only:
+      - release
+  script:
+    - npm run clear_dist
+    - npm run build
 
-	.e2e_ci:
-	  stage: e2e
-	  <<: *templateDef
-	  script:
-	    - npm run e2e_ci
+.e2e_ci:
+  stage: e2e
+  <<: *templateDef
+  script:
+    - npm run e2e_ci
 
-	zip:
-	  stage: zip
-	  <<: *templateDef
-	  only:
-	      - release
-	  script:
-	    - npm run zip
+zip:
+  stage: zip
+  <<: *templateDef
+  only:
+      - release
+  script:
+    - npm run zip
 
-	## Jenkins 复制
-	jenkins_copyweb:
-	  stage: copy
-	  <<: *templateDef
-	  only:
-	      - release
-	  script:
-	    - ssh $JENKINS_SERVER_IP /jenkins/XX_copyweb.sh
+## Jenkins 复制
+jenkins_copyweb:
+  stage: copy
+  <<: *templateDef
+  only:
+      - release
+  script:
+    - ssh $JENKINS_SERVER_IP /jenkins/XX_copyweb.sh
 
-	## Jenkins 提交
-	jenkins_commit:
-	  stage: end
-	  <<: *templateDef
-	  only:
-	      - release
-	  script:
-	    - ssh $JENKINS_SERVER_IP /jenkins/XX_svn_commit.sh
+## Jenkins 提交
+jenkins_commit:
+  stage: end
+  <<: *templateDef
+  only:
+      - release
+  script:
+    - ssh $JENKINS_SERVER_IP /jenkins/XX_svn_commit.sh
 
-	## Jenkins 构建
-	jenkins_build:
-	  stage: jenkins_build
-	  <<: *templateDef
-	  only:
-	      - master
-	  script:
-	     - ssh $JENKINS_SERVER_IP /jenkins/build.sh
-
+## Jenkins 构建
+jenkins_build:
+  stage: jenkins_build
+  <<: *templateDef
+  only:
+      - master
+  script:
+     - ssh $JENKINS_SERVER_IP /jenkins/build.sh
+```
 其中，`XX:1.0`是我们自己创建的`docker`镜像，它主要安装了`nodejs`、`cnpm`、`jdk`、`sshpass`，其中`sshpass`不是必须的，它是使用密码登陆宿主机时的一种方案。
 
 现在，我们使用`ssh`来与宿主机交互，需要将容器内生成的`ssh`的`key`（`ssh-keygen -t rsa`），即`/root/.ssh/id_rsa.pub`中内容，复制到宿主机的`/root/.ssh/authorized_keys`文件中。
@@ -288,20 +291,20 @@
 #### 配置
 配置文件`/etc/gitlab-runner/config.toml`修改为
 
-
-    [[runners]]
-      name = "216xx"
-      url = "https://git.xx.com/"
-      token = "xx"
-      executor = "docker"
-      [runners.docker]
-        tls_verify = false
-        image = "xx:1.0"
-        privileged = false
-        disable_cache = false
-        pull_policy = "if-not-present"
-        volumes = ["/cache","/tmp:/tmp:rw"]
-        shm_size = 0
-      [runners.cache]
-
+``` shell
+[[runners]]
+  name = "216xx"
+  url = "https://git.xx.com/"
+  token = "xx"
+  executor = "docker"
+  [runners.docker]
+    tls_verify = false
+    image = "xx:1.0"
+    privileged = false
+    disable_cache = false
+    pull_policy = "if-not-present"
+    volumes = ["/cache","/tmp:/tmp:rw"]
+    shm_size = 0
+  [runners.cache]
+```
 其中，`pull_policy`是下载`docker`镜像`image`的策略，默认会先从网上找，没有就报错，我们改为先从本地找；`volumes`是将`docker`中的数据卷挂载到宿主机上。
