@@ -16,7 +16,7 @@ module.exports = {
       }
       // {text: 'github', link: 'https://github.com/jiawei397'}
     ],
-    lastUpdated: 'Last Updated', // string | boolean
+    // lastUpdated: 'Last Updated', // string | boolean
     sidebar: 'auto',
     smoothScroll: true,
 
@@ -42,5 +42,8 @@ module.exports = {
   markdown: {
     toc: {includeLevel: [2, 3]}
   },
-  plugins: ['@vuepress/back-to-top']
+  plugins: ['@vuepress/back-to-top'],
+  head: [
+    ['link', {rel: 'shortcut icon', href: '/images/favicon.ico'}]
+  ]
 };

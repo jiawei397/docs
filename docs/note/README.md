@@ -1,7 +1,7 @@
 <!-- --- -->
 <!-- sidebar: false -->
 <!-- --- -->
-![数字孪生](/images/digitalTwins.jpg)
+![数字孪生](../images/digitalTwins.jpg)
 
 ## js基础 ##
 ### [Array.sort排序问题](./js/common/sort)
