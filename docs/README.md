@@ -1,6 +1,6 @@
 ---
 home: true
-heroImage: /test.png
+heroImage: /images/test.png
 heroText: 老纪的博客
 tagline:
 actionText: 笔记 →
