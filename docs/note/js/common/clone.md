@@ -34,37 +34,8 @@ console.log(newObj.arr);//会看到它的arr属性的值也变化了
 ```
 
 深度克隆的需求还是很常见的。因为函数重新赋值后，与它本身就没有关系了，所以我们只需要考虑对象和数组即可。下面是个简单的实现：
-``` js
-function isFunction(obj) {
-  return typeof obj === 'function' && typeof obj.nodeType !== 'number';
-}
-function clone(obj, isDeep, endFun) {
-  if (!obj || typeof obj !== 'object' || (isFunction(endFun) && endFun(obj))) {
-    return obj;
-  }
-  var c = obj instanceof Array ? [] : {};
-  for (var i in obj) {
-    var prop = obj[i];
-    if (isDeep && typeof prop === 'object') {
-      if (prop instanceof Array) {
-        c[i] = [];
-        for (var j = 0; j < prop.length; j++) {
-          if (typeof prop[j] !== 'object') {
-            c[i].push(prop[j]);
-          } else {
-            c[i].push(clone(prop[j], isDeep, endFun));
-          }
-        }
-      } else {
-        c[i] = clone(prop, isDeep, endFun);
-      }
-    } else {
-      c[i] = prop;
-    }
-  }
-  return c;
-}
-```
+
+<<< @/docs/.vuepress/public/js/clone.js
 
 测试一下：
 ``` js
