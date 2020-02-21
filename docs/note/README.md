@@ -8,7 +8,7 @@
 ### [Array.sort排序问题](./js/common/sort)
 ### [原型链继承](./js/common/prototype)
 ### [umd模板](./js/common/umd)
-### [ajax成功状态](./js/common/ajax)
+### [ajax常见问题](./js/common/ajax)
 ### [隐式转换](./js/common/equal)
 ### [数组常用技巧](./js/common/array)
 ### [new操作符做了什么](./js/common/new)
