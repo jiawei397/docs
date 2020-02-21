@@ -11,6 +11,7 @@
 ### [ajax成功状态](./js/common/ajax)
 ### [隐式转换](./js/common/equal)
 ### [数组常用技巧](./js/common/array)
+### [new操作符做了什么](./js/common/new)
 
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
