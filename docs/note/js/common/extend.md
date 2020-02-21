@@ -66,6 +66,8 @@ console.log(child instanceof Parent); //true
 
 ### 构造继承
 
+主要是利用`call`和`apply`，在子类的环境里，运行一遍父类的属性与方法。
+
 ``` js
 function Parent(name) {
     this.name = name;
