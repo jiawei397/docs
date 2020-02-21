@@ -12,6 +12,8 @@
 ### [隐式转换](./js/common/equal)
 ### [数组常用技巧](./js/common/array)
 ### [new操作符做了什么](./js/common/new)
+### [深度克隆](./js/common/clone)
+### [继承的实现](./js/common/extend)
 
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
