@@ -62,7 +62,7 @@ Mock.mock({
 }
 ```
 
-还可以拦截`ajax`请求。
+## 拦截`ajax`请求
 
 ``` js
 Mock.mock(/\.json/,{
@@ -79,5 +79,30 @@ Mock.mock(/\.json/,{
 ```
 
 这样，所有后缀为`.json`的`ajax`请求，都被拦截，返回数据为模拟数据。
+
+## 自定义命令
+
+``` js
+var Random = Mock.Random;
+Random.extend({
+  instance: function () {
+    var state = ["/sys", '/boot', '/test'];
+    return this.pick(state);
+  },
+  monitorVal: function () {
+    return Random.float(60, 100, 0, 3);
+  }
+});
+Mock.mock(/performance\/getPerfDataByDevName/, {
+  "success": true,
+  "code": -1,
+  'data|1-10': [{// 属性 data 的值是一个数组，其中含有 1 到 10 个元素
+     'id|+1': 100000,
+     "value": "@monitorVal",
+     "instance":"@instance"
+    }]
+});
+```
+
 
 详见[官网](http://mockjs.com)
