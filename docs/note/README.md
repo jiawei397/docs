@@ -20,6 +20,7 @@
 ## web ##
 ### [常用跨域解决方案](./web/cors)
 ### [默认图片](./web/image)
+### [实现一个json呈现页面](./web/json)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)

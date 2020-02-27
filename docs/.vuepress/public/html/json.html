@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>json</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script>
+        Vue.component('vtree', {
+            props: ['item'],
+            template: `
+                 <div style="margin-left: 20px">
+                    <span>{{item.key ? ('"' + item.key + '" : ') : ''}}</span>
+                    <span>{{getVal(item.val)}}</span>
+                    <template v-if="item.children">
+                        <span> { </span>
+                        <div class="btn" @click="item.isExpand = !item.isExpand">
+                            <span>{{item.isExpand ? '-' : item.children.length}}</span>
+                        </div>
+                        <div v-show="item.isExpand">
+                            <div v-for="it in item.children">
+                                <vtree v-bind:item="it"></vtree>
+                            </div>
+                        </div>
+                        <span v-show="!item.isExpand">...</span>
+                         <span> } </span>
+                    </template>
+                </div>
+            `,
+            methods: {
+                getVal (str) {
+                    if (str) {
+                        if (typeof str === 'number') {
+                            return str;
+                        }
+                        return `"${str}"`;
+                    }
+                    return '';
+                }
+            }
+        })
+    </script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            width: 100%;
+            height: 350px;
+            display: flex;
+            align-content: left;
+            justify-content: left;
+        }
+
+        textarea {
+            width: 300px;
+            height: 330px;
+            border: 1px solid #808080;
+            margin-right: 20px;
+            padding: 0;
+        }
+
+        #showText {
+            width: 300px;
+            height: 330px;
+            border: 1px solid #808080;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        li {
+            margin-left: -20px;
+        }
+
+        .btn {
+            display: inline-block;
+            border: 1px solid #808080;
+            width: 10px;
+            height: 10px;
+            line-height: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div id="content">
+        <textarea v-model="map"></textarea>
+        <div id="showText">
+            <span v-show="error">{{error}}</span>
+            <div v-show="!error">
+                <vtree v-bind:item="obj"></vtree>
+            </div>
+        </div>
+    </div>
+    <button @click="trans">转json</button>
+</div>
+<script>
+    const getChildren = function (obj) {
+        const arr = [];
+        for (let key in obj) {
+            const val = obj[key];
+            if (typeof val === 'object') {
+                arr.push({
+                    key,
+                    val: '',
+                    isExpand: true,
+                    children: getChildren(val)
+                });
+            } else {
+                arr.push({
+                    key,
+                    val
+                });
+            }
+        }
+        return arr;
+    };
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            map: `{
+                "name":"John",
+                "age":20,
+                "address":{
+                    "address1":{
+                        "country":"china",
+                        "city":"beijing"
+                    },
+                    "address2":{
+                        "country":"china2",
+                        "city":"beijing2",
+                        "fjfj": "fae"
+                    }
+                }
+            }`,
+            obj: {},
+            error: ''
+        },
+        methods: {
+            trans () {
+                const str = this.map;
+                try {
+                    this.error = null;
+                    const obj = JSON.parse(str);
+                    this.obj = {
+                        key: '',
+                        val: '',
+                        isExpand: true,
+                        children: getChildren(obj)
+                    };
+                } catch (e) {
+                    this.error = e.message;
+                    console.error(e);
+                }
+            }
+        }
+    });
+</script>
+</body>
+</html>
