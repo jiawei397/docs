@@ -14,7 +14,16 @@ module.exports = {
         //   {text: 'javascript', link: '/js/'}
         // ]
       }
-      // {text: 'github', link: 'https://github.com/jiawei397'}
+      // {
+      //   text: '脑图',
+      //   items: [
+      //     {text: 'vue', link: 'http://naotu.baidu.com/file/09500ab029b37dbb7950a133dd8207bc?token=a1de848dbcc5da92'},
+      //     {text: 'javascript', link: 'http://naotu.baidu.com/file/7647e94435e4880c44ed60f16d606dfb?token=bba7e9031da01faf'},
+      //     {text: 'nodejs', link: 'http://naotu.baidu.com/file/8e096a361142f09e0ccf17f2f73183ca?token=3f88fcffd2c108cb'},
+      //     {text: '浏览器', link: 'https://naotu.baidu.com/file/fc3e83a72cd680a5b3772af37f246a27'},
+      //     {text: '设计模式', link: 'http://naotu.baidu.com/file/9951017cce48061ba18ccf35419e4e09?token=03e48859e599fa3a'},
+      //   ]
+      // }
     ],
     // lastUpdated: 'Last Updated', // string | boolean
     sidebar: 'auto',
