@@ -25,7 +25,7 @@
 ### [es6函数判断问题](./js/es6/func)
 ### [es6装饰器异步使用](./js/es6/descriptor)
 ### [es6代码不再打包为es5](./js/es6/es5)
-### [promisify的实现](./js/es6/promisify)
+### [promise相关问题](./js/es6/promise)
 
 ## 持续集成
 ### [.gitlab-ci.yml配置](./cicd/gitlab.html)

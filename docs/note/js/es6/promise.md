@@ -1,9 +1,7 @@
----
-sidebar: false
----
-# promisify的实现
+# Promise相关
+## promisify的实现
 
-## 题目
+### 题目
 
 `nodejs`的异步`api`，都是以下这种规范，最后一个参数是回调函数，回调函数的第1个参数是错误信息，第2个才是返回值
 ``` js
@@ -30,7 +28,7 @@ func('readtxt/demo.txt','utf-8').then(function(data){
 });
 ```
 
-## 实现
+### 实现
 
 其实现在`nodejs`官方已经有`api`，即`util.promisify`。
 
@@ -71,4 +69,42 @@ function promisify (original) {
     });
   };
 }
+```
+
+## Promise.race的实现
+``` js
+Promise.race = function (arr) {
+  const Constructor = this; // this 是调用 race 的 Promise 构造器函数。
+  if(!Array.isArray(arr)){
+    return new Constructor(function (_, reject) {
+      return reject(new TypeError('You must pass an array to race.'));
+    });
+  }
+  return new Constructor((resolve, reject) => {
+    arr.forEach((promise) => {
+      Constructor.resolve(promise) //这是为了防止参数并非Promise处理的
+        .then(resolve, reject);
+    });
+  });
+};
+
+a = function () {
+  return new Promise((resolve => {
+    setTimeout(function () {
+      resolve(20);
+    }, 0);
+  }));
+};
+
+b = function () {
+  return new Promise((resolve => {
+    setTimeout(function () {
+      resolve(200);
+    }, 1000);
+  }));
+};
+
+Promise.race([a(), b()]).then(function (data) {
+  console.log(data);
+});
 ```
