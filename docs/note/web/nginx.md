@@ -65,3 +65,13 @@ location /img/ {
 
 还有一个重要的区别是`alias`后面必须要用`/`结束，否则会找不到文件的。而`root`则可有可无
 :::
+
+## 常用例子
+
+### 主配置
+
+<<< @/docs/.vuepress/public/conf/nginx.conf
+
+### 子配置
+
+<<< @/docs/.vuepress/public/conf/nginx-fl.conf
