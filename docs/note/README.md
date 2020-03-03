@@ -17,6 +17,7 @@
 
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
+### [module.exports和exports的区别](./js/nodejs/exports)
 
 ## web ##
 ### [常用跨域解决方案](./web/cors)

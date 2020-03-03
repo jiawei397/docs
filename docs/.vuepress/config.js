@@ -50,6 +50,7 @@ module.exports = {
   },
   markdown: {
     toc: {includeLevel: [2, 3]}
+    // lineNumbers: true
   },
   plugins: ['@vuepress/back-to-top'],
   head: [
