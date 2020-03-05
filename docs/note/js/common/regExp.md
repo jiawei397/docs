@@ -195,4 +195,6 @@ aa.test(13812345678) //true
 
 ::: tip 本文参考
 [人人都看得懂的正则表达式教程](https://mp.weixin.qq.com/s/Qqs_EmvIOvjn5ZXe8umwXA)
+
+可以使用这个[网站](https://regexper.com/)来校验正则
 :::
