@@ -23,7 +23,7 @@
 ## web ##
 ### [常用跨域解决方案](./web/cors)
 ### [默认图片](./web/image)
-<!-- ### [实现一个json呈现页面](./web/json) -->
+### [实现一个json呈现页面](./web/json)
 ### [nginx相关](./web/nginx)
 
 ## es6 ##
@@ -37,4 +37,5 @@
 ### [单元测试](./cicd/test.html)
 ### [gulp小结](./cicd/gulp.html)
 ### [docker](./cicd/docker.html)
-
+### [webpack](./cicd/webpack.html)
+### [微前端](./cicd/microFront)
