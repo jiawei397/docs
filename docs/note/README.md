@@ -25,6 +25,7 @@
 ### [默认图片](./web/image)
 ### [实现一个json呈现页面](./web/json)
 ### [nginx相关](./web/nginx)
+### [浏览器缓存：强缓存和协商缓存【转】](./web/cache)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
