@@ -26,6 +26,8 @@
 ### [实现一个json呈现页面](./web/json)
 ### [nginx相关](./web/nginx)
 ### [浏览器缓存【转】](./web/cache)
+### [内存泄漏【转】](https://blog.csdn.net/muzidigbig/article/details/100169801)
+### [网络相关笔记](./web/http)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
