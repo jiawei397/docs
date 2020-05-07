@@ -19,6 +19,7 @@
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
 ### [module.exports和exports的区别](./js/nodejs/exports)
+### [log4js过期日志删除问题](./js/nodejs/log4js)
 
 ## web ##
 ### [常用跨域解决方案](./web/cors)
