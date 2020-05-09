@@ -75,3 +75,52 @@ location /img/ {
 ### 子配置
 
 <<< @/docs/.vuepress/public/conf/nginx-fl.conf
+
+### 配置websocket
+
+```
+upstream ws_server{
+	server localhost:7002;
+	keepalive 1000;
+}
+
+map $http_upgrade $connection_upgrade {
+	default upgrade;
+	'' close;
+}
+
+server {
+	location /ws-api {
+		proxy_pass http://ws_server/file;
+		proxy_http_version 1.1;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_read_timeout 3600s;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection $connection_upgrade;
+   }
+}
+
+```
+
+### 配置history路由
+
+```
+server {
+	listen       3001;
+	server_name  localhost;
+
+	client_max_body_size 700M;
+  charset utf-8;
+
+	location / {
+		root	html;
+		add_header 'Access-Control-Allow-Origin' *;
+		index  index.html index.htm;
+		try_files $uri $uri/ /index.html; # 主要是这句，将没找到的地址，最终又转到index.html
+	}
+}
+
+```
