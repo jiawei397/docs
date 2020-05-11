@@ -134,7 +134,7 @@ vm2.run(`process.exit()`); // TypeError: process.exit is not a function
 ```
 会抛出异常。
 
-### 特性：
+### 特性
 - 运行不受信任的`JS`脚本
 - 沙箱的终端输出信息完全可控
 - 沙箱内可以受限地加载`modules`
@@ -144,3 +144,33 @@ vm2.run(`process.exit()`); // TypeError: process.exit is not a function
 ### 原理
 1. vm2基于vm，使用官方的vm库构建沙箱环境。
 2. 使用`JavaScript`的`Proxy`技术来防止沙箱脚本逃逸。
+
+### 安全问题
+
+`vm2`也不是完全安全的
+
+``` js
+const {VM} = require('vm2');
+new VM().run('this.constructor.constructor("return process")().exit()');
+```
+虽然执行上述代码没有问题，但是由于vm2的`timeout对于异步代码不起作用，所以下面的代码永远不会执行结束。
+
+``` js
+const { VM } = require('vm2');
+const vm = new VM({ timeout: 1000, sandbox: {}});
+vm.run('new Promise(()=>{})');
+```
+
+即使希望通过重新定义`Promise`的方式来禁用`Promise`的话，还是一个可以绕过的：
+``` js
+const { VM } = require('vm2');
+const vm = new VM({
+  timeout: 1000, sandbox: { Promise: function(){}}
+});
+vm.run('Promise = (async function(){})().constructor;new Promise(()=>{});');
+```
+不过，总的讲，应该可以忍受。
+
+参考资料：
+- [NPM酷库：vm2，安全的沙箱环境](https://segmentfault.com/a/1190000012672620)
+- [Node.js 沙箱环境](https://segmentfault.com/a/1190000014852483)
