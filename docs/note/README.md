@@ -15,6 +15,7 @@
 ### [继承的实现](./js/common/extend)
 ### [测试插件mockjs](./js/common/mockjs)
 ### [正则表达式](./js/common/regExp)
+### [虚拟沙箱](./js/common/vm)
 
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
