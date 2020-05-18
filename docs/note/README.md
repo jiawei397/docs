@@ -22,6 +22,9 @@
 ### [module.exports和exports的区别](./js/nodejs/exports)
 ### [log4js过期日志删除问题](./js/nodejs/log4js)
 
+## deno ##
+### [deno入门安装](./js/deno/install)
+
 ## web ##
 ### [常用跨域解决方案](./web/cors)
 ### [默认图片](./web/image)
