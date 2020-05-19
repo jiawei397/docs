@@ -34,6 +34,10 @@
 ### [内存泄漏【转】](https://blog.csdn.net/muzidigbig/article/details/100169801)
 ### [网络相关笔记](./web/http)
 
+## linux ##
+### [linux安装docker【转】](https://www.cnblogs.com/kingsonfu/p/11576797.html)
+### [Systemd 入门教程：命令篇【转】(http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
+
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
 ### [es6装饰器异步使用](./js/es6/descriptor)
