@@ -77,22 +77,10 @@ source ~/.bash_profile
 deno --version
 ```
 
-## 防火墙限制
+::: tip 防火墙限制
 在linux启动服务后，如果在外部浏览器访问不到，这时很可能是因为端口没有开启。
-
-```
-$ 将端口加入到防火墙的public区域
-firewall-cmd --zone=public --add-port=27017/tcp --permanent
-
-$ 一定要更新防火墙规则
-firewall-cmd --reload
-
-$ 查看是否开启
-firewall-cmd --zone=public --list-ports
-
-$ 禁用端口
-firewall-cmd --zone=public --remove-port=27017/tcp --permanent  # 删除
-```
+参看：[防火墙限制](../../linux/firewall)
+:::
 
 参考：
 [20 分钟入门 deno](https://juejin.im/post/5ebcabb2e51d454da74185a9#heading-2)
