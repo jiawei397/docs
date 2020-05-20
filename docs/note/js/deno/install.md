@@ -82,13 +82,16 @@ deno --version
 
 ```
 $ 将端口加入到防火墙的public区域
-firewall-cmd --zone=public --add-port=8080/tcp --permanent
+firewall-cmd --zone=public --add-port=27017/tcp --permanent
 
 $ 一定要更新防火墙规则
 firewall-cmd --reload
 
 $ 查看是否开启
 firewall-cmd --zone=public --list-ports
+
+$ 禁用端口
+firewall-cmd --zone=public --remove-port=27017/tcp --permanent  # 删除
 ```
 
 参考：
