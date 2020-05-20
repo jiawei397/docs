@@ -50,5 +50,6 @@
 ### [单元测试](./cicd/test.html)
 ### [gulp小结](./cicd/gulp.html)
 ### [docker](./cicd/docker.html)
+### [docker-compose](./cicd/docker-compose)
 ### [webpack](./cicd/webpack.html)
 ### [微前端](./cicd/microFront)
