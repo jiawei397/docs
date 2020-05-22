@@ -25,6 +25,9 @@
 ## deno ##
 ### [deno入门安装](./js/deno/install)
 
+## go ##
+### [go镜像](./go/image)
+
 ## web ##
 ### [常用跨域解决方案](./web/cors)
 ### [默认图片](./web/image)

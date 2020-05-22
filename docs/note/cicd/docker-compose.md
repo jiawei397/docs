@@ -30,7 +30,6 @@ services:
   qserver:
     build: ./dir  # 指定为构建镜像上下文路径，此处为 ./dir/Dockerfile 所构建的镜像
     restart: always # 重启策略，如果容器退出后，是否要重启，怎样重启
-    image: qserver:1.0
     ports:
       - "3000:3000"
       - "3001:3001"
