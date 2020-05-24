@@ -25,6 +25,9 @@
 ## deno ##
 ### [deno入门安装](./js/deno/install)
 
+## go ##
+### [go镜像](./go/image)
+
 ## web ##
 ### [常用跨域解决方案](./web/cors)
 ### [默认图片](./web/image)
@@ -33,6 +36,11 @@
 ### [浏览器缓存【转】](./web/cache)
 ### [内存泄漏【转】](https://blog.csdn.net/muzidigbig/article/details/100169801)
 ### [网络相关笔记](./web/http)
+
+## linux ##
+### [linux安装docker【转】](https://www.cnblogs.com/kingsonfu/p/11576797.html)
+### [Systemd 入门教程：命令篇【转】](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
+### [防火墙限制](./linux/firewall)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
@@ -45,5 +53,6 @@
 ### [单元测试](./cicd/test.html)
 ### [gulp小结](./cicd/gulp.html)
 ### [docker](./cicd/docker.html)
+### [docker-compose](./cicd/docker-compose)
 ### [webpack](./cicd/webpack.html)
 ### [微前端](./cicd/microFront)
