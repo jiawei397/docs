@@ -40,3 +40,4 @@ arr.sort(function(a, b){
 更具体的排序可以参考：
 - [常用的排序方法](https://www.cnblogs.com/bear-blogs/p/10808399.html)
 - [十大排序的算法思路和代码实现](https://mp.weixin.qq.com/s/Rl_fcWzcSQ7NkPnozIrt0A)
+- [JavaScript中常见排序算法详解](https://mp.weixin.qq.com/s/ujlpOwzPvc0EcQ24D9KFOw)
