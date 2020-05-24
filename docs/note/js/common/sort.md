@@ -36,3 +36,5 @@ arr.sort(function(a, b){
 
 - `升序排列`，返回值可以简写为：`a-b`
 - `降序排序`，返回值可以简写为：`b-a`
+
+更具体的排序可以参考：[常用的排序方法](https://www.cnblogs.com/bear-blogs/p/10808399.html)
