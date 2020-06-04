@@ -27,6 +27,7 @@
 
 ## go ##
 ### [go镜像](./go/image)
+### [go模块](./go/module)
 
 ## web ##
 ### [常用跨域解决方案](./web/cors)
