@@ -13,6 +13,9 @@ firewall-cmd --zone=public --list-ports
 
 $ 禁用端口
 firewall-cmd --zone=public --remove-port=27017/tcp --permanent  # 删除
+
+$ 关闭防火墙
+systemctl stop firewalld
 ```
 
 参考：[CentOS7使用firewall-cmd打开关闭防火墙与端口](https://blog.csdn.net/s_p_j/article/details/80979450)
