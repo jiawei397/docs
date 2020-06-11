@@ -10,3 +10,4 @@ go env -w GO111MODULE=on
 go env -w GOPROXY=https://goproxy.cn,direct
 ```
 然后再次使用 `go get` 下载 `gin` 依赖就可以了。
+
