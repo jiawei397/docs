@@ -2,6 +2,8 @@
 
 到以下地址查询对应网站的ip：
 ```
+https://www.ipaddress.com/
+$ 搜索域名
 https://github.com.ipaddress.com/api.github.com
 ```
 
