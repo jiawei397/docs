@@ -50,6 +50,8 @@
 ### [防火墙限制](./linux/firewall)
 ### [常用命令](./linux/commands)
 ### [deepin安装docker](./linux/deepinDocker)
+### [linux安装mongo](./linux/mongo)
+### [linux安装nginx](./linux/nginx)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
