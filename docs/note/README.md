@@ -27,6 +27,7 @@
 
 ## go ##
 ### [go镜像](./go/image)
+### [deepin安装docker](./go/deepinGo)
 ### [go模块](./go/module)
 ### [golang中runtime.MemStats说明【转】](./go/memStat)
 
