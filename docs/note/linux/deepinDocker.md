@@ -150,3 +150,7 @@ sudo apt-get install chkconfig
 sudo chkconfig --del docker
 ```
 关闭开机自启就可以了
+
+本文参考：
+[在Deepin中安装docker](https://www.cnblogs.com/wh4am1/p/10263272.html)
+[Deepin系统安装docker](https://blog.csdn.net/u011862015/article/details/105674376)
