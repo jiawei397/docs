@@ -52,6 +52,7 @@
 ### [deepin安装docker](./linux/deepinDocker)
 ### [linux安装mongo](./linux/mongo)
 ### [linux安装nginx](./linux/nginx)
+### [小米笔记本pro安装deepin](./linux/deepin)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
