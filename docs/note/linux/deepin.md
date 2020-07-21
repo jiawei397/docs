@@ -115,6 +115,55 @@ nvidia-smi
 cat /proc/driver/nvidia/version
 ```
 
+## 软件窗口大额头修改方法
+
+参考[官方issue](https://github.com/linuxdeepin/developer-center/issues/1210)
+实现思路是修改系统自带主题的配置文件
+
+首先创建一个文件，有的话可以跳过
+```
+# 默认的亮色主题
+mkdir -p ~/.local/share/deepin/themes/deepin/light
+# 深色主题
+mkdir -p ~/.local/share/deepin/themes/deepin/dark
+```
+
+进入相应目录，创建配置文件
+```
+cd ~/.local/share/deepin/themes/deepin/light
+deepin-editor titlebar.ini
+```
+填写以下内容并保存退出
+```
+[Active]
+height=24
+
+[Inactive]
+height=24
+```
+其中参数24为标题栏宽度，可以自行修改，确定，保存注销之后生效
+
+我主要是为了修改`vscode`，所以还修改了其它图标，为省事，直接用的其它图标
+```
+[Active]
+height=24
+backgroundColor=#2D2D2D
+textColor=#C2C2C2
+minimizeIcon.normal=:/deepin/themes/deepin/light/icons/minimize_press.svg
+maximizeIcon.normal=:/deepin/themes/deepin/light/icons/maximize_press.svg
+unmaximizeIcon.normal=:/deepin/themes/deepin/light/icons/unmaximize_press.svg
+closeIcon.normal=:/deepin/themes/deepin/light/icons/close_hover.svg
+
+[Inactive]
+height=24
+backgroundColor=#2D2D2D
+textColor=#C2C2C2
+minimizeIcon.normal=:/deepin/themes/deepin/light/icons/minimize_press.svg
+maximizeIcon.normal=:/deepin/themes/deepin/light/icons/maximize_press.svg
+unmaximizeIcon.normal=:/deepin/themes/deepin/light/icons/unmaximize_press.svg
+closeIcon.normal=:/deepin/themes/deepin/light/icons/close_hover.svg
+```
+
 参考：
 - [Linux(Deepin)如何安装NVIDIA显卡驱动（deepin-Linux）](https://blog.csdn.net/RKCHEN01/article/details/104826736/?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-3)
 - [Deepin Linux下更新nvidia独显驱动](https://blog.csdn.net/qq_37806908/article/details/94572394)

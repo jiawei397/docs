@@ -48,15 +48,15 @@ armv7l-ubuntu-bionic
 armv7l-ubuntu-cosmic
 ```
 
-这里我是使用的deepin15.8的版本
+这里我是使用的`deepin20`的版本
 
-而deepin是基于debian的
+而`deepin`是基于`debian`的
 
 
 
-可以看到debian8.0，即上述x86_64-debian-jessie进行的深度开发
+可以看到`debian8.0`，即上述`x86_64-debian-jessie`进行的深度开发
 
-deepin是基于debian的sid版进行的开发，不是docker官方认证的stable版本，故而没有支持
+`deepin`是基于`debian`的`sid`版进行的开发，不是`docker`官方认证的`stable`版本，故而没有支持
 
 正确安装docker
 
