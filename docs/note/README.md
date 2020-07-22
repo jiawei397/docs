@@ -52,6 +52,7 @@
 ### [deepin安装docker](./linux/deepinDocker)
 ### [linux安装mongo](./linux/mongo)
 ### [linux安装nginx](./linux/nginx)
+### [yarn配置全局变量](./linux/yarn)
 ### [小米笔记本pro安装deepin](./linux/deepin)
 
 ## es6 ##
