@@ -21,6 +21,7 @@
 ### [使用express来代理服务](./js/nodejs/express)
 ### [module.exports和exports的区别](./js/nodejs/exports)
 ### [log4js过期日志删除问题](./js/nodejs/log4js)
+### [使用patch-package修改Node.js依赖包内容](./js/nodejs/patch)
 
 ## deno ##
 ### [deno入门安装](./js/deno/install)
