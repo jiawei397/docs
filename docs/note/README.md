@@ -41,7 +41,7 @@
 ### [内存泄漏【转】](https://blog.csdn.net/muzidigbig/article/details/100169801)
 ### [网络相关笔记](./web/http)
 ### [oauth2](./web/oauth2)
-### [CSRF攻击【转】(./web/CSRF)
+### [CSRF攻击【转】](./web/CSRF)
 ### [button click](./web/click)
 ### [HTTP的传输编码](./web/transferEncoding)
 ### [解决github访问慢的情况](./web/github)
