@@ -2,13 +2,14 @@
 
 最近工作中有遇到需要修改`node_modules`中开源包的情况。
 如果改动比较大，`fork`下来修改，再修改名称，重新发布下，这样比较合适。
+
 但如果只是修改一两行代码，而源包也比较大的情况，就有点儿浪费了。
 
 网上查了下，可以使用`patch-package`来管理依赖包，打补丁。
 
 ## 安装patch-package
 
-通过npm进行安装
+通过`npm`进行安装
 ```
 npm i patch-package --save-dev
 ```
@@ -43,7 +44,7 @@ index 3a79eaa..d00974b 100644
  var _bootstrap = require("./lib/bootstrap");
 ```
 
-##　部署
+## 部署
 完成上述操作后，最后还需要修改`package.json`的内容，在`scripts`中加入`"postinstall": "patch-package"`。
 
 ```
@@ -52,4 +53,4 @@ index 3a79eaa..d00974b 100644
 }
 ```
 
-后续运行`npm install`或是`yarn install`命令时，便会自动为依赖包打上我们编写的补丁了。
+后续运行`npm install`或是`yarn install`命令时，便会自动为依赖包打上我们的补丁了。
