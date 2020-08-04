@@ -47,16 +47,21 @@
 ### [解决github访问慢的情况](./web/github)
 
 ## linux ##
-### [linux安装docker【转】](https://www.cnblogs.com/kingsonfu/p/11576797.html)
 ### [Systemd 入门教程：命令篇【转】](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
 ### [防火墙限制](./linux/firewall)
 ### [常用命令](./linux/commands)
-### [deepin安装docker](./linux/deepinDocker)
-### [linux安装mongo](./linux/mongo)
-### [linux安装nginx](./linux/nginx)
 ### [yarn配置全局变量](./linux/yarn)
 ### [linux安装git](./linux/git)
 ### [小米笔记本pro安装deepin](./linux/deepin)
+
+## docker ##
+### [linux安装docker【转】](https://www.cnblogs.com/kingsonfu/p/11576797.html)
+### [deepin安装docker](./docker/deepinDocker)
+### [docker安装mongo](./docker/mongo)
+### [docker安装nginx](./docker/nginx)
+### [docker安装redis](./docker/redis)
+### [docker小结](./docker/docker)
+### [docker-compose小结](./docker/docker-compose)
 
 ## es6 ##
 ### [es6函数判断问题](./js/es6/func)
@@ -68,7 +73,5 @@
 ### [.gitlab-ci.yml配置](./cicd/gitlab.html)
 ### [单元测试](./cicd/test.html)
 ### [gulp小结](./cicd/gulp.html)
-### [docker](./cicd/docker.html)
-### [docker-compose](./cicd/docker-compose)
 ### [webpack](./cicd/webpack.html)
 ### [微前端](./cicd/microFront)

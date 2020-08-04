@@ -1,4 +1,4 @@
-# linux安装mongo
+# docker安装mongo
 
 基本步骤
 

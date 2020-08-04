@@ -1,4 +1,4 @@
-# linux安装nginx
+# docker中安装nginx
 
 ```
 # 搜索
