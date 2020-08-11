@@ -31,6 +31,7 @@
 ### [deepin安装docker](./go/deepinGo)
 ### [go模块](./go/module)
 ### [golang中runtime.MemStats说明【转】](./go/memStat)
+### [记一次并发请求报错](./go/request.md)
 
 ## web ##
 ### [常用跨域解决方案](./web/cors)
