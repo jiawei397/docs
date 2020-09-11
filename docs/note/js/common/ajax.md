@@ -47,3 +47,14 @@ $.ajaxSetup({cache:false})。
 ## 封装fetch
 
 <<< @/docs/.vuepress/public/js/fetch.js
+
+## jQuery的ajax请求中contentType与dataType区别
+
+最近遇到一个老项目，有同事在用这两个时候有点儿懵逼，我也有点儿混了，捡起来重新看下。
+
+简单说，区别是：
+
+`contentType`: 告诉服务器，我要`发送`什么类型的数据
+
+`dataType`：告诉服务器，我要`接收`什么类型的数据，如果没有指定，那么会自动推断是返回 XML，还是JSON，还是script，还是String。
+从`jQuery`的源码来看，最终`dataType`是设置请求头`Accept`。
