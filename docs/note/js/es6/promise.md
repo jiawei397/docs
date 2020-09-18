@@ -112,31 +112,26 @@ Promise.race([a(), b()]).then(function (data) {
 ## Promise.all的实现
 ``` js
 Promise.all = function (arr) {
-  const Constructor = this; // this 是调用 race 的 Promise 构造器函数。
+  const Constructor = this; // this 是调用 all 的 Promise 构造器函数。
   if (!Array.isArray(arr)) {
     return new Constructor(function (_, reject) {
-      return reject(new TypeError('You must pass an array to race.'));
+      return reject(new TypeError('You must pass an array to all.'));
     });
   }
   return new Constructor((resolve, reject) => {
-    const resolver = function (val) {
-      resolveAll(val);
-    };
     const result = [];
     let counter = arr.length;
-    const resolveAll = function (val) {
-      result.push(val);
-      counter--;
-      if (counter === 0) {
-        resolve(result);
-      }
-    };
-    const rejecter = function (val) {
-      reject(val);
-    };
-    arr.forEach((promise) => {
+    arr.forEach((promise, i) => {
       Constructor.resolve(promise) //这是为了防止参数并非Promise处理的
-        .then(resolver, rejecter);
+        .then((val)=>{
+          result[i] = val;
+          counter--;
+          if (counter === 0) {
+            resolve(result);
+          }
+        }, (err)=> {
+          reject(err);
+        });
     });
   });
 };
