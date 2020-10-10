@@ -1,8 +1,8 @@
 # 记一次webpack使用loader与plugin
 
 ## 背景
-遇到这样一个页面需求：主工程A中用iframe引入工程B，但B又需要使用A中注册的插件，都是用的vue。
-B中代码大概如下：
+遇到这样一个页面需求：主工程`A`中用`iframe`引入工程`B`，但`B`又需要使用`A`中注册的插件，都是用的`vue`。
+`B`中代码大概如下：
 
 ``` js
 let c = decodeURIComponent(location.search.split('=')[1]);
@@ -33,13 +33,13 @@ requireComponent.keys().forEach((fileName) => {
     Vue.component(fileName, componentConfig.default || componentConfig);
 });
 ```
-这个方案的合理性姑且不论，它遇到一个显著的问题，A组件中的css样式，并没有包含在`allInnerComponent`之中。为什么呢？
+这个方案的合理性姑且不论，它遇到一个显著的问题，`A`组件中的`css`样式，并没有包含在`allInnerComponent`之中。为什么呢？
 
-仔细看`vue`的打包后代码，可以看出，`vue`是将组件的`template`代码以字符串的形式，写入到`js`里的，而组件的`css`部分，并不是与组件代码放一起，而是单独提取出来，最终与其它组件的css一起，要么生成单独的css文件，要么以`css in js`的形式，再用`js`显示到页面（调用的是`vue-style-loader`）。
+仔细看`vue`的打包后代码，可以看出，`vue`是将组件的`template`代码以字符串的形式，写入到`js`里的，而组件的`css`部分，并不是与组件代码放一起，而是单独提取出来，最终与其它组件的`css`一起，要么生成单独的`css`文件，要么以`css in js`的形式，再用`js`显示到页面（调用的是`vue-style-loader`）。
 
 也就是说，`vue`的`css`部分与`template`和`script`是解耦的，唯一关联是如果使用`scope`标签，则会记录一个`hash`值，对应的`DOM`中会加入`data-[hash]`的属性，`css`也会相应添加，这样保障了样式的隔离。
 
-如果能找到组件中`css`所存储的地方，那么问题就解决了。遗憾的是，我没看出来。只能选择一个笨办法，这时就用到了webpack的`plugin`和`loader`。
+如果能找到组件中`css`所存储的地方，那么问题就解决了。遗憾的是，我没看出来。只能选择一个笨办法，这时就用到了`webpack`的`plugin`和`loader`。
 
 将`vue`解析后的`css`数据用`loader`拦截，用`Object`存储起来，再写个`plugin`，将得到的`css`对象赋给`window`全局变量，整个以字符串的形势，插入到`html`里。
 
@@ -175,6 +175,101 @@ module.exports = {
 };
 
 ```
+
+## loader的顺序问题
+上面的配置，只解决了`vue`文件中`css`的配置，而其它`scss`、`less`、`stylus`之类，都没处理。
+
+于是，需要在`chainWebpack`中增加如下内容：
+``` js
+config.module
+            .rule('scss').oneOf('vue').use('vue-css-loader').loader('vue-css-loader') //我的loader
+            .end();
+```
+但这样我们只能得到`scss`的字符串，并不是编译为`css`之后的。
+
+怎么办呢？
+
+使用`vue ui`找开项目，再在`任务`中找到`inspect`，点击`运行`，得到当前工程的`webpack`配置，会发现`scss`部分大概是这样的：
+```
+/* config.module.rule('scss') */
+{
+  test: /\.scss$/,
+  oneOf: [
+    /* config.module.rule('scss').rule('vue-modules') */
+    {
+      resourceQuery: /module/,
+      use: [
+       ... //忽略
+      ]
+    },
+    /* config.module.rule('scss').rule('vue') */
+    {
+      resourceQuery: /\?vue/,
+      use: [
+        {
+          loader: '/test/node_modules/mini-css-extract-plugin/dist/loader.js',
+          options: {
+            hmr: false,
+            publicPath: '../../'
+          }
+        },
+        {
+          loader: '/test/node_modules/css-loader/dist/cjs.js',
+          options: {
+            sourceMap: false,
+            importLoaders: 2
+          }
+        },
+        {
+          loader: '/test/node_modules/postcss-loader/src/index.js',
+          options: {
+            sourceMap: false,
+            plugins: [
+              function () { /* omitted long function */ }
+            ]
+          }
+        },
+        {
+          loader: '/test/node_modules/sass-loader/dist/cjs.js',
+          options: {
+            sourceMap: false,
+            prependData: '@import "@/assets/css/global_variable.scss";'
+          }
+        },
+        {
+          loader: 'vue-css-loader'
+        },
+      ]
+    },
+    /* config.module.rule('scss').rule('normal-modules') */
+    { 
+      test: /\.module\.\w+$/,
+      use: [ //忽略
+        ...
+      ]
+    },
+    /* config.module.rule('scss').rule('normal') */
+    {
+      use: [ //忽略
+        ...
+      ]
+    }
+  ]
+},
+```
+从上面可以看出，我们的`vue-css-loader`是在最下面，`webpack`的`loader`加载顺序是从后往前，所以顺序需要调整。
+
+怎么调整呢？
+从官网上没找到例子，于是找断点，发现可以使用`before`：
+``` js
+config.module.rule('scss').oneOf('vue')
+  .use('vue-css-loader')
+  .before('mini-css-extract-plugin')
+  .loader('vue-css-loader').end();
+```
+
+这个花了较长时间，原因是我是复制页面上的`webpack`配置，再放到`ide`里查看，一直没有清控制台，没有发现其实自己已经调对了。
+还是不够细心。
 
 ## 总结
 
