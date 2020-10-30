@@ -33,7 +33,9 @@ date.setDate(13);
 console.log(newObj.arr);//会看到它的arr属性的值也变化了
 ```
 
-深度克隆的需求还是很常见的。因为函数重新赋值后，与它本身就没有关系了，所以我们只需要考虑对象和数组即可。下面是个简单的实现：
+深度克隆的需求还是很常见的。因为函数重新赋值后，与它本身就没有关系了，所以我们只需要考虑`typeof`为`object`的情况。一般是对象、数组、`Date`、`Set`。
+
+下面是个简单的实现：
 
 <<< @/docs/.vuepress/public/js/clone.js
 
@@ -42,14 +44,21 @@ console.log(newObj.arr);//会看到它的arr属性的值也变化了
 const date = new Date();
 const arr = [];
 const o = {};
+const set = new Set([1, 2]);
+const fn = ()=>{console.log('------------before------')};
 const obj = {
   date,
   arr,
-  o
+  o,
+  set,
+  fn
 };
 const newObj = clone(obj, true);
 arr.push(1);
 o['a'] = 'abc';
 date.setDate(13);
+set.add(3);
+obj.fn = ()=>{console.log('------------after------')};
 console.log(newObj);
+newObj.fn();
 ```
