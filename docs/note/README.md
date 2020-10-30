@@ -16,6 +16,7 @@
 ### [测试插件mockjs](./js/common/mockjs)
 ### [正则表达式](./js/common/regExp)
 ### [虚拟沙箱](./js/common/vm)
+### [isNaN与Number.isNaN的区别](./js/common/NaN)
 
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
