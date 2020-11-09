@@ -231,3 +231,146 @@ Array.prototype.includes = function (item) {
 };
 ```
 其中，我注释掉的那行，就是`isNaN`的一个实现，它是`js`中唯一一个不等于自身的。
+
+## 数组循环方法的实现
+
+数组的多数方法都能用原生的`for`循环实现，而数组的循环遍历的方法，几乎都一样，都有2个参数，第一个是`callback`函数，第二个是改变前面`callback`作用域的。
+通过对这些函数的实现，可以更好地理解和记忆怎么使用。
+
+### forEach
+以最简单的`forEach`为例，可以这么实现：
+``` js
+Array.prototype.forEach = function (callback, scope) {
+    for (var i = 0; i < this.length; i++) {
+        callback.call(scope, this[i], i, this);
+    }
+}
+```
+
+### map
+`map`与`forEach`的区别只是有返回值罢了：
+``` js
+Array.prototype.map = function (callback, scope) {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+        arr.push(callback.call(scope, this[i], i, this));
+    }
+    return arr;
+};
+```
+
+### some
+`some`是满足条件时，就返回`true`，没有一个满足时返回`false`
+``` js
+Array.prototype.some = function (callback, scope) {
+    for (var i = 0; i < this.length; i++) {
+        if(callback.call(scope, this[i], i, this)){
+          return true;
+        }
+    }
+    return false;
+};
+```
+
+### every
+`every`与`some`刚好相反，有一个不满足条件时，就返回`false`，全部满足才返回`true`
+``` js
+Array.prototype.every = function (callback, scope) {
+    for (var i = 0; i < this.length; i++) {
+        if(!callback.call(scope, this[i], i, this)){
+          return false;
+        }
+    }
+    return true;
+};
+```
+
+### find
+`find`是找到符合条件的元素：
+``` js
+Array.prototype.find = function (callback, scope) {
+    for (var i = 0; i < this.length; i++) {
+        if(callback.call(scope, this[i], i, this)){
+          return this[i];
+        }
+    }
+};
+```
+
+### findIndex
+`findIndex`是找到符合条件的元素的索引：
+``` js
+Array.prototype.findIndex = function (callback, scope) {
+    for (var i = 0; i < this.length; i++) {
+        if(callback.call(scope, this[i], i, this)){
+          return i;
+        }
+    }
+    return -1;
+};
+```
+
+### reduce的用法
+数组的`reduce`方法比较特殊，它的参数不像其它循环遍历的方法，有点另类。
+用法是这样的：
+``` js
+var arr = [1, 2, 3, 4];
+var callbackfn = function (pre, cur, index, arr) {
+    console.log(pre, cur, index);
+    return pre + cur;
+};
+var res = arr.reduce(callbackfn);
+console.log(res); // 10
+
+var res2 = arr.reduce(callbackfn, 5);
+console.log(res2); // 15
+```
+它的回调函数里，第1个参数是上一次`callback`的执行结果。
+第一次时，如果没有传递第2个参数，这时它使用数组的第一个元素，也将从第二元素开始遍历。
+它会将最后一个执行结果返回。
+
+常用使用场景是做累加。
+
+还有这样一种情况，先过滤一次条件，再用`map`返回一个新的数组。
+``` js
+var res3 = arr.filter(item => item > 2).map(i => i * 2);
+console.log(res3);
+```
+这样有个弊端，会进行2次循环。最优是使用原生`for`进行处理，当然也可以使用`reduce`。
+
+``` js
+var res4 = arr.reduce(function (pre, cur) {
+     if (cur > 2) {
+         pre.push(cur * 2);
+     }
+    return pre;
+}, []);
+console.log(res4);
+```
+
+我们可以这样实现：
+``` js
+Array.prototype.reduce = function (callbackfn, preItem) {
+    var i = 0;
+    if (preItem === undefined) { //如果没有预传值，则代表默认为第一个元素，从第2个元素开始遍历
+        preItem = this[0];
+        i++;
+    }
+    for (var len = this.length; i < len; i++) {
+        preItem = callbackfn(preItem, this[i], i, this);
+    }
+    return preItem;
+};
+```
+
+### join
+`join`是合并数组为字符串。
+``` js
+Array.prototype.join = function (sep = ',') {
+    var str = '';
+    for (var i = 0; i < this.length; i++) {
+        str += this[i] + (i === this.length - 1 ? '' : sep);
+    }
+    return str;
+};
+```
