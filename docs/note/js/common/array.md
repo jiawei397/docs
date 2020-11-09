@@ -12,6 +12,15 @@ var arr = [].slice.call( arrayLike);
 var arr = Array.from(arrayLike);
 ```
 
+所以，`Array.from`其实可以这样简单实现：
+``` js
+Array.from = function(arr){
+  return Array.prototype.slice.call(arr);
+}
+```
+但事实上没有这么简单，比如`Set`类型的数据就无法这样转换。它需要更复杂的处理。
+
+
 ## 获取数组最后的元素
 大多数人的做法：
 ``` js
@@ -81,7 +90,7 @@ var array2 = [4, 5, 6];
 Array.prototype.push.apply(array1, array2);
 console.log(array1);  // [1,2,3,4,5,6];
 ```
-对于es6，可以使用扩展符：
+对于`es6`，可以使用扩展符：
 ``` js
 var array1 = [1, 2, 3];
 var array2 = [4, 5, 6];
@@ -140,25 +149,18 @@ var testArr2 = [0, [1, [2, [3, [4, [5]]]]]];
 flatten(testArr1) // [0, 1, 2, 3, 4, 5]
 flatten(testArr2) // [0, 1, 2, 3, 4, 5]
 ```
-
-对于`testArr1`，现在`es6`已有内置的`flat`方法：
-``` js
-var testArr1 = [[0, 1], [2, 3], [4, 5]];
-testArr1.flat() // [0, 1, 2, 3, 4, 5]
-```
-但它对`testArr2`就无能为力了。
-
+### 解法1
 先来一个最简单的解法：
 ``` js
 flatten = (arr) => arr.toString().split(',').map((val) => parseInt(val));
 ```
 它是利用数组`toString`的特殊性，很巧妙地处理。
 
+### 解法2
 再来一种：
 ``` js
 flatten2 = function (arr) {
   return arr.reduce(function (pre, val) {
-    console.log(pre, val);
     if (!Array.isArray(val)) {
       pre.push(val);
     } else {
@@ -171,4 +173,34 @@ flatten2 = function (arr) {
 也能简写为：
 ``` js
 flatten2 = (arr) => arr.reduce((pre, val) => pre.concat(Array.isArray(val) ? flatten2(val) : val), []);
+```
+
+### 解法3
+
+现在`es6`已有内置的`flat`方法：
+``` js
+var testArr1 = [[0, 1], [2, 3], [4, 5]];
+testArr1.flat() // [0, 1, 2, 3, 4, 5]
+
+var testArr2 = [0, [1, [2, [3, [4, [5]]]]]];
+testArr2.flat() // [0, 1, [2, [3, [4, [5]]]]]
+```
+我们看到，`testArr2`只解放了一层。为什么呢？
+
+原来这个函数有个默认参数`depth`，我们可以称之为深度，默认是`1`，当不传递参数时，只处理一层。
+要想全部铺展的话，需要传递参数`Infinity`，如`testArr1.flat(Infinity)`。
+
+下面是我的一个简单实现。
+``` js
+Array.prototype.flat = function (depth = 1) {
+    var arr = [];
+    for (var i = 0; i < this.length; i++) {
+        if (Array.isArray(this[i]) && depth > 0) {
+            arr.push(...this[i].flat(depth-1));
+        } else {
+            arr.push(this[i]);
+        }
+    }
+    return arr;
+};
 ```
