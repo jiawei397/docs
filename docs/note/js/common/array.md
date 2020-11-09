@@ -204,3 +204,30 @@ Array.prototype.flat = function (depth = 1) {
     return arr;
 };
 ```
+
+## includes与indexOf的区别
+
+数组有2个判断是否包含某个元素的方法，`includes`与`indexOf`，后者很早就有了，前者是`es6`才加的。
+
+很多人以为2个的区别只是前者返回`bool`，后者返回索引数字，其实不止如此，关键一点在于对`NaN`的判断。
+
+`indexOf`是不会判断`NaN`的。比如：
+``` js
+var arr = [1, 2, 3, NaN];
+console.log(arr.includes(NaN)); // true
+console.log(arr.indexOf(NaN)); // -1
+```
+
+所以，我们要实现`includes`的时候，需要这样：
+``` js
+Array.prototype.includes = function (item) {
+    for (var i = 0; i < this.length; i++) {
+        // if (this[i] === item || (this[i] !== this[i] && item !== item)) {
+        if (this[i] === item || (isNaN(this[i]) && isNaN(item))) {
+            return true;
+        }
+    }
+    return false;
+};
+```
+其中，我注释掉的那行，就是`isNaN`的一个实现，它是`js`中唯一一个不等于自身的。
