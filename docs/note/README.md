@@ -18,6 +18,12 @@
 ### [虚拟沙箱](./js/common/vm)
 ### [isNaN与Number.isNaN的区别](./js/common/NaN)
 
+## es6 ##
+### [es6函数判断问题](./js/es6/func)
+### [es6装饰器异步使用](./js/es6/descriptor)
+### [es6代码不再打包为es5](./js/es6/es5)
+### [promise相关问题](./js/es6/promise)
+
 ## nodejs ##
 ### [使用express来代理服务](./js/nodejs/express)
 ### [module.exports和exports的区别](./js/nodejs/exports)
@@ -70,12 +76,6 @@
 ### [docker安装redis](./docker/redis)
 ### [docker小结](./docker/docker)
 ### [docker-compose小结](./docker/docker-compose)
-
-## es6 ##
-### [es6函数判断问题](./js/es6/func)
-### [es6装饰器异步使用](./js/es6/descriptor)
-### [es6代码不再打包为es5](./js/es6/es5)
-### [promise相关问题](./js/es6/promise)
 
 ## 持续集成
 ### [.gitlab-ci.yml配置](./cicd/gitlab.html)
