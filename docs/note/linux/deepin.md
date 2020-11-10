@@ -164,6 +164,13 @@ unmaximizeIcon.normal=:/deepin/themes/deepin/light/icons/unmaximize_press.svg
 closeIcon.normal=:/deepin/themes/deepin/light/icons/close_hover.svg
 ```
 
+::: tip
+最近看`vscode`，人家有去除大额头的方法：
+
+设置 -> Window -> Title-Bar-Style -> 修改为 custom即可
+:::
+
+
 参考：
 - [Linux(Deepin)如何安装NVIDIA显卡驱动（deepin-Linux）](https://blog.csdn.net/RKCHEN01/article/details/104826736/?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-3)
 - [Deepin Linux下更新nvidia独显驱动](https://blog.csdn.net/qq_37806908/article/details/94572394)
