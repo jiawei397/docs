@@ -5,13 +5,11 @@
 
 `nodejs`的异步`api`，都是以下这种规范，最后一个参数是回调函数，回调函数的第1个参数是错误信息，第2个才是返回值
 ``` js
-var fs=require('fs');
-
+var fs = require('fs');
 fs.readFile('readtxt/demo.txt','utf-8',function(err,data){
-    if(err){
+    if (err){
         console.error(err);
-    }
-    else{
+    } else{
         console.log(data);
     }
 });
@@ -24,7 +22,7 @@ var func = promisify(fs.readFile);
 func('readtxt/demo.txt','utf-8').then(function(data){
     console.log(data);
 }).catch(function(err){
-
+    console.error(err);
 });
 ```
 
@@ -90,7 +88,9 @@ Promise.race = function (arr) {
     });
   });
 };
-
+```
+以下是用例：
+``` js
 a = function () {
   return new Promise((resolve => {
     setTimeout(function () {
@@ -140,7 +140,10 @@ Promise.all = function (arr) {
     });
   });
 };
+```
 
+以下是用例：
+``` js
 a = function () {
   return new Promise((resolve => {
     setTimeout(function () {
@@ -168,6 +171,41 @@ c = function () {
 Promise.all([a(), b(), c()]).then(function (data) {
   console.log(data);
 }).catch(console.error);
+
+```
+## Promise.any的实现
+
+假设我们需要所有的`Promise`之中，有一个成功的，我就继续后面的处理逻辑。之前的`race`无法满足需求，就轮到`Promise.any`出场了。它是后来加的`API`，兼容性有时候需要考虑。
+
+也就是说，有一个`Promise`成功，就把它返回。
+如果没有成功的，则会返回一个[`AggregateError`](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/AggregateError)的错误。
+
+大体实现如下：
+
+``` js
+Promise.any = function (arr) {
+  const Constructor = this;
+  if (!Array.isArray(arr)) {
+    return Constructor.reject(new TypeError('You must pass an array to any.'));
+  }
+  return new Constructor((resolve, reject) => {
+    const errors = [];
+    let counter = arr.length;
+    if (counter === 0) { //如果一个都没有，则返回失败
+      return reject(errors);
+    }
+    arr.forEach((promise, i) => {
+      Promise.resolve(promise).then(resolve, (err) => {
+        counter--;
+        errors[i] = err;
+        if (counter === 0) {
+          // rejects(new AggregateError(errors));
+          reject(errors);
+        }
+      });
+    });
+  });
+};
 ```
 
 ## done的实现
