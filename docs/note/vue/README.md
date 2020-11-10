@@ -1,7 +1,9 @@
-# vue
+<!-- --- -->
+<!-- sidebar: false -->
+<!-- --- -->
+![数字孪生](../../images/digitalTwins.jpg)
 
-| Tables        | Are           | Cool  |
-| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 |
-| zebra stripes | are neat      |    $1 |
+## vue ##
+### [从vue-router看前端路由的两种实现【转】](https://zhuanlan.zhihu.com/p/27588422)
+### [浅谈vue-router原理](https://www.jianshu.com/p/4295aec31302)
+### [记一次webpack使用loader与plugin](./webpack)

@@ -8,12 +8,25 @@ module.exports = {
       {text: '主页', link: '/'},
       {
         text: '技术',
-        link: '/note/'
-        // items: [
-        //   {text: '持续集成', link: '/cicd/'},
-        //   {text: 'javascript', link: '/js/'}
-        // ]
-      }
+        link: '/note/',
+        items: [
+          {text: 'js基础', link: '/note/js/'},
+          {text: 'go', link: '/note/go/'},
+          {text: 'web', link: '/note/web/'},
+          {text: 'vue', link: '/note/vue/'},
+          {text: 'linux', link: '/note/linux/'},
+          {text: 'docker', link: '/note/docker/'},
+          {text: '持续集成', link: '/note/cicd/'},
+        ]
+      },
+      // {
+      //   text: '杂谈',
+      //   link: '/book/'
+      //   // items: [
+      //   //   {text: '持续集成', link: '/cicd/'},
+      //   //   {text: 'javascript', link: '/js/'}
+      //   // ]
+      // }
       // {
       //   text: '脑图',
       //   items: [
