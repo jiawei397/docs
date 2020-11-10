@@ -170,6 +170,18 @@ closeIcon.normal=:/deepin/themes/deepin/light/icons/close_hover.svg
 设置 -> Window -> Title-Bar-Style -> 修改为 custom即可
 :::
 
+## 升级vscode遇到的问题
+
+安装商店的`VScode`之后提示升级，然后从官网下载了最新版本，使用默认的安装器，报错：`依赖关系不满足`。
+
+到论坛上一查，有人说是把原来的软件删掉就可以了。也有人说是用命令行安装一下：
+
+```
+sudo apt install ./code_1.51.0-1604600753_amd64.deb
+```
+
+试了下后者，果然可以了。这个当时也百度过，没得到结果，还是论坛大法好。
+
 
 参考：
 - [Linux(Deepin)如何安装NVIDIA显卡驱动（deepin-Linux）](https://blog.csdn.net/RKCHEN01/article/details/104826736/?utm_medium=distribute.pc_relevant.none-task-blog-baidujs-3)
