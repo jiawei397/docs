@@ -164,7 +164,7 @@ unmaximizeIcon.normal=:/deepin/themes/deepin/light/icons/unmaximize_press.svg
 closeIcon.normal=:/deepin/themes/deepin/light/icons/close_hover.svg
 ```
 
-::: tip
+::: tip 通过配置修改
 最近看`vscode`，人家有去除大额头的方法：
 
 设置 -> Window -> Title-Bar-Style -> 修改为 custom即可
@@ -181,6 +181,11 @@ sudo apt install ./code_1.51.0-1604600753_amd64.deb
 ```
 
 试了下后者，果然可以了。这个当时也百度过，没得到结果，还是论坛大法好。
+
+::: tip 切换中文
+
+用快捷键【Ctrl+Shift+P】，在弹出的搜索框中输入【configure language】，之后就可以了
+:::
 
 
 参考：
