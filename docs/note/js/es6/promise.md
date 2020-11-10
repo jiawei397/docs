@@ -72,6 +72,9 @@ function promisify (original) {
 ```
 
 ## Promise.race的实现
+
+`race`指的是，有一个`Promise`成功或失败，就会返回它。有个特点，如果传递的参数是空数组的话，返回的`Promise`的状态永远是`pending`。
+
 ``` js
 Promise.race = function (arr) {
   const Constructor = this; // this 是调用 race 的 Promise 构造器函数。
@@ -110,28 +113,30 @@ Promise.race([a(), b()]).then(function (data) {
 ```
 
 ## Promise.all的实现
+
+`Promise.all`要求所有的`Promise`都成功，有一个失败则返回错误信息。
+
 ``` js
 Promise.all = function (arr) {
-  const Constructor = this; // this 是调用 all 的 Promise 构造器函数。
+  const Constructor = this;
   if (!Array.isArray(arr)) {
-    return new Constructor(function (_, reject) {
-      return reject(new TypeError('You must pass an array to all.'));
-    });
+    return Constructor.reject(new TypeError('You must pass an array to all.'));
+  }
+  let counter = arr.length;
+  if (counter === 0) {
+    return Constructor.resolve(arr);
   }
   return new Constructor((resolve, reject) => {
     const result = [];
-    let counter = arr.length;
     arr.forEach((promise, i) => {
       Constructor.resolve(promise) //这是为了防止参数并非Promise处理的
-        .then((val)=>{
+        .then((val) => {
           result[i] = val;
           counter--;
           if (counter === 0) {
             resolve(result);
           }
-        }, (err)=> {
-          reject(err);
-        });
+        }, reject);
     });
   });
 };
@@ -164,3 +169,49 @@ Promise.all([a(), b(), c()]).then(function (data) {
   console.log(data);
 }).catch(console.error);
 ```
+
+## done的实现
+`Promise` 对象的回调链，不管以`then`方法或`catch`方法结尾，要是最后一个方法抛出错误，都有可能无法捕捉到（因为 `Promise` 内部的错误不会冒泡到全局）。因此，我们可以提供一个`done`方法，总是处于回调链的尾端，保证抛出任何可能出现的错误。
+
+用法大概是这样：
+``` js
+asyncFunc()
+  .then(f1)
+  .catch(r1)
+  .then(f2)
+  .done();
+```
+
+它的实现也很简单:
+``` js
+Promise.prototype.done = function(onFullfilled, onRejected){
+  this.then(onFullfilled, onRejected).catch((err) => {
+    setTimeout(()=> throw err);
+  });
+};
+```
+其实，即使没有这个方法，现在浏览器、`nodejs`也会把错误信息显示在控制台的。
+
+## finally的实现
+`finally`与`done`类似，区别在于它接受一个普通的回调函数作为参数，该函数不管怎样都必须执行。
+而且`done`没有返回值，`finally`仍会返回`Promise`实例。
+
+用法大概是这样：
+``` js
+asyncFunc()
+  .then(f1)
+  .finally(f2);
+```
+
+它的实现也相对简单：
+``` js
+Promise.prototype.finally = function (callback) {
+  let P = this.constructor;
+  return this.then(
+    (data) => P.resolve(callback()).then(()=> data),
+    (err) => P.resolve(callback()).catch(() => { throw err }));
+};
+```
+它与`.then(onFinally, onFinally)`也很像，但为了有返回值，比如`Promise.resolve(2).finally(() => {}) `返回`resolve`的结果`2`，或者`Promise.reject(3).finally(() => {}) `返回`reject`的结果`3`，只能这样处理。
+
+相较于上面的`done`，`finally`方法已经添加到`Promise`的规范里，不少浏览器都支持了，详情可以参考[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally)
