@@ -53,6 +53,7 @@
 ### [CSRF攻击【转】](./web/CSRF)
 ### [button click](./web/click)
 ### [HTTP的传输编码](./web/transferEncoding)
+### [HTTP常见状态码](./web/status)
 ### [解决github访问慢的情况](./web/github)
 
 ## linux ##
