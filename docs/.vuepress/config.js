@@ -10,7 +10,7 @@ module.exports = {
         text: '技术',
         link: '/note/',
         items: [
-          {text: 'js基础', link: '/note/js/'},
+          {text: 'js', link: '/note/js/'},
           {text: 'go', link: '/note/go/'},
           {text: 'web', link: '/note/web/'},
           {text: 'vue', link: '/note/vue/'},

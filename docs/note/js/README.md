@@ -1,6 +1,8 @@
 <!-- --- -->
 <!-- sidebar: false -->
 <!-- --- -->
+# javascript相关
+
 ## js基础 ##
 ### [Array.sort排序问题](./common/sort)
 ### [原型链继承](./common/prototype)
