@@ -9,5 +9,6 @@
 ### [docker安装mongo](./mongo)
 ### [docker安装nginx](./nginx)
 ### [docker安装redis](./redis)
+### [docker安装gitlab](./gitlab)
 ### [docker小结](./docker)
 ### [docker-compose小结](./docker-compose)
