@@ -46,3 +46,5 @@ docker pull gitlab/gitlab-runner
 ```powershell
 docker run -d --name gitlab-runner --restart always -v /docker/gitlab/runner/config:/etc/gitlab-runner -v /docker/gitlab/runner/run/docker.sock:/var/run/docker.sock gitlab/gitlab-runner	  
 ```
+
+> 如果需要搭建npm私有仓库，可以参考[这篇](./npm)

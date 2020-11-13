@@ -10,5 +10,6 @@
 ### [docker安装nginx](./nginx)
 ### [docker安装redis](./redis)
 ### [docker安装gitlab](./gitlab)
+### [使用verdaccio搭建私有npm仓库](./npm)
 ### [docker小结](./docker)
 ### [docker-compose小结](./docker-compose)
