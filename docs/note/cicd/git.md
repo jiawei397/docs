@@ -2,17 +2,26 @@
 
 ## 分支管理
 
-一般常驻分支是`master`、`develop`这两个分支，有的团队也有`release`分支作为发版使用。
+### 主干分支
+一般主干分支应该有3个分支：`master`、`release`和`develop`。
 
-不推荐直接提交代码在`master`分支。有当前版本要发布的功能可以合并到`release`分支上，其它的新功能应该提交或合并到`develop`上。
-`master`分支的代码，应该只是一个迭代完成后，由`release`合并过来，再打上发版标签。
+1. 不推荐直接提交或合并代码在`master`分支。
 
+2. 有当前版本要发布的功能可以合并到`release`分支上，其它的新功能应该合并到`develop`上。
+
+3. `master`分支的代码，应该只是一个迭代完成后，由`release`合并过来，再打上发版标签。
+
+4. 应该在远程仓库层面（比如`gitlab`）把这3个分支保护起来，不允许直接提交，必须经合并。
+
+### 开发分支
 平时开发一定要新建分支，分支名称按功能（`feature`)可以命名为`feat-xx`，修复bug可以命名为`fix-xx`。
 
+代码`push`到远程后，在`gitlab`页面上请求合并，经团队其他成员（一般是`leader`)`code review`后才能合到主干分支。
+
+### 初学者合并代码
 对于初学者而言，如果担心自己的代码丢失的话，在`pull`代码之前，可以再开一个分支，把它`push`到远程。这样即使与别人代码冲突，解决的有问题，也可以从服务器上把自己的代码拉回来。
 
 或者合并前，再建一个分支作为备份，等合并成功后再删除该分支。
-
 
 ## 善用rebase
 
@@ -30,7 +39,7 @@
 
 假设分支名称为`test`，使用步骤一般如下：
 
-1. 先使用`git fetch origin test`同步远程`test`分支代码到本地`remotes/origin/test`。后者其实是远程分支的一个本地备份（用`git branch -a`可以看到）。
+1. `git fetch origin test`。意思是同步远程`test`分支代码到本地`remotes/origin/test`。后者其实是远程分支的一个本地备份（用`git branch -a`可以看到）。
 
 2. `git rebase remotes/origin/test-git`
 
