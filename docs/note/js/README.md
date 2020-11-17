@@ -18,6 +18,7 @@
 ### [虚拟沙箱](./common/vm)
 ### [isNaN与Number.isNaN的区别](./common/NaN)
 ### [防抖与节流](./common/throttle)
+### [函数柯里化](./common/curry)
 
 ## es6 ##
 ### [es6函数判断问题](./es6/func)
