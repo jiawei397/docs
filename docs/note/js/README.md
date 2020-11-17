@@ -20,6 +20,7 @@
 ### [防抖与节流](./common/throttle)
 ### [函数柯里化](./common/curry)
 ### [bind、call、apply的实现](./common/bind)
+### [组合API](./common/compose)
 
 ## es6 ##
 ### [es6函数判断问题](./es6/func)
