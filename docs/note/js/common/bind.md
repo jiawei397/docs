@@ -45,35 +45,31 @@ var nf2 = Foo.bind({name: 'abc'}, 22);
 nf2();
 ```
 
-## call实现
+## apply实现
 
-如果能使用`bind`的话，`call`很简单：
+这是用`ES6`和`call`的实现：
 ``` js
-Function.prototype.call = function(scope, ...args){
+Function.prototype.apply = function (scope, args) {
+    return this.call(scope, ...args);
+};
+```
+
+如果能使用`bind`的话，也很简单：
+``` js
+Function.prototype.apply = function(scope, args){
     var fn = this;
     return fn.bind(scope)(...args);
 };
 ```
-现实当然不能如此简单，那样这3个函数就陷入死循环了。总有一个要特殊处理一下。
 
-`call`的能力就是改变函数的作用域，我们可以把它加到`scope`这个对象上，这样用它来执行就可以了。
-
-如果用`ES6`，可以这样：
-``` js
-Function.prototype.call = function(scope, ...args){
-    scope.fn = this;
-    var res = scope.fn(...args);
-    return res;
-};
-```
-在`ES5`里，如果不能用`apply`，则要麻烦多了：
+在`ES5`里，如果不能用`call`，则要麻烦多了。思路是使用`eval`函数，把函数本身赋给`scope`，再执行，最终删除新加的属性。
 
 ``` js
-Function.prototype.call2 = function (scope) {
+Function.prototype.apply = function (scope, arr) {
     scope = scope || window;
     var args = [];
-    for (var i = 1; i < arguments.length; i++) {
-        var arg = arguments[i];
+    for (var i = 0; i < arr.length; i++) {
+        var arg = arr[i];
         if (typeof arg === 'string') {
             args.push('"' + arg + '"');
         } else if (typeof arg === 'object') {
@@ -95,7 +91,53 @@ Function.prototype.call2 = function (scope) {
     return res;
 };
 ```
-这里只能改名为`call2`，不然堆栈会溢出，可见底层好些方法都调用了`call`。
+
+测试：
+
+``` js
+function Foo(age, sex, options) {
+    console.log(this.name);
+    console.log(age);
+    console.log(sex);
+    console.log(options)
+    return 'abcdefg'
+}
+var res = Foo.apply({ name: 'def' }, [45, 'man', { email: 'ss' }]);
+console.log(res);
+```
+
+
+## call实现
+
+实现了`apply`，`call`就容易了。
+
+如果能使用`bind`的话，`call`很简单：
+``` js
+Function.prototype.call = function(scope, ...args){
+    var fn = this;
+    return fn.bind(scope)(...args);
+};
+```
+使用`apply`的方式：
+``` js
+Function.prototype.call = function(scope){
+    var fn = this;
+    var args = [].slice.apply(arguments);
+    args.shift();
+    return fn.apply(scope, args);
+};
+```
+
+如果用`ES6`，可以这样：
+``` js
+Function.prototype.call = function(scope, ...args){
+    scope.fn = this;
+    var res = scope.fn(...args);
+    delete scope.fn;
+    return res;
+};
+```
+在`ES5`里，如果不能用`apply`，大致与上面实现差不多，这里就赘述了。
 
 测试：
 ``` js
