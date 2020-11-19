@@ -15,3 +15,5 @@
 ### [HTTP的传输编码](./transferEncoding)
 ### [HTTP常见状态码](./status)
 ### [解决github访问慢的情况](./github)
+### [前端性能优化](./performance)
+### [浏览器的渲染原理](./browser)
