@@ -6,6 +6,8 @@
 
 节流呢，从语义上讲很容易理解，就是水龙头放水嘛，一次放一点，单位时间（比如100秒）内让我再放，我是不放的，等这个单位时间到了，还让我放，我再放一次。也就是说，函数会隔一段时间执行一次。
 
+二者的实现思路可以这样简单记忆：防抖靠延时，节流靠变量。
+
 ## 防抖
 
 防抖有什么使用场景？
@@ -15,7 +17,7 @@
 实现很简单，加个延时，如果延时方法还没到，又进行了调用，则把原来的延时清除，再进行新一轮的延时。
 
 ``` js
-const debounce = function (fn, delay) {
+function debounce (fn, delay) {
     var timeId = null;
     return function (...args) {
         if (timeId) {
@@ -59,7 +61,7 @@ run();
 思路是加控制，延时函数没有执行前，就不执行。
 
 ``` js
-const throttle = function (fn, delay) {
+function throttle (fn, delay) {
     var canRun = true;
     return function (...args) {
         if (!canRun) {
@@ -76,13 +78,30 @@ const throttle = function (fn, delay) {
 ::: tip 特点
 1. 这是尾执行，第一次不会立即执行，是有延时的。
 2. 原函数的执行是放到宏任务队列中了，真正的执行时间不确定。
+3. `canRun`不会被回收。
 :::
 
+要想改成头执行，也简单，把执行函数挪到`setTimeout`外面就可以了。
+``` js
+function throttle (fn, delay) {
+    var canRun = true;
+    return function (...args) {
+        if (!canRun) {
+            return;
+        }
+        canRun = false;
+        fn.apply(this, args);
+        setTimeout(() => {
+            canRun = true;
+        }, delay);
+    };
+};
+```
 ### 实现2
 
 思路是计时，函数第一次会立执行；但间隔时间不到，是不会执行的。
 ``` js
-const throttle = function (fn, delay) {
+function throttle (fn, delay) {
     var last = null;
     return function (...args) {
         var canRun = false;
@@ -99,7 +118,8 @@ const throttle = function (fn, delay) {
 };
 ```
 ::: tip 特点
-这是头执行，第一次会立即执行。
+1. 这是头执行，第一次会立即执行。
+2. `last`不会被回收。
 :::
 
 以下是测试：
