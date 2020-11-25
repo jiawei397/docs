@@ -193,8 +193,27 @@ aa.test(13812345678) //true
 ^http[s]?:\/\/www\.[a-zA-Z0-9]{1,15}\.(com|org)$
 ```
 
-::: tip 本文参考
-[人人都看得懂的正则表达式教程](https://mp.weixin.qq.com/s/Qqs_EmvIOvjn5ZXe8umwXA)
+## 前缀后缀匹配
 
+`(?<=`  可用来匹配文本的前缀
+
+`(?=`   可用来匹配文本的后缀
+
+例：
+``` js
+var str = `<kiss-font name="abc" />
+        <kiss-font :aa="ffs" name="bcd" />
+    `;
+var reg = /(?<=(name="))\w+(?=("))/g
+var arr = str.match(reg);
+console.log(arr); //可以匹配出[‘abc', 'bcd']
+```
+
+::: tip
 可以使用这个[网站](https://regexper.com/)来校验正则
 :::
+
+## 参考链接
+- [人人都看得懂的正则表达式教程](https://mp.weixin.qq.com/s/Qqs_EmvIOvjn5ZXe8umwXA)
+- [正则表达式30分钟入门教程](https://deerchao.cn/tutorials/regex/regex.htm#negativelookaround)
+- [正则 ?<= 和 ?= 用法 以及零宽断言等概念](https://www.cnblogs.com/mol1995/p/10927279.html)
