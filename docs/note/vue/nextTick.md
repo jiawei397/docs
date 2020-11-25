@@ -77,14 +77,22 @@ function nextTick (cb, ctx) {
 这个函数是要更新`DOM`后调用，为什么要推到微任务里呢？
 
 我们知道
-- 微任务有：Promise、MutationObserver，以及nodejs中的process.nextTick
-- 宏任务有：setTimeout, setInterval, setImmediate, I/O, ajax，eventListener，UI rendering
+- 微任务有：`Promise`、`MutationObserver`以及`process.nextTick`(Node 独有)
+- 宏任务有：`setTimeout`、`setInterval`、`setImmediate` (Node 独有)、`requestAnimationFrame` (浏览器独有)、`I/O`、`UI rendering` (浏览器独有)、 `ajax`、`eventListener`
 
-每次事件循环（`Event Loop`）都有微任务和宏任务这两个队列，先执行微任务队列中的函数，再执行宏任务中的函数，然后开启下一次的事件循环。在执行`微任务`的过程中后加入下次队列的微任务，也会在下一次事件循环之前被执行。可见，前者是VIP，后者是普通用户。
+每次事件循环（`Event Loop`）都有微任务和宏任务这两个队列。
 
-在事件循环的最后，会有一个`UI rendering`，也就是更新`DOM`。我们要做的是当前事件循环处理完成后，再执行`callback`就可以完成需求，代码中`Promise.resolve`再`.then`的作用就是把回调函数放到了下次事件循环的微任务中，当当前事件最后更新完`DOM`后，就会最快时间调用`callback`，访问到更新后的`DOM`。
+代码在主线程（`JS引擎线程`）执行，如果遇到宏任务的异步操作，则会将它们的回调函数推到宏任务队列中；如果遇到微任务的异步操作，则将它们的回调函数推到微任务队列中。
 
-从上面的分析可知，只要是微任务就可以，所以`vue`源码中在没有`Promise`的情况下，依次判断`MutationObserver`、`setImmediate`，这俩都满足不了，就只能使用宏任务`setTimeout`了。显然，宏任务要慢一些。
+浏览器渲染有固定的频率，如果`DOM`没有变更，事件循环就不会进入`UI rendering`的步骤，但如果有变更时，就会把变更操作推入到`requestAnimationFrame`中，只在 `UI rendering` 前执行，相当于一帧只渲染一次。渲染过程中应该会发生线程主导权让位于`GUI渲染线程`，这个我们就必太关心了。
+
+`Vue.nextTick`什么时候使用呢？必然是在我们修改了`data`，继而变更了`DOM`，我们想用到变更后的`DOM`，才会使用这个函数。
+
+我们看到，`requestAnimationFrame`也是微任务的一种，所以`Vue.nextTick`的`callback`只需要推到微任务队列，就可以最快时间调用，访问到更新后的`DOM`。
+
+事件循环先执行`微任务`，如果执行过程中遇到新的`微任务`，也会将它入栈，在这一周期内执行；再执行`宏任务`，结束后就开启下次的事件循环。
+
+从上面的分析可知，只要是`微任务`就可以，所以`vue`源码中在没有`Promise`的情况下，依次判断`MutationObserver`、`setImmediate`，这俩都满足不了，就只能使用宏任务`setTimeout`了。显然，宏任务要慢一些。
 
 ::: tip 上面代码setTimeout的作用
 上面有句代码：`if (isIOS) setTimeout(noop);`
@@ -100,3 +108,5 @@ function nextTick (cb, ctx) {
 2. `microtask`（微任务）因为其高优先级特性，能确保队列中的微任务在一次事件循环前被执行完毕
 3. 因为浏览器和移动端兼容问题，`vue`不得不做了`microtask`向`macrotask`（宏任务）的兼容(降级)方案
 
+参考资料：
+- [Javascript Event Loop (浏览器端及node)](https://juejin.cn/post/6844904118494969864#heading-7)
