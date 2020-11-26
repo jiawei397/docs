@@ -17,6 +17,7 @@
 ### [正则表达式](./common/regExp)
 ### [虚拟沙箱](./common/vm)
 ### [isNaN与Number.isNaN的区别](./common/NaN)
+### [parseInt补遗](./common/parseInt)
 ### [防抖与节流](./common/throttle)
 ### [函数柯里化](./common/curry)
 ### [bind、call、apply的实现](./common/bind)
@@ -27,6 +28,7 @@
 ### [es6装饰器异步使用](./es6/descriptor)
 ### [es6代码不再打包为es5](./es6/es5)
 ### [promise相关问题](./es6/promise)
+### [一道任务队列的面试题](./es6/task)
 
 ## nodejs ##
 ### [使用express来代理服务](./nodejs/express)

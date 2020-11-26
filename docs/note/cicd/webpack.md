@@ -93,6 +93,11 @@ module.exports.pitch = function(remainingRequest, precedingRequest, data) {
 |after-emit | 在生成资源并输出到目录之后 | compilation | async |
 |done | 完成编译 | stats | sync |
 
+::: tip plugin与loader的区别
+`loader`是一个转换器，将`A`文件进行编译成`B`文件，属于单纯的文件转换过程。
+`plugin`是一个扩展器，它丰富了`webpack`本身，针对是`loader`结束后、`webpack` 打包的整个过程。它并不直接操作文件，而是基于事件机制工作，会监听`webpack`打包过程中的某些节点，执行广泛的任务。
+:::
+
 
 ## 热更新 TODO
 

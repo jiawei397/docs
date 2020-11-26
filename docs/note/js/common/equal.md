@@ -49,3 +49,22 @@ console.log(aa == 1);//false
 aa.valueOf = ()=> false;
 console.log(aa == 1);//false
 ```
+
+也还有道经典的面试题：
+``` js
+var a = ?;
+if (a == 1 && a == 2 && a==3){
+    console.log('-------');
+}
+```
+以上空出的代码写什么，才能有字符串打印出来？
+其实就是利用前面的转换特性：
+``` js
+var a = {
+    value: 1
+};
+a.valueOf = function(){
+    return this.value++;
+};
+```
+这里使用`toString`也是一样的。
