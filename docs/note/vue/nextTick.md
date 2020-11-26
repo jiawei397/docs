@@ -110,4 +110,5 @@ function nextTick (cb, ctx) {
 
 参考资料：
 - [vue中$nextTick的用法](https://www.cnblogs.com/chaoyuehedy/p/8985425.html)
+- [异步更新队列](https://cn.vuejs.org/v2/guide/reactivity.html#%E5%BC%82%E6%AD%A5%E6%9B%B4%E6%96%B0%E9%98%9F%E5%88%97)
 - [Javascript Event Loop (浏览器端及node)](https://juejin.cn/post/6844904118494969864#heading-7)
