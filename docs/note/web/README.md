@@ -3,7 +3,7 @@
 <!-- --- -->
 ## web ##
 ### [常用跨域解决方案](./cors)
-### [默认图片](./image)
+### [图片相关](./image)
 ### [实现一个json呈现页面](./json)
 ### [nginx相关](./nginx)
 ### [浏览器缓存【转】](./cache)
@@ -15,3 +15,5 @@
 ### [HTTP的传输编码](./transferEncoding)
 ### [HTTP常见状态码](./status)
 ### [解决github访问慢的情况](./github)
+### [前端性能优化](./performance)
+### [浏览器的渲染原理](./browser)
