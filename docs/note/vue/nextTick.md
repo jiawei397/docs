@@ -109,4 +109,5 @@ function nextTick (cb, ctx) {
 3. 因为浏览器和移动端兼容问题，`vue`不得不做了`microtask`向`macrotask`（宏任务）的兼容(降级)方案
 
 参考资料：
+- [vue中$nextTick的用法](https://www.cnblogs.com/chaoyuehedy/p/8985425.html)
 - [Javascript Event Loop (浏览器端及node)](https://juejin.cn/post/6844904118494969864#heading-7)
