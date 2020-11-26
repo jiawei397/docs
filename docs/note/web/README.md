@@ -10,7 +10,7 @@
 ### [内存泄漏【转】](https://blog.csdn.net/muzidigbig/article/details/100169801)
 ### [网络相关笔记](./http)
 ### [oauth2](./oauth2)
-### [CSRF攻击【转】](./CSRF)
+### [CSRF攻击](./CSRF)
 ### [button click](./click)
 ### [HTTP的传输编码](./transferEncoding)
 ### [HTTP常见状态码](./status)
