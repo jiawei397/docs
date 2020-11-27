@@ -70,7 +70,7 @@ function nextTick (cb, ctx) {
   }
 }
 ```
-这下逻辑就很清晰了，调用`nextTick`时会处理把`callback`推送到`callbacks`这个数组里，也就是给维护了一个函数队列。这个队列什么时候执行呢？
+这下逻辑就很清晰了，调用`nextTick`时会处理把`callback`推送到`callbacks`这个数组里，也就是维护了一个函数队列。这个队列什么时候执行呢？
 
 如果当前处于可执行状态（`!pending`），则执行`timerFunc`，后者通过`Promise.resolve`的`.then`把`flushCallbacks`推到了微任务队列中，延时执行。
 
@@ -84,15 +84,54 @@ function nextTick (cb, ctx) {
 
 代码在主线程（`JS引擎线程`）执行，如果遇到宏任务的异步操作，则会将它们的回调函数推到宏任务队列中；如果遇到微任务的异步操作，则将它们的回调函数推到微任务队列中。
 
-浏览器渲染有固定的频率，如果`DOM`没有变更，事件循环就不会进入`UI rendering`的步骤，但如果有变更时，就会把变更操作推入到`requestAnimationFrame`中，只在 `UI rendering` 前执行，相当于一帧只渲染一次。渲染过程中应该会发生线程主导权让位于`GUI渲染线程`，这个我们就必太关心了。
-
-`Vue.nextTick`什么时候使用呢？必然是在我们修改了`data`，继而变更了`DOM`，我们想用到变更后的`DOM`，才会使用这个函数。
-
-我们看到，`requestAnimationFrame`也是微任务的一种，所以`Vue.nextTick`的`callback`只需要推到微任务队列，就可以最快时间调用，访问到更新后的`DOM`。
-
 事件循环先执行`微任务`，如果执行过程中遇到新的`微任务`，也会将它入栈，在这一周期内执行；再执行`宏任务`，结束后就开启下次的事件循环。
 
-从上面的分析可知，只要是`微任务`就可以，所以`vue`源码中在没有`Promise`的情况下，依次判断`MutationObserver`、`setImmediate`，这俩都满足不了，就只能使用宏任务`setTimeout`了。显然，宏任务要慢一些。
+我们知道，`vue`在数据变化后，维护了一个队列，相当于做了延迟，那么它什么时候进行渲染`DOM`操作的呢？
+
+``` js
+export function queueWatcher (watcher: Watcher) {
+  const id = watcher.id
+  if (has[id] == null) {
+    has[id] = true
+    if (!flushing) {
+      queue.push(watcher)
+    } else {
+      // if already flushing, splice the watcher based on its id
+      // if already past its id, it will be run next immediately.
+      let i = queue.length - 1
+      while (i > index && queue[i].id > watcher.id) {
+        i--
+      }
+      queue.splice(i + 1, 0, watcher)
+    }
+    // queue the flush
+    if (!waiting) {
+      waiting = true
+
+      if (process.env.NODE_ENV !== 'production' && !config.async) {
+        flushSchedulerQueue()
+        return
+      }
+      nextTick(flushSchedulerQueue)
+    }
+  }
+}
+```
+> 划重点，从上面看出，异步的队列也是使用了`nextTick`函数。
+
+所以，这个函数是微任务还是宏任务，其实都无所谓，甚至同步异步都无所谓。只要我们要操作`DOM`的回调函数放在数据变更之后就可以。
+
+::: warning
+一定要把`nextTick`调用放在数据变更之后，以下情况是得不到变更后的`DOM`的：
+``` js
+Vue.nextTick(()=>{
+  console.log(document.querySelector('h1').innerText);
+});
+this.msg = 'hello';
+```
+:::
+
+而微任务明显要快一些，所以`vue`源码中在没有`Promise`的情况下，依次判断`MutationObserver`、`setImmediate`（它虽然也是宏任务，但要比`setTimeout`快一点，有时候测试并不能每次都保障这一点，可能与`nodejs`版本有关），这俩都满足不了，就只能将就使用`setTimeout`了。
 
 ::: tip 上面代码setTimeout的作用
 上面有句代码：`if (isIOS) setTimeout(noop);`
