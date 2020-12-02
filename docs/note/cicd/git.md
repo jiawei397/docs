@@ -41,7 +41,7 @@
 
 1. `git fetch origin test`。意思是同步远程`test`分支代码到本地`remotes/origin/test`。后者其实是远程分支的一个本地备份（用`git branch -a`可以看到）。
 
-2. `git rebase remotes/origin/test-git`
+2. `git rebase remotes/origin/test`
 
 3. 解决冲突，提交
 
