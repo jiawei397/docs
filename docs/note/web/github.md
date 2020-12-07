@@ -13,13 +13,15 @@
 
 获取`Github`相关网站的`ip`
 
-访问`https://www.ipaddress.com`，分别输入`github.global.ssl.fastly.net`和`github.com`，查询`ip`地址
+访问`https://www.ipaddress.com`，分别输入`github.global.ssl.fastly.net`、`github.com`、`raw.githubusercontent.com`、`api.github.com`，查询`ip`地址
 
 下面是我的配置
 
 ```
 199.232.68.249 global-ssl.fastly.Net
 140.82.114.3    github.com
+199.232.68.133 raw.githubusercontent.com
+140.82.112.6 api.github.com
 ```
 
 当访问慢的时候，再手动修改吧。
@@ -32,7 +34,7 @@
 
 现在无法打开 `https://*.github.io`，原因是电信运营商 `DNS` 污染（域名指往不正确的IP地址）
 
-这次应该是运营商行为。像封某歌是国家行为。
+这次应该是运营商行为。像封某歌是GJ行为。
 
 可以通过修改 `hosts`文件 / 修改`DNS`服务器 / 代理 的方式访问。
 
