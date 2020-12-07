@@ -4,7 +4,7 @@
 # javascript相关
 
 ## js基础 ##
-### [Array.sort排序问题](./common/sort)
+### [排序问题](./common/sort)
 ### [原型链继承](./common/prototype)
 ### [umd模板](./common/umd)
 ### [ajax常见问题](./common/ajax)
