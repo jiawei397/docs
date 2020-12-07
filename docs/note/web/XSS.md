@@ -140,6 +140,7 @@ function encodeForCSS (attr, str, kwargs){
 - 渲染到页面前加`encode`
 - `cookie`中避免重要信息，尽可能设置为`HttpOnly`
 - 接口请求尽量采用`POST`
+- 利用好`CSP`([Content-Security-Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy))
 
 参考：
 - [什么是XSS攻击？](https://blog.csdn.net/weixin_40851188/article/details/89381563)
