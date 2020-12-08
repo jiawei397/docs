@@ -59,3 +59,38 @@ AA.prototype.__proto__ === Object.prototype
 Function.prototype.__proto__ === Object.prototype
 Object.prototype.__proto__ === null
 ```
+
+## hasOwnProperty与in的区别
+
+`Object.prototype`上有一个方法`hasOwnProperty`，它只判断是否是属于自身的属性，不会去找原型身上的属性。
+
+举个例子：
+``` js
+var Person = function(name){
+    this.name = name;
+};
+
+Person.prototype.age = 13;
+
+var p = new Person('haha');
+
+console.log(Object.keys(p)); // ['name']
+console.log(p.hasOwnProperty('age')); // false
+console.log('age' in p); // true
+console.log(p.age); // 13
+```
+
+所以，`Object.keys`的实现需要避过原型链查找才行：
+``` js
+Object.keys = function(obj){
+    var arr = [];
+    for(var key in obj){
+        if(obj.hasOwnProperty(key)){
+            arr.push(key);    
+        }
+    }
+    return arr;
+};
+```
+
+
