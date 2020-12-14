@@ -29,6 +29,7 @@
 ### [es6代码不再打包为es5](./es6/es5)
 ### [promise相关问题](./es6/promise)
 ### [一道任务队列的面试题](./es6/task)
+### [队列限流](./es6/limit)
 
 ## nodejs ##
 ### [使用express来代理服务](./nodejs/express)
