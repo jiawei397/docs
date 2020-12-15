@@ -12,6 +12,7 @@
 ### [oauth2](./oauth2)
 ### [CSRF攻击](./CSRF)
 ### [XSS攻击](./XSS)
+### [常见Web安全漏洞及测试方法【转】](./leak)
 ### [button click](./click)
 ### [HTTP的传输编码](./transferEncoding)
 ### [HTTP常见状态码](./status)
