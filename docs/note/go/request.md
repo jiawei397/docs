@@ -50,33 +50,37 @@ req.Close = true
 
 ### TCP三次握手后服务端直接RST的真相
 
-内核中处理`TCP`连接时维护着两个队列:`SYN`队列和`ACCEPT`队列，如上图所示，服务端在建立连接过程中内核的处理过程如下：
+内核中处理`TCP`连接时维护着两个队列:`SYN`队列和`ACCEPT`队列。
+服务端在建立连接过程中，内核的处理过程如下：
 
-1. 客户端使用connect调用向服务端发起TCP连接，内核将此连接信息放入SYN队列，返回SYN-ACK
-2. 服务端内核收到客户端的ACK后，将此连接从SYN队列中取出，放入ACCEPT队列
-3. 服务端使用accept调用将连接从ACCEPT队列中取出
+1. 客户端使用`connect`调用向服务端发起`TCP`连接，内核将此连接信息放入`SYN队列`，返回`SYN-ACK`
+2. 服务端内核收到客户端的`ACK`后，将此连接从`SYN队列`中取出，放入`ACCEPT队列`
+3. 服务端使用`accept`调用将连接从`ACCEPT队列`中取出
 
-上述抓包说明，3次握手已经完成。但是应用层accept并没有返回，说明问题出在`ACCEPT`队列中。
+上述抓包说明，3次握手已经完成。
+但是应用层`accept`并没有返回，说明问题出在`ACCEPT队列`中。
 
-那么什么情况下，内核准确的说应该是TCP协议栈会在三次握手完成后发RST呢？
-原因就是ACCEPT队列满了，上述（2）中，服务端内核收到客户端的ACK后将连接放入ACCEPT队列失败，就有可能回RST拒绝连接。
+那么什么情况下，内核准确的说应该是`TCP协议栈`会在三次握手完成后发`RST`呢？
+原因就是`ACCEPT队列`满了，上述（2）中，服务端内核收到客户端的`ACK`后将连接放入`ACCEPT队列`失败，就有可能回`RST`拒绝连接。
 
-进一步来看Linux协议栈的一些逻辑：
+进一步来看`Linux协议栈`的一些逻辑：
 
 ::: tip Linux协议栈的一些逻辑
-SYN队列和ACCEPT队列的长度是有限制的，SYN队列长度由内核参数`tcp_max_syn_backlog`决定，ACCEPT队列长度可以在调用`listen(backlog)`通过backlog，但总最大值受到内核参数`somaxconn(/proc/sys/net/core/somaxconn)`限制。
+`SYN队列`和`ACCEPT队列`的长度是有限制的，`SYN队列`长度由内核参数`tcp_max_syn_backlog`决定，`ACCEPT队列`长度可以在调用`listen(backlog)`通过`backlog`，但总最大值受到内核参数`somaxconn`(`/proc/sys/net/core/somaxconn`)限制。
 
-若SYN队列满了，新的SYN包会被直接丢弃。
-若ACCEPT队列满了，建立成功的连接不会从SYN队列中移除，同时也不会拒绝新的连接，这会加剧SYN队列的增长，最终会导致SYN队列的溢出。
+若`SYN队列`满了，新的`SYN包`会被直接丢弃。
+若`ACCEPT队列`满了，建立成功的连接不会从`SYN队列`中移除，同时也不会拒绝新的连接，这会加剧`SYN队列`的增长，最终会导致`SYN队列`的溢出。
 
-当ACCEPT队列溢出之后，只要打开`tcp_abort_on_flow`内核参数(默认为0，关闭)，建立连接后直接回RST，拒绝连接(可以通过`/proc/net/netstat`中`ListenOverflows`和`ListenDrops`查看拒绝的数目)。
+当`ACCEPT队列`溢出之后，只要打开`tcp_abort_on_flow`内核参数(默认为`0`，关闭)，建立连接后直接回`RST`，拒绝连接(可以通过`/proc/net/netstat`中`ListenOverflows`和`ListenDrops`查看拒绝的数目)。
 :::
 
-所以真相找到了：就是ACCEPT队列溢出了导致TCP三次握手后服务端发送RST。
+所以真相找到了：就是`ACCEPT队列`溢出了导致`TCP`三次握手后服务端发送`RST`。
 
-我压测的时候起`500`个`goruntine`，同时跟服务端建立`HTTP`连接，可能导致了服务端的`ACCEPT`队列溢出。这里之所以用可能，是因为并没有找到证据，只是理论上分析。但是验证这个问题简单：修改一下内核参数`somaxconn`。
+我压测的时候起`500`个`goruntine`，同时跟服务端建立`HTTP`连接，可能导致了服务端的`ACCEPT队列`溢出。这里之所以用可能，是因为并没有找到证据，只是理论上分析。
 
-果然，用以下方法修改后，500个也不会再报错了。
+但是验证这个问题简单：修改一下内核参数`somaxconn`。
+
+果然，用以下方法修改后，`500`个也不会再报错了。
 
 ```
 echo 10000 >/proc/sys/net/core/somaxconn
