@@ -4,12 +4,7 @@ const REJECTED = 'rejected';
 const isInBrowser = typeof window !== 'undefined';
 class Promise {
     static isPromise(val) {
-        if (val) {
-            if (val instanceof Promise) {
-                return true;
-            }
-        }
-        return false;
+        return val && val instanceof Promise;
     }
 
     static resolve(val) {
