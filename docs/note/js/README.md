@@ -28,6 +28,7 @@
 ### [es6装饰器异步使用](./es6/descriptor)
 ### [es6代码不再打包为es5](./es6/es5)
 ### [promise相关问题](./es6/promise)
+### [promise实现](./es6/promisePolyfill)
 ### [一道任务队列的面试题](./es6/task)
 ### [队列限流](./es6/limit)
 
