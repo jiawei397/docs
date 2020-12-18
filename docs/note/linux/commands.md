@@ -1,12 +1,12 @@
 # linux常用命令
 
-如果是用户和管理员必备的二进制文件，就会放在/bin；
+如果是用户和管理员必备的二进制文件，就会放在`/bin`；
 
-如果是系统管理员必备，但是一般用户根本不会用到的二进制文件，就会放在/sbin；
+如果是系统管理员必备，但是一般用户根本不会用到的二进制文件，就会放在`/sbin`；
 
-如果不是用户必备的二进制文件，多半会放在/usr/bin；
+如果不是用户必备的二进制文件，多半会放在`/usr/bin`；
 
-如果不是系统管理员必备的工具，如网络管理命令，多半会放在/usr/sbin；
+如果不是系统管理员必备的工具，如网络管理命令，多半会放在`/usr/sbin`；
 
 ## 系统命令
 
@@ -221,3 +221,30 @@ netstat -nat | grep 22
 ```
 sudo ufw disable
 ```
+
+## 安装一般软件
+
+以`nodejs`为例，最终解压目录假设为：`/usr/local/nodejs`，其下有`bin`目录，再下有`node`、`npm`两个命令。要想全局拥有这个变量，可以这样：
+
+``` shell
+sudo ln -s /usr/local/nodejs/bin/node /usr/local/bin
+sudo ln -s /usr/local/nodejs/bin/npm /usr/local/bin
+```
+
+也就是说，把可执行的命令文件，挂个软连接到`/usr/local/bin`目录下，这样系统查找命令就能找到了。可以这样测试：
+
+``` 
+node -v
+npm -v
+```
+
+## 用户环境变量
+
+修改用户根目录下`~/.bashrc`，以`go`为例，在其中添加：
+
+``` 
+export PATH="/usr/local/go/bin:$PATH"
+```
+添加完后，当下就生效了。
+
+也可以在命令行中直接执行上述命令。
