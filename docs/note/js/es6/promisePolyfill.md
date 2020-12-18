@@ -59,13 +59,13 @@ Promise.resolve(123).then(function(){
 
 也就是说，`then`方法中的代码，肯定不能立即执行，必须得缓存起来，在合适的时机再执行它。
 
-而什么时候执行呢？重复下每一条，`Promise`构造函数中要求传入一个`func`函数做为参数，这个函数又显式地要求有2个参数`resolve`和`reject`方法，分别对应成功或者失败的函数。
+而什么时候执行呢？代码中显式调用`resolve`或`reject`以后，就可以执行了。
 
-这时，就有2种延时的方案：
+一般来说，有2种延时方案：
 一种是在`resolve`或者`reject`执行时，进行延时；
 一种是在`.then`方法里，执行对应的函数时进行延时。
 
-我们选择第二种。
+2种都能实现大致功能，但前者在完全符合规范编写过程中遇坑不少，这里我们选择第二种。
 
 ### 步骤一：初始化构造函数
 先定义3种状态：
@@ -118,7 +118,7 @@ a = Promise.resolve(123);
 a.then(console.log);
 a.then(console.error);
 ```
-就是一个`promise`会在不同的地方`.then`执行，显然，两个回调函数应该一前一后执行，而不是丢失某一个。
+上述一个`promise`会在不同的地方`.then`执行，显然，两个回调函数应该一前一后执行，而不是丢失某一个。
 
 所以，我们在构造函数中添加2个数组：
 ``` js
@@ -242,7 +242,7 @@ catch(onRejected) {
 }
 ```
 
-### 模拟微任务
+### 步骤四：模拟微任务
 
 按理说`promise`的主要功能已经实现了，但下面的代码就会暴露一个问题：
 ``` js
@@ -261,6 +261,8 @@ console.log('--log--');
 怎么做呢？
 
 浏览器中有个`MutationObserver`，`nodejs`中可以使用`process.nextTick`，这俩都没有的时候，再回退到`setTimeout`。这才是正确的实现姿势。
+
+为了图方便，我照抄了`vue`的`nextTick`中的代码，具体可见[这里](../../vue/nextTick)。
 
 ``` js
 const isInBrowser = typeof window !== 'undefined';
@@ -291,7 +293,7 @@ const nextTick = function(nextTickHandler) {
 
 ## 完整实现
 
-怎么能完整符合规范呢？有个检查工具：`promises-aplus-tests`， 在`npm`中安装一下，再在`script`标签中使用：
+怎么能完全符合规范呢？有个检查工具：`promises-aplus-tests`， 在`npm`中安装一下，再在`script`标签中使用：
 ```
 "test": "promises-aplus-tests src/promise.js --reporter spec"
 ```
@@ -308,6 +310,8 @@ static deferred() {
 ```
 
 接下来就能执行所有的测试用例了。
+
+还有些额外的方法实现，不在这里展现了，可以看[这篇](./promise)。
 
 具体细节就不再补充了。以下是完整代码实现：
 
