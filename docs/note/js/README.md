@@ -22,6 +22,7 @@
 ### [函数柯里化](./common/curry)
 ### [bind、call、apply的实现](./common/bind)
 ### [组合API](./common/compose)
+### [js中的位运算](./common/operation)
 
 ## es6 ##
 ### [es6函数判断问题](./es6/func)
