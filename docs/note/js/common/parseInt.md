@@ -1,4 +1,33 @@
-# parseInt补遗
+# 十进制与二进制转换
+
+`js`内置了十进制与二进制转换的函数，很方便。
+
+十进制转成二进制使用`toString`：
+``` js
+(100).toString(2); // 1100100
+```
+二进制转成十进制则使用`parseInt`：
+``` js
+parseInt('1100100'); // 100
+```
+
+## 十进制转成二进制的实现
+
+突然想到这个问题，其实是相当基础的，不过知识都还给老师了，温习一下：
+``` js
+function trans(num, radix = 2) {
+    var arr = [];
+    while (num) {
+        let remainder = num % radix;
+        arr.unshift(remainder);
+        num = Math.floor(num / radix);
+    }
+    return arr.join('');
+};
+```
+就是进行除法，取得的余数放在最后，倒着来即可。几进制都一样。
+
+## parseInt补遗
 
 ``` js
 ['1','2','3'].map(parseInt)
