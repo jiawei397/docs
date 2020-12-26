@@ -16,7 +16,7 @@
 
 4. 提供了多种场景的授权流程
 
-![oauth2](/images/oauth2.png)
+![oauth2](../../images/oauth2.png)
 
 ## 步骤说明
 以我们一个应用【小墙】为例，作为平台的子系统，账户需要使用`gitlab`的。

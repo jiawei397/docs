@@ -5,7 +5,7 @@ sidebar: false
 
 ## 题目
 
-![json](/images/json.png)
+![json](../../images/json.png)
 
 ## 实现
 

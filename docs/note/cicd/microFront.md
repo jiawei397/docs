@@ -96,7 +96,7 @@
 
 通过 HTTP 服务器的反向代理功能，来将请求路由到对应的应用上。
 
-![路由分发式](/images/microFront/image2.png)
+![路由分发式](../../images/microFront/image2.png)
 
 其实就是普通页面跳转，使用路由重定向而已。
 
@@ -112,7 +112,7 @@
 
 其架构如下图所示：
 
-![前端微服务化](/images/microFront/image3.png)
+![前端微服务化](../../images/microFront/image3.png)
 
 采用这种方式意味着，一个页面上同时存在2个及以上的前端应用在运行。而路由分发式方案，则是一个页面只有唯一一个应用。
 
@@ -124,7 +124,7 @@
 
 其架构如下图所示：
 
-![微应用](/images/microFront/image4.png)
+![微应用](../../images/microFront/image4.png)
 
 微应用化更多的是以软件工程的方式，来完成前端应用的开发，因此又可以称之为组合式集成。
 对于一个大型的前端应用来说，采用的架构方式，往往会是通过业务作为主目录，而后在业务目录中放置相关的组件，同时拥有一些通用的共享模板。
@@ -141,7 +141,7 @@
 
 下图便是微件化的架构示意图：
 
-![微件化](/images/microFront/image5.png)
+![微件化](../../images/microFront/image5.png)
 
 在非单页面应用时代，要实现微件化方案，是一件特别容易的事。
 从远程加载来对应的 `JavaScript` 代码，在浏览器上执行，生成对应的组件嵌入到页面的相应部分。
@@ -173,7 +173,7 @@ iframe 最大的特性就是提供了浏览器原生的硬隔离方案，不论�
 
 Web Components 是一套不同的技术，允许开发者创建可重用的定制元素（它们的功能封装在代码之外），并且在 Web 应用中使用它们。
 
-![应用组件化](/images/microFront/image6.png)
+![应用组件化](../../images/microFront/image6.png)
 
 ::: tip 缺点
 目前困扰 Web Components 技术推广的主要因素，在于浏览器的支持程度。在 Chrome 和 Opera 浏览器上，对于 Web Components 支持良好，而对于 Safari、IE、Firefox 浏览器的支持程度，并没有那么理想。
