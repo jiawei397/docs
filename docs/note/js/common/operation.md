@@ -58,7 +58,7 @@ a = a ^ b； 　　//相当于 a ^ b ^ b = a, 得到原来a的值
 function func(x, y) {
     let sum = x ^ y;
     let res = sum.toString(2).match(/1/g);
-    return res.length;
+    return res ? res.length : 0;
 };
 ```
 
