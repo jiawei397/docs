@@ -38,6 +38,7 @@
 ### [module.exports和exports的区别](./nodejs/exports)
 ### [log4js过期日志删除问题](./nodejs/log4js)
 ### [使用patch-package修改Node.js依赖包内容](./nodejs/patch)
+### [npm相关](./nodejs/npm)
 ### [vscode调试](./nodejs/vscode)
 
 ## deno ##
