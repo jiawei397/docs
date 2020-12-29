@@ -64,14 +64,17 @@ Object.prototype.__proto__ === null
 
 再来点儿复杂的：
 ``` js
-Function.prototype === Function.__proto__
+Function.__proto__ === Function.prototype
 Function.__proto__.__proto__ === Object.prototype
-Object.__proto__ === Function.prototype
+Object.__proto__ === Function.prototype //从它可以得出下面：
+Object.__proto__ === Function.__proto__
 ```
 
-`Function`是个特殊的东西，它的原型链指向它的原型。它的原型链再往上查找，是对象的`Object.prototype`，容易理解。
+`Function`是个特殊的东西，**它的原型链指向它的原型**。它的原型链再往上查找，是对象的`Object.prototype`，容易理解。
 
 `Object`的原型链指向`Function.prototype`可以这么理解，它也是一个构造函数，所以是`Function`的实例。
+
+于是，`Object`和`Function`的原型链都指向`Function.prototype`，说明它俩都是`Function`的实例，这个正常，因为他们都可以`new`嘛，都是构造函数。
 
 ## instanceOf的实现
 
