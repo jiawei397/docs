@@ -17,16 +17,6 @@ const isAjaxStopped = function () {
   return IS_AJAX_STOP;
 };
 
-// const getXhrResponseHeader = function (XMLHttpRequest, key) {
-//   let value;
-//   if (XMLHttpRequest.getResponseHeader) {
-//     value = XMLHttpRequest.getResponseHeader(key);
-//   } else if (XMLHttpRequest.headers && XMLHttpRequest.headers[key.toLowerCase()]) { // key值在headers里会被转为小写
-//     value = XMLHttpRequest.headers[key.toLowerCase()];
-//   }
-//   return value;
-// };
-
 const showMessage = function (msg, config) {
   if (config && config.isShowAlert === false) {
     return;
@@ -52,9 +42,9 @@ const cancel = (controller) => {
  * 取消所有接口请求
  */
 const cancelAll = () => {
-  Object.values(caches).forEach(({controller}) => {
+  Object.values(caches).forEach(({ controller }) => {
     cancel(controller);
-});
+  });
 };
 
 
@@ -67,7 +57,7 @@ const getHeaders = (type, headers = {}) => {
     token: getToken(),
     contentType,
     ...headers
-};
+  };
 };
 
 /**
@@ -86,8 +76,8 @@ const ajax = async (config) => {
     isUseOrigin,
     isOutFormat, //是否跳过系统返回格式验证
     isEncodeUrl, //get请求时是否要进行浏览器编码
-...otherParams
-} = config;
+    ...otherParams
+  } = config;
   let tempUrl = url;
   if (baseURL) {
     if (!url.startsWith('/') && !baseURL.endsWith('/')) {
@@ -134,7 +124,7 @@ const ajax = async (config) => {
       method,
       credentials,
       ...otherParams
-  });
+    });
     if (!response.ok) {//代表网络请求失败，原因可能是token失效，这时需要跳转到登陆页
       console.error(`HTTP error, status = ${response.status}, statusText = ${response.statusText}`);
       if (response.status === 401) { //权限问题
@@ -174,22 +164,22 @@ const ajax = async (config) => {
  * @param {Number} timeout 超时设置
  * @param {AbortController} controller 取消控制器
  **/
-const fetch_timeout = (fecthPromise, {timeout = 2 * 60 * 1000, controller}) => {
+const fetch_timeout = (fecthPromise, { timeout = 2 * 60 * 1000, controller }) => {
   let tp;
   let abortPromise = new Promise((resolve, reject) => {
     tp = setTimeout(() => {
       cancel(controller);
-  reject({
-    code: 504,
-    message: 'DCV_REQUEST_TIMEOUT'
+      reject({
+        code: 504,
+        message: 'DCV_REQUEST_TIMEOUT'
+      });
+    }, timeout);
   });
-}, timeout);
-});
 
   return Promise.race([fecthPromise, abortPromise]).then(res => {
     clearTimeout(tp);
-  return res;
-});
+    return res;
+  });
 };
 
 
@@ -217,7 +207,7 @@ const fetch_timeout = (fecthPromise, {timeout = 2 * 60 * 1000, controller}) => {
  * 		}
  */
 const main = (config) => {
-  const {isOutStop, signal, method, type} = config;
+  const { isOutStop, signal, method, type } = config;
   if (!isOutStop && isAjaxStopped()) {
     return Promise.reject(STOPAJAX_ERROR);
   }
@@ -234,8 +224,8 @@ const main = (config) => {
     }
     const promise = ajax(config).then((result) => {
       delete caches[uniqueKey];
-    return result;
-  }, (err) => {
+      return result;
+    }, (err) => {
       delete caches[uniqueKey];
       throw err;
     });

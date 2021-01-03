@@ -70,6 +70,146 @@ url += "time=" + new Date().getTime();
 $.ajaxSetup({cache:false})。
 ```
 
+## fetch的参数
+
+`fetch`使用方法：
+``` js
+const response = fetch(url, {
+  method: "GET",
+  headers: {
+    "Content-Type": "text/plain;charset=UTF-8"
+  },
+  body: undefined,
+  referrer: "about:client",
+  referrerPolicy: "no-referrer-when-downgrade",
+  mode: "cors", 
+  credentials: "same-origin",
+  cache: "default",
+  redirect: "follow",
+  integrity: "",
+  keepalive: false,
+  signal: undefined
+});
+```
+几个重要参数：
+### mode
+`mode`属性指定请求的模式。可能的取值如下：
+- cors：默认值，允许跨域请求。
+- same-origin：只允许同源请求。
+- no-cors：请求方法只限于 `GET`、`POST` 和 `HEAD`，并且只能使用有限的几个简单标头，不能添加跨域的复杂标头，相当于提交表单所能发出的请求。
+
+### credentials
+`credentials`属性指定是否发送`Cookie`。可能的取值如下：
+
+- same-origin：默认值，同源请求时发送 Cookie，跨域请求时不发送。
+- include：不管同源请求，还是跨域请求，一律发送 Cookie。
+- omit：一律不发送。
+
+跨域请求发送 `Cookie`，需要将`credentials`属性设为`include`。
+
+假设我们不需要`Cookie`传递什么消息，就可以使用`omit`来关闭。
+
+### signal
+
+`signal`属性指定一个 `AbortSignal` 实例，用于取消`fetch()`请求。
+
+`fetch()`请求发送以后，如果中途想要取消，需要使用`AbortController`对象。
+``` js
+let controller = new AbortController();
+let signal = controller.signal;
+
+fetch(url, {
+  signal: controller.signal
+});
+
+signal.addEventListener('abort', () => console.log('abort!'));
+
+controller.abort(); // 取消
+console.log(signal.aborted); // true
+```
+上面示例中，首先新建 `AbortController` 实例，然后发送`fetch()`请求，配置对象的`signal`属性必须指定接收 `AbortController` 实例发送的信号`controller.signal`。
+
+`controller.abort()`方法用于发出取消信号。这时会触发`abort`事件，这个事件可以监听，也可以通过`controller.signal.aborted`属性判断取消信号是否已经发出。
+
+下面是一个1秒后自动取消请求的例子。
+
+``` js
+let controller = new AbortController();
+setTimeout(() => controller.abort(), 1000);
+
+try {
+  let response = await fetch('/long-operation', {
+    signal: controller.signal
+  });
+} catch(err) {
+  if (err.name == 'AbortError') {
+    console.log('Aborted!');
+  } else {
+    throw err;
+  }
+}
+```
+### keepalive
+
+`keepalive`属性用于页面卸载时，告诉浏览器在后台保持连接，继续发送数据。
+
+一个典型的场景就是，用户离开网页时，脚本向服务器提交一些用户行为的统计信息。这时，如果不用`keepalive`属性，数据可能无法发送，因为浏览器已经把页面卸载了。
+
+``` js
+window.onunload = function() {
+  fetch('/analytics', {
+    method: 'POST',
+    body: "statistics",
+    keepalive: true
+  });
+};
+```
+
+### redirect
+
+`redirect`属性指定` HTTP `跳转的处理方法。可能的取值如下：
+
+- follow：默认值，fetch()跟随 HTTP 跳转。
+- error：如果发生跳转，fetch()就报错。
+- manual：fetch()不跟随 HTTP 跳转，但是response.url属性会指向新的 URL，response.redirected属性会变为true，由开发者自己决定后续如何处理跳转。
+
+### integrity
+
+`integrity`属性指定一个哈希值，用于检查` HTTP `回应传回的数据是否等于这个预先设定的哈希值。
+
+比如，下载文件时，检查文件的 `SHA-256` 哈希值是否相符，确保没有被篡改。
+
+``` js
+fetch('http://site.com/file', {
+  integrity: 'sha256-abcdef'
+});
+```
+
+### referrer
+
+`referrer`属性用于设定`fetch()`请求的`referer`标头。
+
+这个属性可以为任意字符串，也可以设为空字符串（即不发送`referer`标头）。
+
+``` js
+fetch('/page', {
+  referrer: ''
+});
+```
+
+### referrerPolicy
+
+`referrerPolicy`属性用于设定`Referer`标头的规则。可能的取值如下：
+
+- no-referrer-when-downgrade：默认值，总是发送Referer标头，除非从 HTTPS 页面请求 HTTP 资源时不发送。
+- no-referrer：不发送Referer标头。
+- origin：Referer标头只包含域名，不包含完整的路径。
+- origin-when-cross-origin：同源请求Referer标头包含完整的路径，跨域请求只包含域名。
+- same-origin：跨域请求不发送Referer，同源请求发送。
+- strict-origin：Referer标头只包含域名，HTTPS 页面请求 HTTP 资源时不发送Referer标头。
+- strict-origin-when-cross-origin：同源请求时Referer标头包含完整路径，跨域请求时只包含域名，HTTPS 页面请求 HTTP 资源时不发送该标头。
+- unsafe-url：不管什么情况，总是发送Referer标头。
+
 ## 封装fetch
 
 <<< @/docs/.vuepress/public/js/fetch.js
@@ -105,3 +245,9 @@ $.ajaxSetup({cache:false})。
 axios.defaults.xsrfCookieName = 'token';
 axios.defaults.xsrfHeaderName = 'token';
 ```
+
+
+
+::: tip 本文参考
+- 阮一峰[Fetch API 教程](http://www.ruanyifeng.com/blog/2020/12/fetch-tutorial.html)
+:::
