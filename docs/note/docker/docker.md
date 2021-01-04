@@ -163,7 +163,10 @@ docker stop $(docker ps -a -q)	# 停止所有容器
 docker rm container_id
 docker rm $(docker ps -a -q) # 删除所有未运行 Docker 容器
 ```
-
+有时候会遇到停止`docker`容器失败的情况，需要强制移除容器
+``` shell
+docker rm -f container_id
+```
 ## 镜像
 ### 1. 查看镜像
 
@@ -287,6 +290,24 @@ EXPOSE 8000
 #CMD ["npm", "start"]
 ```
 
+## 重启docker服务
+
+### systemctl 方式
+``` shell
+# 守护进程重启
+sudo systemctl daemon-reload
+# 重启docker服务
+sudo systemctl restart docker
+# 关闭docker
+sudo systemctl stop docker
+```
+### service 方式
+``` shell
+# 重启docker服务
+sudo service docker restart
+# 关闭docker
+sudo service docker stop
+```
 ## ssh
 
 - 使用`sshpass`来调用外部的命令：
