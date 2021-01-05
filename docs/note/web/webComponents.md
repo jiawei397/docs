@@ -209,6 +209,8 @@ export default class UserCard extends HTMLElement {
 </script>
 ```
 
+另外，`google` 主推的 `web components` 框架从`Polymer` 已经转向 `lit-element` 了，就是市面上没有什么水花。多学点儿总是没错的。
+
 > 参考阮一峰大神[Web Components 入门实例教程](http://www.ruanyifeng.com/blog/2019/08/web_components.html)
   
 > 可以使用这个[组件库](https://xy-ui.codelabo.cn/docs/)
