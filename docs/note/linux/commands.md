@@ -10,7 +10,7 @@
 
 ## 系统命令
 
-```
+``` shell
 $ 查看磁盘还剩多少空间
 df -h
 
@@ -45,14 +45,14 @@ nohup ./run.sh &
 
 
 ## 查看ip
-```
+``` shell
 ip addr show
 ifconfig
 ```
 
 ## 用户
 
-```
+``` shell
 # 新建用户
 useradd 用户名
 # 创建密码
@@ -84,7 +84,7 @@ sudo passwd
 ## 文件
 
 ### 压缩解压
-```
+``` shell
 $ 压缩文件
 zip -r myfile.zip ./*
 # 将当前目录下的所有文件和文件夹全部压缩成myfile.zip文件,-r表示递归压缩子目录下所有文件.
@@ -118,12 +118,19 @@ $ 总结
 ### 删除
 
 linux删除目录很简单，很多人还是习惯用`rmdir`，不过一旦目录非空，就陷入深深的苦恼之中，现在使用`rm -rf`命令即可。
-```
+
+``` shell
 rm -rf 目录名字
 ```
 
 - -r 就是向下递归，不管有多少级目录，一并删除
 - -f 就是直接强行删除，不作任何提示的意思
+
+我们使用`nodejs`时，一般会在根目录下生成`node_modules`，如果进行代码`copy`时，这些是不必要的，这时可以在上级目录批量把它们全删掉：
+``` shell
+find ./ | grep node_modules
+find . -type d -name "node_modules" | xargs rm -rf
+```
 
 ### 重命名
 linux下重命名文件或文件夹的命令`mv`既可以重命名，又可以移动文件或文件夹.
@@ -162,7 +169,7 @@ stat命令主要用于显示文件或文件系统的详细信息，该命令的�
 
 ### 上传下载
 在联网的情况下，执行命令即可：
-```
+``` shell
 yum install -y lrzsz
 
 $ 上传命令
@@ -172,22 +179,22 @@ $ 下载命令
 sz 
 ```
 
-## 安装图形化界面：
-```
+## 安装图形化界面
+``` shell
 sudo  yum groupinstall "GNOME Desktop" "Graphical Administration Tools"
 
 sudo ln -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
 ```
 
 ## 安装wget
-```
+``` shell
 yum -y install wget
 
 wget https://nodejs.org/dist/v8.1.4/node-v8.1.4-linux-x64.tar.xz
 ```
 
 ## 编辑文件
-```
+``` shell
 vim
 sudo nano /
 ```
@@ -201,24 +208,24 @@ sudo nano /
 - :wq  保存文件，退出vi命令
 
 
-## 生成64位编码：
+## 生成64位编码
 
-```
+``` shell
 echo -n "aaa" | base64
 ```
 
 ## 安装ssh
-```
+``` shell
 sudo apt-get install openssh-server
 ```
 安装完毕后`ssh`默认已启动。可以使用下述命令查看是否有进程在`22`端口上监听，即是否已启动：
 
-```
+``` shell
 netstat -nat | grep 22
 ```
 
 如果连接不了，则我们需要关闭掉防火墙
-```
+``` shell
 sudo ufw disable
 ```
 
@@ -233,7 +240,7 @@ sudo ln -s /usr/local/nodejs/bin/npm /usr/local/bin
 
 也就是说，把可执行的命令文件，挂个软连接到`/usr/local/bin`目录下，这样系统查找命令就能找到了。可以这样测试：
 
-``` 
+``` shell
 node -v
 npm -v
 ```
@@ -242,7 +249,7 @@ npm -v
 
 修改用户根目录下`~/.bashrc`，以`go`为例，在其中添加：
 
-``` 
+``` shell
 export PATH="/usr/local/go/bin:$PATH"
 ```
 添加完后，当下就生效了。
