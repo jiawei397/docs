@@ -4,7 +4,7 @@
 
 公司最近要做代码静态漏洞分析，调研了几款产品（`cobra`、`fortify`、`源伞科技`等）后，选择`SonarQube`暂时先用起来。后期可以考虑付费版本。
 
-用`docker`安装了`SonarQube`的最新版本，挺方便：
+用`docker`安装了[`SonarQube`](https://hub.docker.com/_/sonarqube/)的最新版本（`8.6.0`），挺方便：
 ``` shell
 docker pull sonarqube
 docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000:9000 sonarqube
@@ -17,6 +17,8 @@ docker run -d --name sonarqube -e SONAR_ES_BOOTSTRAP_CHECKS_DISABLE=true -p 9000
 ## gitlab申请令牌
 
 可以在`设置-应用`中操作，也可以在`管理中心-应用`中操作，效果是一样的。
+
+具体步骤也可以看[官网](https://docs.sonarqube.org/latest/analysis/gitlab-integration/)。
 
 新建一个应用，写入名称，随便写，一般是`SonarQube`，地址`http://192.168.21.176:9000/oauth2/callback/gitlab`，前面`ip`和端口部分，写你的`sonar`服务器的地址。最好用`https`，但不用也可以。
 
