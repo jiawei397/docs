@@ -1,8 +1,6 @@
 <!-- --- -->
 <!-- sidebar: false -->
 <!-- --- -->
-![数字孪生](../../images/digitalTwins.jpg)
-
 ## docker ##
 ### [linux安装docker【转】](https://www.cnblogs.com/kingsonfu/p/11576797.html)
 ### [deepin安装docker](./deepinDocker)

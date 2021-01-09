@@ -1,8 +1,6 @@
 <!-- --- -->
 <!-- sidebar: false -->
 <!-- --- -->
-![数字孪生](../../images/digitalTwins.jpg)
-
 ## linux ##
 ### [Systemd 入门教程：命令篇【转】](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-commands.html)
 ### [防火墙限制](./firewall)
