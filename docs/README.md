@@ -1,7 +1,7 @@
 ---
 home: true
 heroImage: /images/test.png
-heroText: 老纪的博客
+heroText: 博客
 tagline:
 actionText: 笔记 →
 actionLink: /note/
