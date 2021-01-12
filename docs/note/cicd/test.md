@@ -165,9 +165,9 @@ describe.skip('异步 beforeEach 示例', function () {
 
 `chai`是断言库，可以理解为比较函数，也就是断言函数是否和预期一致，如果一致则表示测试通过，如果不一致表示测试失败。
 本身`mocha`是不包含断言库的，所以必须引入第三方断言库，目前比较受欢迎的断言库有 `should.js`、`expect.js` 、`chai`，具体的语法规则需要大家去查阅相关文档。
-因为`chai`既包含`should`、`expect`和`assert`三种风格，可扩展性比较强。本质是一样的，按个人习惯选择。详见[`api`](http://chaijs.com/api/assert/ "api")
+因为`chai`既包含`should`、`expect`和`assert`三种风格，可扩展性比较强。本质是一样的，按个人习惯选择。详见[`api`](http://chaijs.com/api/assert)
 
-下面简单的介绍一下这是那种风格
+下面简单的介绍一下这几种风格：
 
 `should`例：
 
@@ -217,12 +217,12 @@ assert.typeOf('test', 'string', 'test is a string');
 
 在产品高速迭代的现在，有个自动化测试，是重构、迭代的重要保障。对`web`前端来说，主要的测试就是，表单、动画、页面跳转、`dom`渲染、`Ajax`等是否按照期望。
 
-`e2e`测试正是保证功能的最高层测试，不关注代码实现细节，专注于代码能否实现对应的功能。对我们开发人员而言，测试的主要关注点是映射到页面的逻辑（一般是存储的变量）是否正确。
+`e2e`测试正是保证功能的最高层测试，不关注代码实现细节，专注于代码能否实现对应的功能。对我们开发人员而言，测试的主要关注点是**映射到页面的逻辑（一般是存储的变量）是否正确**。
 
-我们使用`nigthwatch`来做`e2e`测试
+我们使用`nigthwatch`来做`e2e`测试。
 
 ### nightwatch
-`nightwatch`是一个使用`selenium`或者`webdriver`或者`phantomjs`的`nodejs`编写的`e2e`自动测试框架，可以很方便的写出测试用例来模仿用户的操作来自动验证功能的实现。
+`nightwatch`是一个使用`selenium`或者`webdriver`或者`phantomjs`的`nodejs`编写的`e2e`自动测试框架，可以很方便地写出测试用例来模仿用户的操作来自动验证功能的实现。
 
 `nightwatch`的使用很简单，一个`nightwatch.json`或者`nightwatch.config.js`（后者优先级高）配置文件，使用`runner`会自动找同级的这两个文件来获取配置信息。也可以手动使用`--config`来制定配置文件的相对路径。
 
@@ -322,7 +322,7 @@ module.exports = {
   }
 }
 ```
-以下是项目中一个样例，几乎涵盖了各种操作。具体可参看[http://nightwatchjs.org/api](http://nightwatchjs.org/api "官网api")
+以下是项目中一个样例，几乎涵盖了各种操作。具体可参看[官网api](http://nightwatchjs.org/api)。
 
 ``` js
 var path = require("path");
