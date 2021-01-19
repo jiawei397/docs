@@ -8,3 +8,4 @@
 ### [yarn配置全局变量](./yarn)
 ### [linux安装git](./git)
 ### [小米笔记本pro安装deepin](./deepin)
+### [mac下命令记录](./mac)
