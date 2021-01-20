@@ -41,3 +41,15 @@
 可将 `DNS` 修改为 `114.114.114.114`，一个良心 `DNS` 服务商。
 
 但这样修改后，可能会导致其它代理问题。
+
+## GitHub 克隆太慢的解决方法
+
+在克隆`GitHub`上的代码的时候，直接克隆会很慢
+如`Vue`源码，不通过镜像的命令为
+```shell
+git clone https://github.com/vuejs/vue.git
+```
+这样会超级慢，只需要改为如下命令即可
+```shell
+git clone https://github.com.cnpmjs.org/vuejs/vue.git
+```
