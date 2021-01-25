@@ -40,6 +40,7 @@
 ### [使用patch-package修改Node.js依赖包内容](./nodejs/patch)
 ### [npm相关](./nodejs/npm)
 ### [vscode调试](./nodejs/vscode)
+### [M1安装nodejs](./nodejs/m1)
 
 ## deno ##
 ### [deno入门安装](./deno/install)
