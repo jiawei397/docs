@@ -26,7 +26,7 @@ $ 结束进程
 kill -9 进程编号
 
 $ 查看端口占用
-ss -lntpd | grep :6379
+ss -lntpd | grep :4000
 
 $ 文件赋权
 chmod -R 777 文件名
