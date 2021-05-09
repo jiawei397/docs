@@ -64,5 +64,3 @@ go version
 
 
 输入go version后能看到版本号就表示安装成功了
-
-简单的
