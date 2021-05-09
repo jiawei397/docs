@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>nginx相关 | 帝之下都</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="shortcut icon" href="/docs/images/favicon.ico">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.2486ecd9.css" as="style"><link rel="preload" href="/docs/assets/js/app.f6e97648.js" as="script"><link rel="preload" href="/docs/assets/js/2.793e3b27.js" as="script"><link rel="preload" href="/docs/assets/js/98.635b673f.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.fed05d33.js"><link rel="prefetch" href="/docs/assets/js/100.75e9de39.js"><link rel="prefetch" href="/docs/assets/js/101.02b71521.js"><link rel="prefetch" href="/docs/assets/js/102.3b98358a.js"><link rel="prefetch" href="/docs/assets/js/103.04976126.js"><link rel="prefetch" href="/docs/assets/js/11.42050f1c.js"><link rel="prefetch" href="/docs/assets/js/12.5ed91251.js"><link rel="prefetch" href="/docs/assets/js/13.760ba031.js"><link rel="prefetch" href="/docs/assets/js/14.fbcf57fe.js"><link rel="prefetch" href="/docs/assets/js/15.e7d172b7.js"><link rel="prefetch" href="/docs/assets/js/16.efc29a58.js"><link rel="prefetch" href="/docs/assets/js/17.bf0efcec.js"><link rel="prefetch" href="/docs/assets/js/18.43607bc5.js"><link rel="prefetch" href="/docs/assets/js/19.249adea3.js"><link rel="prefetch" href="/docs/assets/js/20.0ff2d59c.js"><link rel="prefetch" href="/docs/assets/js/21.86a40b0c.js"><link rel="prefetch" href="/docs/assets/js/22.0c4688a1.js"><link rel="prefetch" href="/docs/assets/js/23.91d70a7b.js"><link rel="prefetch" href="/docs/assets/js/24.3d5b9a61.js"><link rel="prefetch" href="/docs/assets/js/25.0e41904b.js"><link rel="prefetch" href="/docs/assets/js/26.e0a62fe9.js"><link rel="prefetch" href="/docs/assets/js/27.30fb029e.js"><link rel="prefetch" href="/docs/assets/js/28.f90766af.js"><link rel="prefetch" href="/docs/assets/js/29.2ee1cc61.js"><link rel="prefetch" href="/docs/assets/js/3.1503391c.js"><link rel="prefetch" href="/docs/assets/js/30.89f6c4b1.js"><link rel="prefetch" href="/docs/assets/js/31.ad837c60.js"><link rel="prefetch" href="/docs/assets/js/32.52ae32c9.js"><link rel="prefetch" href="/docs/assets/js/33.065b8fee.js"><link rel="prefetch" href="/docs/assets/js/34.a3c50501.js"><link rel="prefetch" href="/docs/assets/js/35.3742e7ec.js"><link rel="prefetch" href="/docs/assets/js/36.aa190ca1.js"><link rel="prefetch" href="/docs/assets/js/37.bcfeb241.js"><link rel="prefetch" href="/docs/assets/js/38.87a44621.js"><link rel="prefetch" href="/docs/assets/js/39.2b181812.js"><link rel="prefetch" href="/docs/assets/js/4.339bc79a.js"><link rel="prefetch" href="/docs/assets/js/40.a1ceb441.js"><link rel="prefetch" href="/docs/assets/js/41.f4074c22.js"><link rel="prefetch" href="/docs/assets/js/42.fb708ddd.js"><link rel="prefetch" href="/docs/assets/js/43.5d23f2a5.js"><link rel="prefetch" href="/docs/assets/js/44.96f2f1f8.js"><link rel="prefetch" href="/docs/assets/js/45.9610846c.js"><link rel="prefetch" href="/docs/assets/js/46.c9183423.js"><link rel="prefetch" href="/docs/assets/js/47.5933b74e.js"><link rel="prefetch" href="/docs/assets/js/48.1395cfd7.js"><link rel="prefetch" href="/docs/assets/js/49.06f773b5.js"><link rel="prefetch" href="/docs/assets/js/5.1ffab86f.js"><link rel="prefetch" href="/docs/assets/js/50.bbcdc7fc.js"><link rel="prefetch" href="/docs/assets/js/51.cbc60f68.js"><link rel="prefetch" href="/docs/assets/js/52.716462d4.js"><link rel="prefetch" href="/docs/assets/js/53.5db04ef8.js"><link rel="prefetch" href="/docs/assets/js/54.ec0d945c.js"><link rel="prefetch" href="/docs/assets/js/55.248a9b45.js"><link rel="prefetch" href="/docs/assets/js/56.09f734f5.js"><link rel="prefetch" href="/docs/assets/js/57.debd0eae.js"><link rel="prefetch" href="/docs/assets/js/58.da917dc3.js"><link rel="prefetch" href="/docs/assets/js/59.b48ef98f.js"><link rel="prefetch" href="/docs/assets/js/6.1f492624.js"><link rel="prefetch" href="/docs/assets/js/60.b547a796.js"><link rel="prefetch" href="/docs/assets/js/61.5a2527ab.js"><link rel="prefetch" href="/docs/assets/js/62.769dd34e.js"><link rel="prefetch" href="/docs/assets/js/63.03433dfa.js"><link rel="prefetch" href="/docs/assets/js/64.a892881e.js"><link rel="prefetch" href="/docs/assets/js/65.6f632179.js"><link rel="prefetch" href="/docs/assets/js/66.ee877b7b.js"><link rel="prefetch" href="/docs/assets/js/67.fab8e4eb.js"><link rel="prefetch" href="/docs/assets/js/68.a6780b45.js"><link rel="prefetch" href="/docs/assets/js/69.6bb021ed.js"><link rel="prefetch" href="/docs/assets/js/7.0fc26f95.js"><link rel="prefetch" href="/docs/assets/js/70.0c446e1b.js"><link rel="prefetch" href="/docs/assets/js/71.3c94982e.js"><link rel="prefetch" href="/docs/assets/js/72.c5086532.js"><link rel="prefetch" href="/docs/assets/js/73.84611fa8.js"><link rel="prefetch" href="/docs/assets/js/74.821e73ea.js"><link rel="prefetch" href="/docs/assets/js/75.93372814.js"><link rel="prefetch" href="/docs/assets/js/76.32805d69.js"><link rel="prefetch" href="/docs/assets/js/77.8b6e001b.js"><link rel="prefetch" href="/docs/assets/js/78.73fca068.js"><link rel="prefetch" href="/docs/assets/js/79.3237b4d0.js"><link rel="prefetch" href="/docs/assets/js/8.20ef8cbd.js"><link rel="prefetch" href="/docs/assets/js/80.f04b3cd2.js"><link rel="prefetch" href="/docs/assets/js/81.0b928fef.js"><link rel="prefetch" href="/docs/assets/js/82.1f68c39e.js"><link rel="prefetch" href="/docs/assets/js/83.bb107f03.js"><link rel="prefetch" href="/docs/assets/js/84.d8762f0f.js"><link rel="prefetch" href="/docs/assets/js/85.4fbed6b0.js"><link rel="prefetch" href="/docs/assets/js/86.533661f8.js"><link rel="prefetch" href="/docs/assets/js/87.2fb845a3.js"><link rel="prefetch" href="/docs/assets/js/88.fd812499.js"><link rel="prefetch" href="/docs/assets/js/89.f75cb59b.js"><link rel="prefetch" href="/docs/assets/js/9.5338c914.js"><link rel="prefetch" href="/docs/assets/js/90.78199bc6.js"><link rel="prefetch" href="/docs/assets/js/91.c80e96b7.js"><link rel="prefetch" href="/docs/assets/js/92.a41f9223.js"><link rel="prefetch" href="/docs/assets/js/93.8bd795d4.js"><link rel="prefetch" href="/docs/assets/js/94.6d017679.js"><link rel="prefetch" href="/docs/assets/js/95.331edcc1.js"><link rel="prefetch" href="/docs/assets/js/96.f14d1f9f.js"><link rel="prefetch" href="/docs/assets/js/97.c57cf0ad.js"><link rel="prefetch" href="/docs/assets/js/99.65b10748.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.2486ecd9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">帝之下都</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link router-link-active">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link router-link-active">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>nginx相关</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/note/web/nginx.html#常用命令" class="sidebar-link">常用命令</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#windows环境" class="sidebar-link">windows环境</a></li><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#linux环境" class="sidebar-link">linux环境</a></li></ul></li><li><a href="/docs/note/web/nginx.html#root与alias" class="sidebar-link">root与alias</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#alias" class="sidebar-link">alias</a></li><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#root" class="sidebar-link">root</a></li></ul></li><li><a href="/docs/note/web/nginx.html#常用例子" class="sidebar-link">常用例子</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#主配置" class="sidebar-link">主配置</a></li><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#子配置" class="sidebar-link">子配置</a></li><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#配置websocket" class="sidebar-link">配置websocket</a></li><li class="sidebar-sub-header"><a href="/docs/note/web/nginx.html#配置history路由" class="sidebar-link">配置history路由</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="nginx相关"><a href="#nginx相关" class="header-anchor">#</a> nginx相关</h1> <h2 id="常用命令"><a href="#常用命令" class="header-anchor">#</a> 常用命令</h2> <h3 id="windows环境"><a href="#windows环境" class="header-anchor">#</a> windows环境</h3> <p>到<code>nginx</code>的安装目录下，即<code>nginx.exe</code>所在的目录执行：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 启动</span>
+start nginx    //启动
+
+<span class="token comment"># 停止</span>
+nginx -s stop    // 停止nginx
+
+<span class="token comment"># 重启</span>
+nginx -s reload   // 重新加载配置文件并重起
+</code></pre></div><h3 id="linux环境"><a href="#linux环境" class="header-anchor">#</a> linux环境</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 启动命令</span>
+/usr/local/nginx/sbin/nginx -c /usr/local/nginx/conf/nginx.conf
+
+<span class="token comment"># 停止</span>
+/usr/local/nginx/sbin/nginx -s  stop
+
+<span class="token comment"># 重启</span>
+/usr/local/nginx/sbin/nginx -s  reload
+
+<span class="token comment"># 查看进程命令</span>
+<span class="token function">ps</span> -ef <span class="token operator">|</span> <span class="token function">grep</span> nginx
+
+<span class="token comment"># 关闭进程</span>
+<span class="token function">kill</span> -HUP Nginx主进程号
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>-c</code>：制定配置文件的路径</p> <p>不加<code>-nginx</code>会自动加载默认路径的配置文件</p></div> <h2 id="root与alias"><a href="#root与alias" class="header-anchor">#</a> root与alias</h2> <h3 id="alias"><a href="#alias" class="header-anchor">#</a> alias</h3> <div class="language- extra-class"><pre class="language-text"><code>location /img/ {
+  alias /var/www/image/;
+}
+</code></pre></div><p>若按照上述配置的话，则访问<code>/img/</code>目录里面的文件时，<code>ningx</code>会自动去<code>/var/www/image/</code>目录找文件</p> <h3 id="root"><a href="#root" class="header-anchor">#</a> root</h3> <div class="language- extra-class"><pre class="language-text"><code>location /img/ {
+  root /var/www/image;
+}
+</code></pre></div><p>若按照这种配置的话，则访问<code>/img/</code>目录下的文件时，<code>nginx</code>会去<code>/var/www/image/img/</code>目录下找文件。</p> <div class="custom-block tip"><p class="custom-block-title">TIP</p> <p><code>alias</code>是一个目录别名的定义，<code>root</code>则是最上层目录的定义。</p> <p>还有一个重要的区别是<code>alias</code>后面必须要用<code>/</code>结束，否则会找不到文件的。而<code>root</code>则可有可无</p></div> <h2 id="常用例子"><a href="#常用例子" class="header-anchor">#</a> 常用例子</h2> <h3 id="主配置"><a href="#主配置" class="header-anchor">#</a> 主配置</h3> <div class="language-conf extra-class"><pre class="language-text"><code>#user XX administrator administrators;
+worker_processes  2;
+
+#error_log  logs/error.log;
+#error_log  logs/error.log  notice;
+#error_log  logs/error.log  info;
+
+#pid        logs/nginx.pid;
+
+events {
+    worker_connections  1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+	#设定日志格式
+    #log_format  main  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+    #                  '$status $body_bytes_sent &quot;$http_referer&quot; '
+    #                 '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+    #access_log  logs/access.log  main;
+
+	#sendfile 指令指定 nginx 是否调用 sendfile 函数（zero copy 方式）来输出文件，
+    #对于普通应用，必须设为 on,
+    #如果用来进行下载等应用磁盘IO重负载应用，可设置为 off，
+    #以平衡磁盘与网络I/O处理速度，降低系统的uptime.
+    sendfile        on;
+    #tcp_nopush     on;
+
+	#连接超时时间
+    #keepalive_timeout  0;
+    keepalive_timeout  65;
+
+	#开启gzip压缩
+	gzip on;
+
+	#不压缩临界值，大于1K的才压缩，一般不用改
+	gzip_min_length 10k;
+	gzip_buffers 4 16k;
+
+	#用了反向代理的话，末端通信是HTTP/1.0；默认是HTTP/1.1
+	#gzip_http_version 1.0;
+
+	#压缩级别，1-10，数字越大压缩的越好，时间也越长
+	gzip_comp_level 2;
+
+	# nginx 做前端代理时启用该选项，表示无论后端服务器的headers头返回什么信息，都无条件启用压缩
+    gzip_proxied any;
+
+	#进行压缩的文件类型，缺啥补啥就行了，JavaScript有两种写法，最好都写上吧，总有人抱怨js文件没有压缩，其实多写一种格式就行了
+	#如果开启了对js压缩，则在Response Headers里可以看到，Content-Encoding:gzip，Transfer-Encoding:chunked
+	gzip_types text/plain application/x-javascript text/css application/xml application/javascript text/javascript application/x-httpd-php image/jpeg image/gif image/png;
+
+	#跟Squid等缓存服务有关，on的话会在Header里增加&quot;Vary: Accept-Encoding&quot;，我不需要这玩意，自己对照情况看着办吧
+	gzip_vary off;
+
+	#IE6对Gzip不怎么友好，不给它Gzip了
+	gzip_disable &quot;MSIE [1-6]\.&quot;;
+
+	#设定请求缓冲
+    #client_header_buffer_size    128k;
+    #large_client_header_buffers  4 128k;
+
+	#包含其它配置文件
+	include nginx-fl.conf;
+}
+</code></pre></div><h3 id="子配置"><a href="#子配置" class="header-anchor">#</a> 子配置</h3> <div class="language-conf extra-class"><pre class="language-text"><code>#设定日志格式
+log_format  fl  '$remote_addr - $remote_user [$time_local] &quot;$request&quot; '
+                '$status $body_bytes_sent &quot;$http_referer&quot; '
+                '&quot;$http_user_agent&quot; &quot;$http_x_forwarded_for&quot;';
+
+upstream door_server{
+	server localhost:8280;
+}
+
+server {
+	listen       8088;
+	server_name  localhost;
+
+	client_max_body_size 700M;
+  charset utf-8;
+
+	location / {#请求的url过滤，正则匹配，~为区分大小写，~*为不区分大小写。
+		root	html;
+		add_header 'Access-Control-Allow-Origin' *;
+	  #	index  index.html index.htm;
+		# deny 127.0.0.1;  #拒绝的ip
+		# allow 172.18.5.54; #允许的ip
+	}
+
+	location /door-api/ {
+			#access_log off;
+			proxy_connect_timeout 300;
+      proxy_read_timeout 300;
+      proxy_send_timeout 300;
+			proxy_pass http://door_server/;
+	}
+
+	location ^~ /rsm-api {
+		add_header 'Access-Control-Allow-Origin' *;
+		alias C:/resource/;
+	}
+
+	location /test/ {
+		proxy_cache cache_one;
+		proxy_cache_valid 200 302 24h;
+		proxy_cache_valid 301 30d;
+		proxy_cache_valid any 5m;
+		#proxy_cache_valid 200 302 30m;
+		#proxy_cache_revalidate on;
+		expires 300m;
+		add_header X-Cache-Status $upstream_cache_status;
+		add_header 'Access-Control-Allow-Origin' *;
+		alias C:/test/;
+	}
+
+	access_log  logs/fl.access.log fl;
+
+	# deny access to .htaccess files, if Apache's document root
+	# concurs with nginx's one
+	#禁止访问 .htxxx文件
+	location ~ /\.ht {
+		deny  all;
+	}
+}
+
+server {
+	listen       8001;
+	server_name  localhost;
+
+	client_max_body_size 700M;
+  charset utf-8;
+
+	location /test/ {
+		add_header 'Access-Control-Allow-Origin' *;
+		alias C:/test2/;
+	}
+}
+</code></pre></div><h3 id="配置websocket"><a href="#配置websocket" class="header-anchor">#</a> 配置websocket</h3> <div class="language- extra-class"><pre class="language-text"><code>upstream ws_server{
+	server localhost:7002;
+	keepalive 1000;
+}
+
+map $http_upgrade $connection_upgrade {
+	default upgrade;
+	'' close;
+}
+
+server {
+	location /ws-api {
+		proxy_pass http://ws_server/file;
+		proxy_http_version 1.1;
+		proxy_redirect off;
+		proxy_set_header Host $host;
+		proxy_set_header X-Real-IP $remote_addr;
+		proxy_read_timeout 3600s;
+		proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection $connection_upgrade;
+   }
+}
+
+</code></pre></div><h3 id="配置history路由"><a href="#配置history路由" class="header-anchor">#</a> 配置history路由</h3> <div class="language- extra-class"><pre class="language-text"><code>server {
+	listen       3001;
+	server_name  localhost;
+
+	client_max_body_size 700M;
+  charset utf-8;
+
+	location / {
+		root	html;
+		add_header 'Access-Control-Allow-Origin' *;
+		index  index.html index.htm;
+		try_files $uri $uri/ /index.html; # 主要是这句，将没找到的地址，最终又转到index.html
+	}
+}
+
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/jiawei397/docs/edit/master/docs/note/web/nginx.md" target="_blank" rel="noopener noreferrer">提出宝贵意见</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/docs/assets/js/app.f6e97648.js" defer></script><script src="/docs/assets/js/2.793e3b27.js" defer></script><script src="/docs/assets/js/98.635b673f.js" defer></script>
+  </body>
+</html>

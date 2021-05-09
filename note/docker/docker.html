@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker小结 | 帝之下都</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="shortcut icon" href="/docs/images/favicon.ico">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.2486ecd9.css" as="style"><link rel="preload" href="/docs/assets/js/app.f6e97648.js" as="script"><link rel="preload" href="/docs/assets/js/2.793e3b27.js" as="script"><link rel="preload" href="/docs/assets/js/26.e0a62fe9.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.fed05d33.js"><link rel="prefetch" href="/docs/assets/js/100.75e9de39.js"><link rel="prefetch" href="/docs/assets/js/101.02b71521.js"><link rel="prefetch" href="/docs/assets/js/102.3b98358a.js"><link rel="prefetch" href="/docs/assets/js/103.04976126.js"><link rel="prefetch" href="/docs/assets/js/11.42050f1c.js"><link rel="prefetch" href="/docs/assets/js/12.5ed91251.js"><link rel="prefetch" href="/docs/assets/js/13.760ba031.js"><link rel="prefetch" href="/docs/assets/js/14.fbcf57fe.js"><link rel="prefetch" href="/docs/assets/js/15.e7d172b7.js"><link rel="prefetch" href="/docs/assets/js/16.efc29a58.js"><link rel="prefetch" href="/docs/assets/js/17.bf0efcec.js"><link rel="prefetch" href="/docs/assets/js/18.43607bc5.js"><link rel="prefetch" href="/docs/assets/js/19.249adea3.js"><link rel="prefetch" href="/docs/assets/js/20.0ff2d59c.js"><link rel="prefetch" href="/docs/assets/js/21.86a40b0c.js"><link rel="prefetch" href="/docs/assets/js/22.0c4688a1.js"><link rel="prefetch" href="/docs/assets/js/23.91d70a7b.js"><link rel="prefetch" href="/docs/assets/js/24.3d5b9a61.js"><link rel="prefetch" href="/docs/assets/js/25.0e41904b.js"><link rel="prefetch" href="/docs/assets/js/27.30fb029e.js"><link rel="prefetch" href="/docs/assets/js/28.f90766af.js"><link rel="prefetch" href="/docs/assets/js/29.2ee1cc61.js"><link rel="prefetch" href="/docs/assets/js/3.1503391c.js"><link rel="prefetch" href="/docs/assets/js/30.89f6c4b1.js"><link rel="prefetch" href="/docs/assets/js/31.ad837c60.js"><link rel="prefetch" href="/docs/assets/js/32.52ae32c9.js"><link rel="prefetch" href="/docs/assets/js/33.065b8fee.js"><link rel="prefetch" href="/docs/assets/js/34.a3c50501.js"><link rel="prefetch" href="/docs/assets/js/35.3742e7ec.js"><link rel="prefetch" href="/docs/assets/js/36.aa190ca1.js"><link rel="prefetch" href="/docs/assets/js/37.bcfeb241.js"><link rel="prefetch" href="/docs/assets/js/38.87a44621.js"><link rel="prefetch" href="/docs/assets/js/39.2b181812.js"><link rel="prefetch" href="/docs/assets/js/4.339bc79a.js"><link rel="prefetch" href="/docs/assets/js/40.a1ceb441.js"><link rel="prefetch" href="/docs/assets/js/41.f4074c22.js"><link rel="prefetch" href="/docs/assets/js/42.fb708ddd.js"><link rel="prefetch" href="/docs/assets/js/43.5d23f2a5.js"><link rel="prefetch" href="/docs/assets/js/44.96f2f1f8.js"><link rel="prefetch" href="/docs/assets/js/45.9610846c.js"><link rel="prefetch" href="/docs/assets/js/46.c9183423.js"><link rel="prefetch" href="/docs/assets/js/47.5933b74e.js"><link rel="prefetch" href="/docs/assets/js/48.1395cfd7.js"><link rel="prefetch" href="/docs/assets/js/49.06f773b5.js"><link rel="prefetch" href="/docs/assets/js/5.1ffab86f.js"><link rel="prefetch" href="/docs/assets/js/50.bbcdc7fc.js"><link rel="prefetch" href="/docs/assets/js/51.cbc60f68.js"><link rel="prefetch" href="/docs/assets/js/52.716462d4.js"><link rel="prefetch" href="/docs/assets/js/53.5db04ef8.js"><link rel="prefetch" href="/docs/assets/js/54.ec0d945c.js"><link rel="prefetch" href="/docs/assets/js/55.248a9b45.js"><link rel="prefetch" href="/docs/assets/js/56.09f734f5.js"><link rel="prefetch" href="/docs/assets/js/57.debd0eae.js"><link rel="prefetch" href="/docs/assets/js/58.da917dc3.js"><link rel="prefetch" href="/docs/assets/js/59.b48ef98f.js"><link rel="prefetch" href="/docs/assets/js/6.1f492624.js"><link rel="prefetch" href="/docs/assets/js/60.b547a796.js"><link rel="prefetch" href="/docs/assets/js/61.5a2527ab.js"><link rel="prefetch" href="/docs/assets/js/62.769dd34e.js"><link rel="prefetch" href="/docs/assets/js/63.03433dfa.js"><link rel="prefetch" href="/docs/assets/js/64.a892881e.js"><link rel="prefetch" href="/docs/assets/js/65.6f632179.js"><link rel="prefetch" href="/docs/assets/js/66.ee877b7b.js"><link rel="prefetch" href="/docs/assets/js/67.fab8e4eb.js"><link rel="prefetch" href="/docs/assets/js/68.a6780b45.js"><link rel="prefetch" href="/docs/assets/js/69.6bb021ed.js"><link rel="prefetch" href="/docs/assets/js/7.0fc26f95.js"><link rel="prefetch" href="/docs/assets/js/70.0c446e1b.js"><link rel="prefetch" href="/docs/assets/js/71.3c94982e.js"><link rel="prefetch" href="/docs/assets/js/72.c5086532.js"><link rel="prefetch" href="/docs/assets/js/73.84611fa8.js"><link rel="prefetch" href="/docs/assets/js/74.821e73ea.js"><link rel="prefetch" href="/docs/assets/js/75.93372814.js"><link rel="prefetch" href="/docs/assets/js/76.32805d69.js"><link rel="prefetch" href="/docs/assets/js/77.8b6e001b.js"><link rel="prefetch" href="/docs/assets/js/78.73fca068.js"><link rel="prefetch" href="/docs/assets/js/79.3237b4d0.js"><link rel="prefetch" href="/docs/assets/js/8.20ef8cbd.js"><link rel="prefetch" href="/docs/assets/js/80.f04b3cd2.js"><link rel="prefetch" href="/docs/assets/js/81.0b928fef.js"><link rel="prefetch" href="/docs/assets/js/82.1f68c39e.js"><link rel="prefetch" href="/docs/assets/js/83.bb107f03.js"><link rel="prefetch" href="/docs/assets/js/84.d8762f0f.js"><link rel="prefetch" href="/docs/assets/js/85.4fbed6b0.js"><link rel="prefetch" href="/docs/assets/js/86.533661f8.js"><link rel="prefetch" href="/docs/assets/js/87.2fb845a3.js"><link rel="prefetch" href="/docs/assets/js/88.fd812499.js"><link rel="prefetch" href="/docs/assets/js/89.f75cb59b.js"><link rel="prefetch" href="/docs/assets/js/9.5338c914.js"><link rel="prefetch" href="/docs/assets/js/90.78199bc6.js"><link rel="prefetch" href="/docs/assets/js/91.c80e96b7.js"><link rel="prefetch" href="/docs/assets/js/92.a41f9223.js"><link rel="prefetch" href="/docs/assets/js/93.8bd795d4.js"><link rel="prefetch" href="/docs/assets/js/94.6d017679.js"><link rel="prefetch" href="/docs/assets/js/95.331edcc1.js"><link rel="prefetch" href="/docs/assets/js/96.f14d1f9f.js"><link rel="prefetch" href="/docs/assets/js/97.c57cf0ad.js"><link rel="prefetch" href="/docs/assets/js/98.635b673f.js"><link rel="prefetch" href="/docs/assets/js/99.65b10748.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.2486ecd9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">帝之下都</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link router-link-active">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>docker小结</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/note/docker/docker.html#安装" class="sidebar-link">安装</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_1-ubuntu" class="sidebar-link">1. ubuntu</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_2-启动" class="sidebar-link">2. 启动</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_3-测试运行hello-world" class="sidebar-link">3. 测试运行hello-world</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_4-镜像加速" class="sidebar-link">4. 镜像加速</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_5-普通用户加入docker组" class="sidebar-link">5. 普通用户加入docker组</a></li></ul></li><li><a href="/docs/note/docker/docker.html#容器" class="sidebar-link">容器</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_1-运行" class="sidebar-link">1. 运行</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_2-运行交互式的容器" class="sidebar-link">2. 运行交互式的容器</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_3-启动容器-后台模式" class="sidebar-link">3. 启动容器（后台模式）</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_4-查看容器" class="sidebar-link">4. 查看容器</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_5-停止容器" class="sidebar-link">5. 停止容器</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_6-移除容器" class="sidebar-link">6. 移除容器</a></li></ul></li><li><a href="/docs/note/docker/docker.html#镜像" class="sidebar-link">镜像</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_1-查看镜像" class="sidebar-link">1. 查看镜像</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_2-创建镜像" class="sidebar-link">2. 创建镜像</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_3-更新" class="sidebar-link">3. 更新</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_4-删除" class="sidebar-link">4. 删除</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#_5-设置镜像标签" class="sidebar-link">5. 设置镜像标签</a></li></ul></li><li><a href="/docs/note/docker/docker.html#dockerfile样例" class="sidebar-link">Dockerfile样例</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/docker/docker.html#重启docker服务" class="sidebar-link">重启docker服务</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#systemctl-方式" class="sidebar-link">systemctl 方式</a></li><li class="sidebar-sub-header"><a href="/docs/note/docker/docker.html#service-方式" class="sidebar-link">service 方式</a></li></ul></li><li><a href="/docs/note/docker/docker.html#ssh" class="sidebar-link">ssh</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="docker小结"><a href="#docker小结" class="header-anchor">#</a> docker小结</h1> <p></p><div class="table-of-contents"><ul><li><a href="#安装">安装</a><ul><li><a href="#_1-ubuntu">1. ubuntu</a></li><li><a href="#_2-启动">2. 启动</a></li><li><a href="#_3-测试运行-hello-world">3. 测试运行hello-world</a></li><li><a href="#_4-镜像加速">4. 镜像加速</a></li><li><a href="#_5-普通用户加入-docker-组">5. 普通用户加入docker组</a></li></ul></li><li><a href="#容器">容器</a><ul><li><a href="#_1-运行">1. 运行</a></li><li><a href="#_2-运行交互式的容器">2. 运行交互式的容器</a></li><li><a href="#_3-启动容器-后台模式">3. 启动容器（后台模式）</a></li><li><a href="#_4-查看容器">4. 查看容器</a></li><li><a href="#_5-停止容器">5. 停止容器</a></li><li><a href="#_6-移除容器">6. 移除容器</a></li></ul></li><li><a href="#镜像">镜像</a><ul><li><a href="#_1-查看镜像">1. 查看镜像</a></li><li><a href="#_2-创建镜像">2. 创建镜像</a></li><li><a href="#_3-更新">3. 更新</a></li><li><a href="#_4-删除">4. 删除</a></li><li><a href="#_5-设置镜像标签">5. 设置镜像标签</a></li></ul></li><li><a href="#dockerfile样例">Dockerfile样例</a></li><li><a href="#重启docker服务">重启docker服务</a><ul><li><a href="#systemctl-方式">systemctl 方式</a></li><li><a href="#service-方式">service 方式</a></li></ul></li><li><a href="#ssh">ssh</a></li></ul></div><p></p> <p>Docker是一个开源的容器引擎，它有助于更快地交付产品。</p> <p>Docker可将应用程序和基础设施层隔离，并且将基础设施当作程序一样进行管理。使用Docker，可以更快地打包，测试以及部署应用程序，并可以缩短从编程到部署运行代码的周期。</p> <h2 id="安装"><a href="#安装" class="header-anchor">#</a> 安装</h2> <h3 id="_1-ubuntu"><a href="#_1-ubuntu" class="header-anchor">#</a> 1. ubuntu</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">wget</span> -qO- https://get.docker.com/ <span class="token operator">|</span> <span class="token function">sh</span>
+</code></pre></div><p>当要以非<code>root</code>用户可以直接运行<code>docker</code>时，需要执行 <code>sudo usermod -aG docker runoob</code> 命令，然后重新登陆，否则会报错</p> <p>或者安装<code>Docker</code>社区版仓库</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> <span class="token punctuation">\</span>
+  apt-transport-https <span class="token punctuation">\</span>
+  ca-certificates <span class="token punctuation">\</span>
+  <span class="token function">curl</span>
+
+<span class="token function">curl</span> -fsSL https://download.docker.com/linux/ubuntu/gpg <span class="token operator">|</span> <span class="token function">sudo</span> apt-key <span class="token function">add</span> -
+
+<span class="token function">sudo</span> add-apt-repository <span class="token punctuation">\</span>
+       <span class="token string">&quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+       <span class="token variable"><span class="token variable">$(</span>lsb_release -cs<span class="token variable">)</span></span> \
+       stable&quot;</span>
+
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+
+<span class="token comment">#在Ubuntu上安装最新的Docker社区版</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> -y <span class="token function">install</span> docker-ce
+
+<span class="token comment">#测试你的Docker社区版是否安装成功</span>
+<span class="token function">sudo</span> docker run hello-world
+</code></pre></div><h3 id="_2-启动"><a href="#_2-启动" class="header-anchor">#</a> 2. 启动</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> <span class="token function">service</span> docker start
+</code></pre></div><h3 id="_3-测试运行hello-world"><a href="#_3-测试运行hello-world" class="header-anchor">#</a> 3. 测试运行<code>hello-world</code></h3> <div class="language-shell extra-class"><pre class="language-shell"><code>docker run hello-world
+</code></pre></div><h3 id="_4-镜像加速"><a href="#_4-镜像加速" class="header-anchor">#</a> 4. 镜像加速</h3> <p>鉴于国内网络问题，后续拉取 <code>Docker</code> 镜像十分缓慢，我们可以需要配置加速器来解决，比如<a href="http://hub-mirror.c.163.com" title="网易镜像" target="_blank" rel="noopener noreferrer">网易的镜像地址<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <p>新版的 <code>Docker</code> 使用 <code>/etc/docker/daemon.json</code>（<code>Linux</code>） 或者 <code>%programdata%\docker\config\daemon.json</code>（<code>Windows</code>） 来配置 <code>Daemon</code>。</p> <p>请在该配置文件中加入（没有该文件的话，请先建一个）：</p> <div class="language-json extra-class"><pre class="language-json"><code><span class="token punctuation">{</span>
+  <span class="token property">&quot;registry-mirrors&quot;</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">&quot;http://hub-mirror.c.163.com&quot;</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre></div><p>或者注册<a href="https://cr.console.aliyun.com/#/accelerator" target="_blank" rel="noopener noreferrer">阿里云账户<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>，可以获得自己的<a href="https://xn--rcaaaaaa.mirror.aliyuncs.com" target="_blank" rel="noopener noreferrer">加速器<span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a>。</p> <p>针对<code>Docker</code>客户端版本大于<code>1.10.0</code>的用户，可以通过修改<code>daemon</code>配置文件<code>/etc/docker/daemon.json</code>来使用加速器：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> <span class="token function">mkdir</span> -p /etc/docker
+<span class="token function">sudo</span> <span class="token function">tee</span> /etc/docker/daemon.json <span class="token operator">&lt;&lt;-</span><span class="token string">'EOF'
+{
+  &quot;registry-mirrors&quot;: [&quot;https://6fzym3rt.mirror.aliyuncs.com&quot;]
+}
+EOF</span>
+<span class="token function">sudo</span> systemctl daemon-reload
+<span class="token function">sudo</span> systemctl restart docker
+</code></pre></div><h3 id="_5-普通用户加入docker组"><a href="#_5-普通用户加入docker组" class="header-anchor">#</a> 5. 普通用户加入<code>docker</code>组</h3> <p>有时候，不想每次输入<code>sudo</code>，这时，我们可以将用户加入<code>docker</code>组。当然，这是不安全的，官方不推荐这样做。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 创建docker组（如果没有的话）</span>
+<span class="token function">sudo</span> <span class="token function">groupadd</span> docker
+
+<span class="token comment"># 将当前用户加入docker组</span>
+<span class="token function">sudo</span> gpasswd -a <span class="token variable">${<span class="token environment constant">USER</span>}</span> docker
+
+<span class="token comment"># 重新启动docker服务</span>
+<span class="token function">sudo</span> <span class="token function">service</span> docker restart或sudo systemctl restart docker
+
+<span class="token comment"># 当前用户退出系统重新登陆</span>
+<span class="token function">su</span> root
+<span class="token function">su</span> franson
+
+<span class="token comment"># 运行docker命令</span>
+docker <span class="token function">ps</span>
+</code></pre></div><h2 id="容器"><a href="#容器" class="header-anchor">#</a> 容器</h2> <h3 id="_1-运行"><a href="#_1-运行" class="header-anchor">#</a> 1. 运行</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>docker run alpine:latest /bin/echo <span class="token string">&quot;Hello world&quot;</span>
+</code></pre></div><h3 id="_2-运行交互式的容器"><a href="#_2-运行交互式的容器" class="header-anchor">#</a> 2. 运行交互式的容器</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>docker run -i -t -v /test:/soft ubuntu:15.10 /bin/bash
+</code></pre></div><p>各个参数解析：</p> <div class="language- extra-class"><pre class="language-text"><code>-t:在新容器内指定一个伪终端或终端。
+
+-i:允许你对容器内的标准输入 (STDIN) 进行交互。
+
+-v:挂载容器，前者是宿主机中目录，后者是容器内目录，再加个`:`的话，是权限
+</code></pre></div><h3 id="_3-启动容器-后台模式"><a href="#_3-启动容器-后台模式" class="header-anchor">#</a> 3. 启动容器（后台模式）</h3> <div class="language- extra-class"><pre class="language-text"><code>docker run -d ubuntu:15.10 /bin/sh -c &quot;while true; do echo hello world; sleep 1; done&quot;
+</code></pre></div><p>这时，容器在后台运行，当前输入容器不会打印<code>hello world</code>，只会返回一个<code>ID</code>号，通过它，可以使用<code>docker logs $ID</code>来查看输出内容。<code>docker logs -f $ID</code>可以让 <code>dokcer logs</code> 像使用 <code>tail -f</code> 一样来输出容器内部的标准输出。</p> <p>指定<code>-p</code>标识来绑定指定端口。默认开放<code>5000</code>，映射到主机端口<code>32769</code>上。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker run -d -p <span class="token number">5000</span>:5000 xx/1.0 node app.js
+</code></pre></div><p>已经停止的：<code>docker start container_id</code></p> <p>正地运行的重启：<code>docker restart</code></p> <p>进入容器：<code>docker exec -it container_id /bin/bash</code></p> <p>特权方式：<code>docker run -it --privileged -v /test:/soft centos /bin/bash</code></p> <h3 id="_4-查看容器"><a href="#_4-查看容器" class="header-anchor">#</a> 4. 查看容器</h3> <div class="language- extra-class"><pre class="language-text"><code>docker ps # 正在运行的
+
+docker ps -a	# 所有的
+
+docker ps -l	# 最后一次创建的
+
+docker top determined_swanson # 查看进程
+
+docker inspect determined_swanson	# 底层信息
+</code></pre></div><h3 id="_5-停止容器"><a href="#_5-停止容器" class="header-anchor">#</a> 5. 停止容器</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>docker stop container_id
+docker stop <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -a -q<span class="token variable">)</span></span>	<span class="token comment"># 停止所有容器</span>
+</code></pre></div><h3 id="_6-移除容器"><a href="#_6-移除容器" class="header-anchor">#</a> 6. 移除容器</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>docker <span class="token function">rm</span> container_id
+docker <span class="token function">rm</span> <span class="token variable"><span class="token variable">$(</span>docker <span class="token function">ps</span> -a -q<span class="token variable">)</span></span> <span class="token comment"># 删除所有未运行 Docker 容器</span>
+</code></pre></div><p>有时候会遇到停止<code>docker</code>容器失败的情况，需要强制移除容器</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker <span class="token function">rm</span> -f container_id
+</code></pre></div><h2 id="镜像"><a href="#镜像" class="header-anchor">#</a> 镜像</h2> <h3 id="_1-查看镜像"><a href="#_1-查看镜像" class="header-anchor">#</a> 1. 查看镜像</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 查看所有镜像</span>
+docker images
+<span class="token comment"># 搜索服务器上可用的镜像</span>
+docker search httpd
+</code></pre></div><h3 id="_2-创建镜像"><a href="#_2-创建镜像" class="header-anchor">#</a> 2. 创建镜像</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 下载</span>
+docker pull httpd
+<span class="token comment"># 最小镜像</span>
+alpine
+</code></pre></div><p>当我们从<code>docker</code>镜像仓库中下载的镜像不能满足我们的需求时，我们可以通过以下两种方式对镜像进行更改。</p> <ul><li>从已经创建的容器中更新镜像，并且提交这个镜像，详见下节<code>更新</code></li> <li>使用 <code>Dockerfile</code> 指令来创建一个新的镜像</li></ul> <div class="language- extra-class"><pre class="language-text"><code>docker build -t xx:1.0 .
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">参数说明</p> <p>-t ：指定要创建的目标镜像名</p> <p>. ：<code>Dockerfile</code> 文件所在目录，可以指定<code>Dockerfile</code> 的绝对路径</p></div> <h3 id="_3-更新"><a href="#_3-更新" class="header-anchor">#</a> 3. 更新</h3> <p>更新镜像之前，我们需要使用镜像来创建一个容器。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker run -t -i ubuntu:15.10 /bin/bash
+</code></pre></div><p>在运行的容器内进行操作，输入<code>exit</code>命令来退出这个容器。此时这个容器，是按我们的需求更改的容器。我们可以通过命令 <code>docker commit</code>来提交容器副本。</p> <div class="language-shell extra-class"><pre class="language-shell"><code>docker commit -m<span class="token operator">=</span><span class="token string">&quot;has update&quot;</span> -a<span class="token operator">=</span><span class="token string">&quot;runoob&quot;</span> e218edb10161 runoob/ubuntu:v2
+</code></pre></div><div class="custom-block tip"><p class="custom-block-title">参数说明</p> <p>-m：提交的描述信息</p> <p>-a：指定镜像作者</p> <p>e218edb10161：容器ID</p> <p>runoob/ubuntu:v2：指定要创建的目标镜像名</p></div> <h3 id="_4-删除"><a href="#_4-删除" class="header-anchor">#</a> 4. 删除</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 删除特定镜像</span>
+docker rmi <span class="token function">id</span>
+<span class="token comment"># 删除所有未打tag的镜像</span>
+docker rmi <span class="token variable"><span class="token variable">$(</span>docker images -q <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">'/^&lt;none&gt;/ { print <span class="token variable">$3</span> }'</span><span class="token variable">)</span></span>
+<span class="token comment"># 删除所有镜像</span>
+docker rmi <span class="token variable"><span class="token variable">$(</span>docker images -q<span class="token variable">)</span></span>
+<span class="token comment"># 删除没有使用的镜像</span>
+docker rmi -f <span class="token variable"><span class="token variable">$(</span>docker images <span class="token operator">|</span> <span class="token function">grep</span> <span class="token string">&quot;&lt;none&gt;&quot;</span> <span class="token operator">|</span> <span class="token function">awk</span> <span class="token string">&quot;{print \<span class="token variable">$3</span>}&quot;</span><span class="token variable">)</span></span>
+</code></pre></div><h3 id="_5-设置镜像标签"><a href="#_5-设置镜像标签" class="header-anchor">#</a> 5. 设置镜像标签</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>docker tag 860c279d2fec runoob/centos:dev
+</code></pre></div><h2 id="dockerfile样例"><a href="#dockerfile样例" class="header-anchor">#</a> Dockerfile样例</h2> <div class="language-dockerfile extra-class"><pre class="language-dockerfile"><code><span class="token comment"># 用这个文件生成gitlab-ci需要的docker容器</span>
+<span class="token comment"># 同时需要有个jdk-8u161-linux-x64.tar.gz文件放在与它同级的目录下</span>
+<span class="token comment"># 构建镜像：docker build -t xx:1.0 .</span>
+<span class="token comment"># 创建容器：docker run -t -i xx:1.0  /bin/bash</span>
+<span class="token keyword">FROM</span> node<span class="token punctuation">:</span>9
+
+<span class="token comment"># 指定制作我们的镜像的联系人信息（镜像创建者）</span>
+<span class="token keyword">MAINTAINER</span> jw
+
+<span class="token comment"># 将根目录下的文件都copy到container（运行此镜像的容器）文件系统的app文件夹下</span>
+<span class="token keyword">ADD</span> . /app/
+<span class="token comment"># cd到app文件夹下</span>
+<span class="token keyword">WORKDIR</span> /app
+
+<span class="token comment">#apt-get update</span>
+<span class="token keyword">RUN</span> apt<span class="token punctuation">-</span>get update &amp;&amp; apt<span class="token punctuation">-</span>get install sshpass
+
+<span class="token comment">#生成ssh的key</span>
+  <span class="token keyword">RUN</span> ssh<span class="token punctuation">-</span>keygen <span class="token punctuation">-</span>t rsa
+
+<span class="token comment">#将jre包移动到 /usr/lib/jvm/目录下并解压</span>
+<span class="token keyword">RUN</span> mkdir /usr/lib/jvm \
+    &amp;&amp; mv /app/jdk<span class="token punctuation">-</span>8u161<span class="token punctuation">-</span>linux<span class="token punctuation">-</span>x64.tar.gz /usr/lib/jvm \
+    &amp;&amp; cd /usr/lib/jvm \
+    &amp;&amp; tar <span class="token punctuation">-</span>xzvf jdk<span class="token punctuation">-</span>8u161<span class="token punctuation">-</span>linux<span class="token punctuation">-</span>x64.tar.gz
+
+<span class="token comment">#设置路径</span>
+<span class="token keyword">RUN</span> update<span class="token punctuation">-</span>alternatives <span class="token punctuation">-</span><span class="token punctuation">-</span>install <span class="token string">&quot;/usr/bin/java&quot;</span> <span class="token string">&quot;java&quot;</span> <span class="token string">&quot;/usr/lib/jvm/jdk1.8.0_161/jre/bin/java&quot;</span> 1 \
+      &amp;&amp; update<span class="token punctuation">-</span>alternatives <span class="token punctuation">-</span><span class="token punctuation">-</span>set java /usr/lib/jvm/jdk1.8.0_161/jre/bin/java
+
+<span class="token comment"># 安装淘宝镜像</span>
+<span class="token keyword">RUN</span> npm install cnpm <span class="token punctuation">-</span>g <span class="token punctuation">-</span><span class="token punctuation">-</span>registry=https<span class="token punctuation">:</span>//registry.npm.taobao.org
+
+<span class="token comment"># 配置环境变量</span>
+<span class="token keyword">ENV</span> JAVA_HOME /usr/lib/jvm/jre
+<span class="token keyword">ENV</span> HOST 0.0.0.0
+<span class="token keyword">ENV</span> PORT 8000
+
+<span class="token comment"># 容器对外暴露的端口号</span>
+<span class="token keyword">EXPOSE</span> 8000
+
+<span class="token comment"># 容器启动时执行的命令，类似npm run start</span>
+<span class="token comment">#CMD [</span><span class="token string">&quot;npm&quot;</span><span class="token punctuation">,</span> <span class="token string">&quot;start&quot;</span><span class="token punctuation">]</span>
+</code></pre></div><h2 id="重启docker服务"><a href="#重启docker服务" class="header-anchor">#</a> 重启docker服务</h2> <h3 id="systemctl-方式"><a href="#systemctl-方式" class="header-anchor">#</a> systemctl 方式</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 守护进程重启</span>
+<span class="token function">sudo</span> systemctl daemon-reload
+<span class="token comment"># 重启docker服务</span>
+<span class="token function">sudo</span> systemctl restart docker
+<span class="token comment"># 关闭docker</span>
+<span class="token function">sudo</span> systemctl stop docker
+</code></pre></div><h3 id="service-方式"><a href="#service-方式" class="header-anchor">#</a> service 方式</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 重启docker服务</span>
+<span class="token function">sudo</span> <span class="token function">service</span> docker restart
+<span class="token comment"># 关闭docker</span>
+<span class="token function">sudo</span> <span class="token function">service</span> docker stop
+</code></pre></div><h2 id="ssh"><a href="#ssh" class="header-anchor">#</a> ssh</h2> <ul><li>使用<code>sshpass</code>来调用外部的命令：</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>sshpass -p 密码 <span class="token function">ssh</span> 用户名@IP -p <span class="token number">22</span> -o <span class="token assign-left variable">StrictHostKeyChecking</span><span class="token operator">=</span>no <span class="token string">'ls /root'</span>
+</code></pre></div><ul><li>远程文件同步到当前目录（.）下</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">scp</span> -r <span class="token number">192.168</span>.1.140:/opt/docker-volume/php/owncloud/apps/edu_video.tar.gz <span class="token builtin class-name">.</span>
+</code></pre></div><ul><li>从主机复制到容器</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>docker <span class="token function">cp</span> host_path containerID:container_path
+</code></pre></div><ul><li>从容器复制到主机</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>docker <span class="token function">cp</span> containerID:container_path host_path
+</code></pre></div><ul><li>生成ssh</li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>ssh-keygen -t rsa
+
+<span class="token function">scp</span> -r /root/.ssh/id_rsa.pub 目标IP:/root/.ssh/authorized_keys
+</code></pre></div></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/jiawei397/docs/edit/master/docs/note/docker/docker.md" target="_blank" rel="noopener noreferrer">提出宝贵意见</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/docs/assets/js/app.f6e97648.js" defer></script><script src="/docs/assets/js/2.793e3b27.js" defer></script><script src="/docs/assets/js/26.e0a62fe9.js" defer></script>
+  </body>
+</html>

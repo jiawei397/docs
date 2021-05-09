@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>持续集成之.gitlab-ci.yml篇 | 帝之下都</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="shortcut icon" href="/docs/images/favicon.ico">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.2486ecd9.css" as="style"><link rel="preload" href="/docs/assets/js/app.f6e97648.js" as="script"><link rel="preload" href="/docs/assets/js/2.793e3b27.js" as="script"><link rel="preload" href="/docs/assets/js/19.249adea3.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.fed05d33.js"><link rel="prefetch" href="/docs/assets/js/100.75e9de39.js"><link rel="prefetch" href="/docs/assets/js/101.02b71521.js"><link rel="prefetch" href="/docs/assets/js/102.3b98358a.js"><link rel="prefetch" href="/docs/assets/js/103.04976126.js"><link rel="prefetch" href="/docs/assets/js/11.42050f1c.js"><link rel="prefetch" href="/docs/assets/js/12.5ed91251.js"><link rel="prefetch" href="/docs/assets/js/13.760ba031.js"><link rel="prefetch" href="/docs/assets/js/14.fbcf57fe.js"><link rel="prefetch" href="/docs/assets/js/15.e7d172b7.js"><link rel="prefetch" href="/docs/assets/js/16.efc29a58.js"><link rel="prefetch" href="/docs/assets/js/17.bf0efcec.js"><link rel="prefetch" href="/docs/assets/js/18.43607bc5.js"><link rel="prefetch" href="/docs/assets/js/20.0ff2d59c.js"><link rel="prefetch" href="/docs/assets/js/21.86a40b0c.js"><link rel="prefetch" href="/docs/assets/js/22.0c4688a1.js"><link rel="prefetch" href="/docs/assets/js/23.91d70a7b.js"><link rel="prefetch" href="/docs/assets/js/24.3d5b9a61.js"><link rel="prefetch" href="/docs/assets/js/25.0e41904b.js"><link rel="prefetch" href="/docs/assets/js/26.e0a62fe9.js"><link rel="prefetch" href="/docs/assets/js/27.30fb029e.js"><link rel="prefetch" href="/docs/assets/js/28.f90766af.js"><link rel="prefetch" href="/docs/assets/js/29.2ee1cc61.js"><link rel="prefetch" href="/docs/assets/js/3.1503391c.js"><link rel="prefetch" href="/docs/assets/js/30.89f6c4b1.js"><link rel="prefetch" href="/docs/assets/js/31.ad837c60.js"><link rel="prefetch" href="/docs/assets/js/32.52ae32c9.js"><link rel="prefetch" href="/docs/assets/js/33.065b8fee.js"><link rel="prefetch" href="/docs/assets/js/34.a3c50501.js"><link rel="prefetch" href="/docs/assets/js/35.3742e7ec.js"><link rel="prefetch" href="/docs/assets/js/36.aa190ca1.js"><link rel="prefetch" href="/docs/assets/js/37.bcfeb241.js"><link rel="prefetch" href="/docs/assets/js/38.87a44621.js"><link rel="prefetch" href="/docs/assets/js/39.2b181812.js"><link rel="prefetch" href="/docs/assets/js/4.339bc79a.js"><link rel="prefetch" href="/docs/assets/js/40.a1ceb441.js"><link rel="prefetch" href="/docs/assets/js/41.f4074c22.js"><link rel="prefetch" href="/docs/assets/js/42.fb708ddd.js"><link rel="prefetch" href="/docs/assets/js/43.5d23f2a5.js"><link rel="prefetch" href="/docs/assets/js/44.96f2f1f8.js"><link rel="prefetch" href="/docs/assets/js/45.9610846c.js"><link rel="prefetch" href="/docs/assets/js/46.c9183423.js"><link rel="prefetch" href="/docs/assets/js/47.5933b74e.js"><link rel="prefetch" href="/docs/assets/js/48.1395cfd7.js"><link rel="prefetch" href="/docs/assets/js/49.06f773b5.js"><link rel="prefetch" href="/docs/assets/js/5.1ffab86f.js"><link rel="prefetch" href="/docs/assets/js/50.bbcdc7fc.js"><link rel="prefetch" href="/docs/assets/js/51.cbc60f68.js"><link rel="prefetch" href="/docs/assets/js/52.716462d4.js"><link rel="prefetch" href="/docs/assets/js/53.5db04ef8.js"><link rel="prefetch" href="/docs/assets/js/54.ec0d945c.js"><link rel="prefetch" href="/docs/assets/js/55.248a9b45.js"><link rel="prefetch" href="/docs/assets/js/56.09f734f5.js"><link rel="prefetch" href="/docs/assets/js/57.debd0eae.js"><link rel="prefetch" href="/docs/assets/js/58.da917dc3.js"><link rel="prefetch" href="/docs/assets/js/59.b48ef98f.js"><link rel="prefetch" href="/docs/assets/js/6.1f492624.js"><link rel="prefetch" href="/docs/assets/js/60.b547a796.js"><link rel="prefetch" href="/docs/assets/js/61.5a2527ab.js"><link rel="prefetch" href="/docs/assets/js/62.769dd34e.js"><link rel="prefetch" href="/docs/assets/js/63.03433dfa.js"><link rel="prefetch" href="/docs/assets/js/64.a892881e.js"><link rel="prefetch" href="/docs/assets/js/65.6f632179.js"><link rel="prefetch" href="/docs/assets/js/66.ee877b7b.js"><link rel="prefetch" href="/docs/assets/js/67.fab8e4eb.js"><link rel="prefetch" href="/docs/assets/js/68.a6780b45.js"><link rel="prefetch" href="/docs/assets/js/69.6bb021ed.js"><link rel="prefetch" href="/docs/assets/js/7.0fc26f95.js"><link rel="prefetch" href="/docs/assets/js/70.0c446e1b.js"><link rel="prefetch" href="/docs/assets/js/71.3c94982e.js"><link rel="prefetch" href="/docs/assets/js/72.c5086532.js"><link rel="prefetch" href="/docs/assets/js/73.84611fa8.js"><link rel="prefetch" href="/docs/assets/js/74.821e73ea.js"><link rel="prefetch" href="/docs/assets/js/75.93372814.js"><link rel="prefetch" href="/docs/assets/js/76.32805d69.js"><link rel="prefetch" href="/docs/assets/js/77.8b6e001b.js"><link rel="prefetch" href="/docs/assets/js/78.73fca068.js"><link rel="prefetch" href="/docs/assets/js/79.3237b4d0.js"><link rel="prefetch" href="/docs/assets/js/8.20ef8cbd.js"><link rel="prefetch" href="/docs/assets/js/80.f04b3cd2.js"><link rel="prefetch" href="/docs/assets/js/81.0b928fef.js"><link rel="prefetch" href="/docs/assets/js/82.1f68c39e.js"><link rel="prefetch" href="/docs/assets/js/83.bb107f03.js"><link rel="prefetch" href="/docs/assets/js/84.d8762f0f.js"><link rel="prefetch" href="/docs/assets/js/85.4fbed6b0.js"><link rel="prefetch" href="/docs/assets/js/86.533661f8.js"><link rel="prefetch" href="/docs/assets/js/87.2fb845a3.js"><link rel="prefetch" href="/docs/assets/js/88.fd812499.js"><link rel="prefetch" href="/docs/assets/js/89.f75cb59b.js"><link rel="prefetch" href="/docs/assets/js/9.5338c914.js"><link rel="prefetch" href="/docs/assets/js/90.78199bc6.js"><link rel="prefetch" href="/docs/assets/js/91.c80e96b7.js"><link rel="prefetch" href="/docs/assets/js/92.a41f9223.js"><link rel="prefetch" href="/docs/assets/js/93.8bd795d4.js"><link rel="prefetch" href="/docs/assets/js/94.6d017679.js"><link rel="prefetch" href="/docs/assets/js/95.331edcc1.js"><link rel="prefetch" href="/docs/assets/js/96.f14d1f9f.js"><link rel="prefetch" href="/docs/assets/js/97.c57cf0ad.js"><link rel="prefetch" href="/docs/assets/js/98.635b673f.js"><link rel="prefetch" href="/docs/assets/js/99.65b10748.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.2486ecd9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">帝之下都</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link router-link-active">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link router-link-active">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>持续集成之.gitlab-ci.yml篇</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/note/cicd/gitlab.html#gitlab-runner" class="sidebar-link">GitLab Runner</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#注册" class="sidebar-link">注册</a></li><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#常见命令" class="sidebar-link">常见命令</a></li></ul></li><li><a href="/docs/note/cicd/gitlab.html#stages" class="sidebar-link">Stages</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/cicd/gitlab.html#jobs" class="sidebar-link">Jobs</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/cicd/gitlab.html#gitlab-ci-yml" class="sidebar-link">.gitlab-ci.yml</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#约束" class="sidebar-link">约束</a></li><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#示例" class="sidebar-link">示例</a></li><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#验证gitlab-ci-yml" class="sidebar-link">验证gitlab-ci.yml</a></li><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#跳过job" class="sidebar-link">跳过job</a></li><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#shell问题" class="sidebar-link">shell问题</a></li><li class="sidebar-sub-header"><a href="/docs/note/cicd/gitlab.html#使用docker" class="sidebar-link">使用docker</a></li></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="持续集成之-gitlab-ci-yml篇"><a href="#持续集成之-gitlab-ci-yml篇" class="header-anchor">#</a> 持续集成之.gitlab-ci.yml篇</h1> <p></p><div class="table-of-contents"><ul><li><a href="#gitlab-runner">GitLab Runner</a><ul><li><a href="#注册">注册</a></li><li><a href="#常见命令">常见命令</a></li></ul></li><li><a href="#stages">Stages</a></li><li><a href="#jobs">Jobs</a></li><li><a href="#gitlab-ci-yml">.gitlab-ci.yml</a><ul><li><a href="#约束">约束</a></li><li><a href="#示例">示例</a></li><li><a href="#验证gitlab-ci-yml">验证gitlab-ci.yml</a></li><li><a href="#跳过job">跳过job</a></li><li><a href="#shell问题">shell问题</a></li><li><a href="#使用docker">使用docker</a></li></ul></li></ul></div><p></p> <p>在介绍.gitlab-ci.yml之前，我们先看几个概念：</p> <h2 id="gitlab-runner"><a href="#gitlab-runner" class="header-anchor">#</a> GitLab Runner</h2> <p>一般来说，构建任务都会占用很多的系统资源 (譬如编译代码)，而 <code>GitLab CI</code> 又是 <code>GitLab</code>的一部分，如果由 <code>GitLab CI</code> 来运行构建任务的话，在执行构建任务的时候，<code>GitLab</code> 的性能会大幅下降。</p> <p><code>GitLab CI</code> 最大的作用是管理各个项目的构建状态，因此，运行构建任务这种浪费资源的事情就交给 <code>GitLab Runner</code> 来做啦。因为 <code>GitLab Runner</code> 可以安装到不同的机器上，所以在构建任务运行期间并不会影响到 <code>GitLab</code> 的性能。</p> <p><code>GitLab Runner</code>的安装特别简单，官网有各平台的安装方法或安装包，此处不再赘述。</p> <h3 id="注册"><a href="#注册" class="header-anchor">#</a> 注册</h3> <ul><li><p>打开<code>GitLab</code> 中的项目页面，在项目设置中找到 <code>runners</code></p></li> <li><p>在<code>runner</code>运行的机器上，用命令行注册，比如：</p></li></ul> <div class="language-shell extra-class"><pre class="language-shell"><code>gitlab-runner register --name<span class="token operator">=</span><span class="token string">&quot;XX&quot;</span>  --url<span class="token operator">=</span><span class="token string">&quot;https://git.xx.com/&quot;</span> --token<span class="token operator">=</span><span class="token string">&quot;XXX&quot;</span> --executor<span class="token operator">=</span><span class="token string">&quot;shell&quot;</span>
+</code></pre></div><p>按照提示一步一步安装就可以了。其中，<code>executor</code>可以是多种类型，简单的话可以选<code>shell</code>。有熟悉<code>docker</code>的可以使用<code>docker</code>。</p> <ul><li><p>配置文件在<code>/etc/gitlab-runner/config.toml</code></p> <p>配置项类似下面，可能需要手动添加<code>builds_dir</code>和<code>cache_dir</code>这两个变量，再重启服务</p></li></ul> <div class="language- extra-class"><pre class="language-text"><code>[[runners]]
+name = &quot;216XX&quot;
+url = &quot;https://git.XX.com/&quot;
+token = &quot;XX&quot;
+executor = &quot;shell&quot;
+builds_dir = &quot;/home/gitlab-runner/builds&quot;
+cache_dir = &quot;/home/gitlab-runner/cache&quot;
+[runners.cache]
+</code></pre></div><h3 id="常见命令"><a href="#常见命令" class="header-anchor">#</a> 常见命令</h3> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> gitlab-runner list <span class="token comment"># 查看各个 Runner 的状态</span>
+<span class="token function">sudo</span> gitlab-runner stop <span class="token comment"># 停止服务</span>
+<span class="token function">sudo</span> gitlab-runner start <span class="token comment"># 启动服务</span>
+<span class="token function">sudo</span> gitlab-runner restart <span class="token comment"># 重启服务</span>
+</code></pre></div><h2 id="stages"><a href="#stages" class="header-anchor">#</a> Stages</h2> <p><code>Stages</code> 表示构建阶段，说白了就是上面提到的流程。默认有3个<code>stages</code>：<code>build</code>, <code>test</code>, <code>deploy</code>。我们可以在一次 <code>Pipeline</code> 中定义多个 <code>Stages</code>，这些 <code>Stages</code> 会有以下特点：</p> <ol><li>所有 <code>Stages</code> 会按照顺序运行，即当一个 <code>Stage</code> 完成后，下一个 <code>Stage</code>才会开始</li> <li>只有当所有 <code>Stages</code> 完成后，该构建任务 (Pipeline) 才会成功</li> <li>如果任何一个 <code>Stage</code>失败，那么后面的<code>Stages</code>不会执行，该构建任务 (Pipeline) 失败</li></ol> <h2 id="jobs"><a href="#jobs" class="header-anchor">#</a> Jobs</h2> <p><code>Jobs</code> 表示构建工作，表示某个 <code>Stage</code> 里面执行的工作。我们可以在 <code>Stages</code> 里面定义多个 <code>Jobs</code>，这些 Jobs 会有以下特点：</p> <p>1、相同 <code>Stage</code> 中的 <code>Jobs</code> 会并行执行</p> <p>2、相同 <code>Stage</code> 中的 <code>Jobs</code> 都执行成功时，该 <code>Stage</code> 才会成功</p> <p>3、如果任何一个 <code>Job</code> 失败，那么该 <code>Stage</code> 失败，即该构建任务 (Pipeline) 失败</p> <h2 id="gitlab-ci-yml"><a href="#gitlab-ci-yml" class="header-anchor">#</a> .gitlab-ci.yml</h2> <p><code>.gitlab-ci.yml</code> 用来配置 <code>CI</code> 用你的项目中做哪些操作，这个文件位于仓库的根目录。</p> <p>当有新内容<code>push</code>到仓库，或者有代码合并后，<code>GitLab</code>会查找是否有<code>.gitlab-ci.yml</code>文件，如果文件存在，<code>Runners</code>将会根据该文件的内容开始<code>build</code>本次<code>commit</code>。</p> <p><code>.gitlab-ci.yml</code> 使用<code>YAML</code>语法， 你需要格外注意缩进格式，要用空格来缩进，不能用<code>tabs</code>来缩进。</p> <h3 id="约束"><a href="#约束" class="header-anchor">#</a> 约束</h3> <p>任务中必须得有<code>script</code>部分。</p> <h3 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h3> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token comment"># 定义 stages（阶段）。任务将按此顺序执行。</span>
+<span class="token key atrule">stages</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> build
+  <span class="token punctuation">-</span> test
+  <span class="token punctuation">-</span> deploy
+
+<span class="token comment"># 定义 job（任务）</span>
+<span class="token key atrule">job1</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test
+  <span class="token key atrule">tags</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> XX <span class="token comment">#只有标签为XX的runner才会执行这个任务</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> dev	<span class="token comment">#只有dev分支提交代码才会执行这个任务。也可以是分支名称或触发器名称</span>
+    <span class="token punctuation">-</span> /^future<span class="token punctuation">-</span>.*$/ <span class="token comment">#正则表达式，只有future-开头的分支才会执行</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;I am job1&quot;
+    <span class="token punctuation">-</span> echo &quot;I am in test stage&quot;
+
+<span class="token comment"># 定义 job</span>
+<span class="token key atrule">job2</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test	<span class="token comment">#如果此处没有定义stage，其默认也是test</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> master	<span class="token comment">#只有master分支提交代码才会执行这个任务</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;I am job2&quot;
+    <span class="token punctuation">-</span> echo &quot;I am in test stage&quot;
+  <span class="token key atrule">allow_failure</span><span class="token punctuation">:</span> <span class="token boolean important">true </span><span class="token comment">#允许失败，即不影响下步构建</span>
+
+<span class="token comment"># 定义 job</span>
+<span class="token key atrule">job3</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> build
+  <span class="token key atrule">except</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> dev <span class="token comment">#除了dev分支，其它分支提交代码都会执行这个任务</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;I am job3&quot;
+    <span class="token punctuation">-</span> echo &quot;I am in build stage&quot;
+  <span class="token key atrule">when</span><span class="token punctuation">:</span> always <span class="token comment">#不管前面几步成功与否，永远会执行这一步。它有几个值：on_success （默认值）\on_failure\always\manual（手动执行）</span>
+
+<span class="token comment"># 定义 job</span>
+<span class="token key atrule">.job4</span><span class="token punctuation">:</span>	<span class="token comment">#对于临时不想执行的job，可以选择在前面加个&quot;.&quot;，这样就会跳过此步任务，否则你除了要注释掉这个jobj外，还需要注释上面为deploy的stage</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> deploy
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> echo &quot;I am job4&quot;
+
+<span class="token comment"># 模板，相当于公用函数，有重复任务时很有用</span>
+<span class="token key atrule">.job_template</span><span class="token punctuation">:</span> <span class="token important">&amp;job_definition</span>  <span class="token comment"># 创建一个锚，'job_definition'</span>
+  <span class="token key atrule">image</span><span class="token punctuation">:</span> ruby<span class="token punctuation">:</span><span class="token number">2.1</span>
+  <span class="token key atrule">services</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> postgres
+    <span class="token punctuation">-</span> redis
+
+<span class="token key atrule">test1</span><span class="token punctuation">:</span>
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*job_definition</span>           <span class="token comment"># 利用锚'job_definition'来合并</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> test1 project
+
+<span class="token key atrule">test2</span><span class="token punctuation">:</span>
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*job_definition</span>           <span class="token comment"># 利用锚'job_definition'来合并</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> test2 project
+
+<span class="token comment">#下面几个都相当于全局变量，都可以添加到具体job中，这时会被子job的覆盖</span>
+
+<span class="token key atrule">before_script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> echo &quot;每个job之前都会执行&quot;
+
+<span class="token key atrule">after_script</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> echo &quot;每个job之后都会执行&quot;
+
+<span class="token key atrule">variables</span><span class="token punctuation">:</span>	<span class="token comment">#变量</span>
+  <span class="token key atrule">DATABASE_URL</span><span class="token punctuation">:</span> <span class="token string">&quot;postgres://postgres@postgres/my_database&quot;</span>  <span class="token comment">#在job中可以用${DATABASE_URL}来使用这个变量。常用的预定义变量有CI_COMMIT_REF_NAME（项目所在的分支或标签名称），CI_JOB_NAME（任务名称），CI_JOB_STAGE（任务阶段）</span>
+  <span class="token key atrule">GIT_STRATEGY</span><span class="token punctuation">:</span> <span class="token string">&quot;none&quot;</span> <span class="token comment">#GIT策略，定义拉取代码的方式，有3种：clone/fetch/none，默认为clone，速度最慢，每步job都会重新clone一次代码。我们一般将它设置为none，在具体任务里设置为fetch就可以满足需求，毕竟不是每步都需要新代码，那也不符合我们测试的流程</span>
+
+<span class="token key atrule">cache</span><span class="token punctuation">:</span>	<span class="token comment">#缓存</span>
+  <span class="token comment">#因为缓存为不同管道和任务间共享，可能会覆盖，所以有时需要设置key</span>
+  <span class="token key atrule">key</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span>CI_COMMIT_REF_NAME<span class="token punctuation">}</span>  <span class="token comment"># 启用每分支缓存。</span>
+  <span class="token comment">#key: &quot;$CI_JOB_NAME/$CI_COMMIT_REF_NAME&quot; # 启用每个任务和每个分支缓存。需要注意的是，如果是在windows中运行这个脚本，需要把$换成%</span>
+  <span class="token key atrule">untracked</span><span class="token punctuation">:</span> <span class="token boolean important">true	</span><span class="token comment">#缓存所有Git未跟踪的文件</span>
+  <span class="token key atrule">paths</span><span class="token punctuation">:</span>	<span class="token comment">#以下2个文件夹会被缓存起来，下次构建会解压出来</span>
+    <span class="token punctuation">-</span> node_modules/
+    <span class="token punctuation">-</span> dist/
+</code></pre></div><h3 id="验证gitlab-ci-yml"><a href="#验证gitlab-ci-yml" class="header-anchor">#</a> 验证gitlab-ci.yml</h3> <div class="language- extra-class"><pre class="language-text"><code>https://git.xx.com/ci/lint
+</code></pre></div><h3 id="跳过job"><a href="#跳过job" class="header-anchor">#</a> 跳过job</h3> <p>如果你的<code>commit</code>信息包涵<code>[ci skip]</code>或者<code>[skip ci]</code>，不论大小写，这个<code>commit</code>将会被创建，但是<code>job</code>会被跳过</p> <h3 id="shell问题"><a href="#shell问题" class="header-anchor">#</a> shell问题</h3> <p>使用<code>shell</code>脚本时，每步<code>job</code>一开始总有不短的等待时间，对于我们而言是不必要的，除去后台<code>jenkins_build</code>这步外，仍要最快<code>20</code>分钟。</p> <p>之前，我曾在<code>release</code>分支时，暂时将各步整合到一个<code>job</code>里，时间缩短为<code>5</code>分钟。当然，这是不符合语义的。</p> <p>最近，发现<code>docker</code>没有这个问题。所以，建议使用<code>docker</code>。</p> <h3 id="使用docker"><a href="#使用docker" class="header-anchor">#</a> 使用docker</h3> <h4 id="示例-2"><a href="#示例-2" class="header-anchor">#</a> 示例</h4> <p>以下是我们项目中使用的<code>.gitlab-ci.yml</code>文件:</p> <div class="language-yml extra-class"><pre class="language-yml"><code><span class="token key atrule">image</span><span class="token punctuation">:</span> xx<span class="token punctuation">:</span><span class="token number">1.0</span>
+
+<span class="token key atrule">stages</span><span class="token punctuation">:</span>
+  <span class="token punctuation">-</span> jenkins_build
+  <span class="token punctuation">-</span> install
+  <span class="token punctuation">-</span> test
+  <span class="token punctuation">-</span> build
+  <span class="token punctuation">-</span> e2e
+  <span class="token punctuation">-</span> zip
+  <span class="token punctuation">-</span> copy
+  <span class="token punctuation">-</span> end
+
+<span class="token key atrule">cache</span><span class="token punctuation">:</span>
+    <span class="token key atrule">policy</span><span class="token punctuation">:</span> pull
+    <span class="token key atrule">key</span><span class="token punctuation">:</span> <span class="token string">&quot;$CI_COMMIT_REF_NAME&quot;</span>
+    <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+        <span class="token punctuation">-</span> node_modules/
+        <span class="token punctuation">-</span> .eslintcache
+
+<span class="token key atrule">variables</span><span class="token punctuation">:</span>
+  <span class="token key atrule">DOCKER_DRIVER</span><span class="token punctuation">:</span> overlay2
+  <span class="token key atrule">GIT_STRATEGY</span><span class="token punctuation">:</span> <span class="token string">&quot;fetch&quot;</span>
+
+<span class="token key atrule">.template</span><span class="token punctuation">:</span> <span class="token important">&amp;templateDef</span>  <span class="token comment"># 创建一个锚，'template'</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> master
+      <span class="token punctuation">-</span> release
+      <span class="token punctuation">-</span> dev
+
+<span class="token key atrule">install</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> install
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>           <span class="token comment"># 利用锚'templateDef'来合并</span>
+  <span class="token key atrule">cache</span><span class="token punctuation">:</span>
+      <span class="token key atrule">key</span><span class="token punctuation">:</span> <span class="token string">&quot;$CI_COMMIT_REF_NAME&quot;</span>
+      <span class="token key atrule">paths</span><span class="token punctuation">:</span>
+          <span class="token punctuation">-</span> node_modules
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> cnpm i
+
+<span class="token key atrule">eslint</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> npm run eslint
+
+<span class="token key atrule">unit</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> test
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> npm run unit
+
+<span class="token key atrule">build</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> build
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> release
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> npm run clear_dist
+    <span class="token punctuation">-</span> npm run build
+
+<span class="token key atrule">.e2e_ci</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> e2e
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> npm run e2e_ci
+
+<span class="token key atrule">zip</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> zip
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> release
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> npm run zip
+
+<span class="token comment">## Jenkins 复制</span>
+<span class="token key atrule">jenkins_copyweb</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> copy
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> release
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ssh $JENKINS_SERVER_IP /jenkins/XX_copyweb.sh
+
+<span class="token comment">## Jenkins 提交</span>
+<span class="token key atrule">jenkins_commit</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> end
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> release
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> ssh $JENKINS_SERVER_IP /jenkins/XX_svn_commit.sh
+
+<span class="token comment">## Jenkins 构建</span>
+<span class="token key atrule">jenkins_build</span><span class="token punctuation">:</span>
+  <span class="token key atrule">stage</span><span class="token punctuation">:</span> jenkins_build
+  <span class="token key atrule">&lt;&lt;</span><span class="token punctuation">:</span> <span class="token important">*templateDef</span>
+  <span class="token key atrule">only</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> master
+  <span class="token key atrule">script</span><span class="token punctuation">:</span>
+     <span class="token punctuation">-</span> ssh $JENKINS_SERVER_IP /jenkins/build.sh
+</code></pre></div><p>其中，<code>XX:1.0</code>是我们自己创建的<code>docker</code>镜像，它主要安装了<code>nodejs</code>、<code>cnpm</code>、<code>jdk</code>、<code>sshpass</code>，其中<code>sshpass</code>不是必须的，它是使用密码登陆宿主机时的一种方案。</p> <p>现在，我们使用<code>ssh</code>来与宿主机交互，需要将容器内生成的<code>ssh</code>的<code>key</code>（<code>ssh-keygen -t rsa</code>），即<code>/root/.ssh/id_rsa.pub</code>中内容，复制到宿主机的<code>/root/.ssh/authorized_keys</code>文件中。</p> <h4 id="配置"><a href="#配置" class="header-anchor">#</a> 配置</h4> <p>配置文件<code>/etc/gitlab-runner/config.toml</code>修改为</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token punctuation">[</span><span class="token punctuation">[</span>runners<span class="token punctuation">]</span><span class="token punctuation">]</span>
+  name <span class="token operator">=</span> <span class="token string">&quot;216xx&quot;</span>
+  url <span class="token operator">=</span> <span class="token string">&quot;https://git.xx.com/&quot;</span>
+  token <span class="token operator">=</span> <span class="token string">&quot;xx&quot;</span>
+  executor <span class="token operator">=</span> <span class="token string">&quot;docker&quot;</span>
+  <span class="token punctuation">[</span>runners.docker<span class="token punctuation">]</span>
+    tls_verify <span class="token operator">=</span> <span class="token boolean">false</span>
+    image <span class="token operator">=</span> <span class="token string">&quot;xx:1.0&quot;</span>
+    privileged <span class="token operator">=</span> <span class="token boolean">false</span>
+    disable_cache <span class="token operator">=</span> <span class="token boolean">false</span>
+    pull_policy <span class="token operator">=</span> <span class="token string">&quot;if-not-present&quot;</span>
+    volumes <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">&quot;/cache&quot;</span>,<span class="token string">&quot;/tmp:/tmp:rw&quot;</span><span class="token punctuation">]</span>
+    shm_size <span class="token operator">=</span> <span class="token number">0</span>
+  <span class="token punctuation">[</span>runners.cache<span class="token punctuation">]</span>
+</code></pre></div><p>其中，<code>pull_policy</code>是下载<code>docker</code>镜像<code>image</code>的策略，默认会先从网上找，没有就报错，我们改为先从本地找；<code>volumes</code>是将<code>docker</code>中的数据卷挂载到宿主机上。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/jiawei397/docs/edit/master/docs/note/cicd/gitlab.md" target="_blank" rel="noopener noreferrer">提出宝贵意见</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/docs/assets/js/app.f6e97648.js" defer></script><script src="/docs/assets/js/2.793e3b27.js" defer></script><script src="/docs/assets/js/19.249adea3.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>linux常用命令 | 帝之下都</title>
+    <meta name="generator" content="VuePress 1.7.1">
+    <link rel="shortcut icon" href="/docs/images/favicon.ico">
+    <meta name="description" content="">
+    
+    <link rel="preload" href="/docs/assets/css/0.styles.2486ecd9.css" as="style"><link rel="preload" href="/docs/assets/js/app.f6e97648.js" as="script"><link rel="preload" href="/docs/assets/js/2.793e3b27.js" as="script"><link rel="preload" href="/docs/assets/js/74.821e73ea.js" as="script"><link rel="prefetch" href="/docs/assets/js/10.fed05d33.js"><link rel="prefetch" href="/docs/assets/js/100.75e9de39.js"><link rel="prefetch" href="/docs/assets/js/101.02b71521.js"><link rel="prefetch" href="/docs/assets/js/102.3b98358a.js"><link rel="prefetch" href="/docs/assets/js/103.04976126.js"><link rel="prefetch" href="/docs/assets/js/11.42050f1c.js"><link rel="prefetch" href="/docs/assets/js/12.5ed91251.js"><link rel="prefetch" href="/docs/assets/js/13.760ba031.js"><link rel="prefetch" href="/docs/assets/js/14.fbcf57fe.js"><link rel="prefetch" href="/docs/assets/js/15.e7d172b7.js"><link rel="prefetch" href="/docs/assets/js/16.efc29a58.js"><link rel="prefetch" href="/docs/assets/js/17.bf0efcec.js"><link rel="prefetch" href="/docs/assets/js/18.43607bc5.js"><link rel="prefetch" href="/docs/assets/js/19.249adea3.js"><link rel="prefetch" href="/docs/assets/js/20.0ff2d59c.js"><link rel="prefetch" href="/docs/assets/js/21.86a40b0c.js"><link rel="prefetch" href="/docs/assets/js/22.0c4688a1.js"><link rel="prefetch" href="/docs/assets/js/23.91d70a7b.js"><link rel="prefetch" href="/docs/assets/js/24.3d5b9a61.js"><link rel="prefetch" href="/docs/assets/js/25.0e41904b.js"><link rel="prefetch" href="/docs/assets/js/26.e0a62fe9.js"><link rel="prefetch" href="/docs/assets/js/27.30fb029e.js"><link rel="prefetch" href="/docs/assets/js/28.f90766af.js"><link rel="prefetch" href="/docs/assets/js/29.2ee1cc61.js"><link rel="prefetch" href="/docs/assets/js/3.1503391c.js"><link rel="prefetch" href="/docs/assets/js/30.89f6c4b1.js"><link rel="prefetch" href="/docs/assets/js/31.ad837c60.js"><link rel="prefetch" href="/docs/assets/js/32.52ae32c9.js"><link rel="prefetch" href="/docs/assets/js/33.065b8fee.js"><link rel="prefetch" href="/docs/assets/js/34.a3c50501.js"><link rel="prefetch" href="/docs/assets/js/35.3742e7ec.js"><link rel="prefetch" href="/docs/assets/js/36.aa190ca1.js"><link rel="prefetch" href="/docs/assets/js/37.bcfeb241.js"><link rel="prefetch" href="/docs/assets/js/38.87a44621.js"><link rel="prefetch" href="/docs/assets/js/39.2b181812.js"><link rel="prefetch" href="/docs/assets/js/4.339bc79a.js"><link rel="prefetch" href="/docs/assets/js/40.a1ceb441.js"><link rel="prefetch" href="/docs/assets/js/41.f4074c22.js"><link rel="prefetch" href="/docs/assets/js/42.fb708ddd.js"><link rel="prefetch" href="/docs/assets/js/43.5d23f2a5.js"><link rel="prefetch" href="/docs/assets/js/44.96f2f1f8.js"><link rel="prefetch" href="/docs/assets/js/45.9610846c.js"><link rel="prefetch" href="/docs/assets/js/46.c9183423.js"><link rel="prefetch" href="/docs/assets/js/47.5933b74e.js"><link rel="prefetch" href="/docs/assets/js/48.1395cfd7.js"><link rel="prefetch" href="/docs/assets/js/49.06f773b5.js"><link rel="prefetch" href="/docs/assets/js/5.1ffab86f.js"><link rel="prefetch" href="/docs/assets/js/50.bbcdc7fc.js"><link rel="prefetch" href="/docs/assets/js/51.cbc60f68.js"><link rel="prefetch" href="/docs/assets/js/52.716462d4.js"><link rel="prefetch" href="/docs/assets/js/53.5db04ef8.js"><link rel="prefetch" href="/docs/assets/js/54.ec0d945c.js"><link rel="prefetch" href="/docs/assets/js/55.248a9b45.js"><link rel="prefetch" href="/docs/assets/js/56.09f734f5.js"><link rel="prefetch" href="/docs/assets/js/57.debd0eae.js"><link rel="prefetch" href="/docs/assets/js/58.da917dc3.js"><link rel="prefetch" href="/docs/assets/js/59.b48ef98f.js"><link rel="prefetch" href="/docs/assets/js/6.1f492624.js"><link rel="prefetch" href="/docs/assets/js/60.b547a796.js"><link rel="prefetch" href="/docs/assets/js/61.5a2527ab.js"><link rel="prefetch" href="/docs/assets/js/62.769dd34e.js"><link rel="prefetch" href="/docs/assets/js/63.03433dfa.js"><link rel="prefetch" href="/docs/assets/js/64.a892881e.js"><link rel="prefetch" href="/docs/assets/js/65.6f632179.js"><link rel="prefetch" href="/docs/assets/js/66.ee877b7b.js"><link rel="prefetch" href="/docs/assets/js/67.fab8e4eb.js"><link rel="prefetch" href="/docs/assets/js/68.a6780b45.js"><link rel="prefetch" href="/docs/assets/js/69.6bb021ed.js"><link rel="prefetch" href="/docs/assets/js/7.0fc26f95.js"><link rel="prefetch" href="/docs/assets/js/70.0c446e1b.js"><link rel="prefetch" href="/docs/assets/js/71.3c94982e.js"><link rel="prefetch" href="/docs/assets/js/72.c5086532.js"><link rel="prefetch" href="/docs/assets/js/73.84611fa8.js"><link rel="prefetch" href="/docs/assets/js/75.93372814.js"><link rel="prefetch" href="/docs/assets/js/76.32805d69.js"><link rel="prefetch" href="/docs/assets/js/77.8b6e001b.js"><link rel="prefetch" href="/docs/assets/js/78.73fca068.js"><link rel="prefetch" href="/docs/assets/js/79.3237b4d0.js"><link rel="prefetch" href="/docs/assets/js/8.20ef8cbd.js"><link rel="prefetch" href="/docs/assets/js/80.f04b3cd2.js"><link rel="prefetch" href="/docs/assets/js/81.0b928fef.js"><link rel="prefetch" href="/docs/assets/js/82.1f68c39e.js"><link rel="prefetch" href="/docs/assets/js/83.bb107f03.js"><link rel="prefetch" href="/docs/assets/js/84.d8762f0f.js"><link rel="prefetch" href="/docs/assets/js/85.4fbed6b0.js"><link rel="prefetch" href="/docs/assets/js/86.533661f8.js"><link rel="prefetch" href="/docs/assets/js/87.2fb845a3.js"><link rel="prefetch" href="/docs/assets/js/88.fd812499.js"><link rel="prefetch" href="/docs/assets/js/89.f75cb59b.js"><link rel="prefetch" href="/docs/assets/js/9.5338c914.js"><link rel="prefetch" href="/docs/assets/js/90.78199bc6.js"><link rel="prefetch" href="/docs/assets/js/91.c80e96b7.js"><link rel="prefetch" href="/docs/assets/js/92.a41f9223.js"><link rel="prefetch" href="/docs/assets/js/93.8bd795d4.js"><link rel="prefetch" href="/docs/assets/js/94.6d017679.js"><link rel="prefetch" href="/docs/assets/js/95.331edcc1.js"><link rel="prefetch" href="/docs/assets/js/96.f14d1f9f.js"><link rel="prefetch" href="/docs/assets/js/97.c57cf0ad.js"><link rel="prefetch" href="/docs/assets/js/98.635b673f.js"><link rel="prefetch" href="/docs/assets/js/99.65b10748.js">
+    <link rel="stylesheet" href="/docs/assets/css/0.styles.2486ecd9.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/docs/" class="home-link router-link-active"><!----> <span class="site-name">帝之下都</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link router-link-active">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/docs/" class="nav-link">
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="技术" class="dropdown-title"><span class="title">技术</span> <span class="arrow down"></span></button> <button type="button" aria-label="技术" class="mobile-dropdown-title"><span class="title">技术</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/docs/note/js/" class="nav-link">
+  js
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/go/" class="nav-link">
+  go
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/web/" class="nav-link">
+  web
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/vue/" class="nav-link">
+  vue
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/linux/" class="nav-link router-link-active">
+  linux
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/docker/" class="nav-link">
+  docker
+</a></li><li class="dropdown-item"><!----> <a href="/docs/note/cicd/" class="nav-link">
+  持续集成
+</a></li></ul></div></div> <a href="https://github.com/jiawei397/docs" target="_blank" rel="noopener noreferrer" class="repo-link">
+    查看源码
+    <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>linux常用命令</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/docs/note/linux/commands.html#系统命令" class="sidebar-link">系统命令</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#查看ip" class="sidebar-link">查看ip</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#用户" class="sidebar-link">用户</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#文件" class="sidebar-link">文件</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/docs/note/linux/commands.html#压缩解压" class="sidebar-link">压缩解压</a></li><li class="sidebar-sub-header"><a href="/docs/note/linux/commands.html#删除" class="sidebar-link">删除</a></li><li class="sidebar-sub-header"><a href="/docs/note/linux/commands.html#重命名" class="sidebar-link">重命名</a></li><li class="sidebar-sub-header"><a href="/docs/note/linux/commands.html#复制文件夹" class="sidebar-link">复制文件夹</a></li><li class="sidebar-sub-header"><a href="/docs/note/linux/commands.html#详细信息" class="sidebar-link">详细信息</a></li><li class="sidebar-sub-header"><a href="/docs/note/linux/commands.html#上传下载" class="sidebar-link">上传下载</a></li></ul></li><li><a href="/docs/note/linux/commands.html#安装图形化界面" class="sidebar-link">安装图形化界面</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#安装wget" class="sidebar-link">安装wget</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#编辑文件" class="sidebar-link">编辑文件</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#生成64位编码" class="sidebar-link">生成64位编码</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#安装ssh" class="sidebar-link">安装ssh</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#安装一般软件" class="sidebar-link">安装一般软件</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/docs/note/linux/commands.html#用户环境变量" class="sidebar-link">用户环境变量</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="linux常用命令"><a href="#linux常用命令" class="header-anchor">#</a> linux常用命令</h1> <p>如果是用户和管理员必备的二进制文件，就会放在<code>/bin</code>；</p> <p>如果是系统管理员必备，但是一般用户根本不会用到的二进制文件，就会放在<code>/sbin</code>；</p> <p>如果不是用户必备的二进制文件，多半会放在<code>/usr/bin</code>；</p> <p>如果不是系统管理员必备的工具，如网络管理命令，多半会放在<code>/usr/sbin</code>；</p> <h2 id="系统命令"><a href="#系统命令" class="header-anchor">#</a> 系统命令</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>$ 查看磁盘还剩多少空间
+<span class="token function">df</span> -h
+
+$ 查看进程
+<span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> java
+<span class="token function">ps</span> -eflax<span class="token operator">|</span><span class="token function">grep</span> java
+
+/usr/ucb/ps -axuwww <span class="token operator">|</span><span class="token function">grep</span> java
+
+<span class="token function">ps</span> -ef<span class="token operator">|</span><span class="token function">grep</span> 进程类型root <span class="token operator">!</span>qazxsw@
+
+$ 结束进程
+<span class="token function">kill</span> -9 进程编号
+
+$ 查看端口占用
+ss -lntpd <span class="token operator">|</span> <span class="token function">grep</span> :4000
+
+$ 文件赋权
+<span class="token function">chmod</span> -R <span class="token number">777</span> 文件名
+
+$ 查看权限
+<span class="token function">ls</span> -l
+
+$ 文件夹赋权给用户
+<span class="token function">chown</span> -R 用户名:组名 文件夹名称/
+/home/gitlab-runner/builds
+
+$ <span class="token function">nohup</span> 加在一个命令的最前面，表示不挂断的运行命令<span class="token punctuation">;</span> <span class="token operator">&amp;</span> 加在一个命令的最后面，表示这个命令放在后台执行
+<span class="token function">nohup</span> ./run.sh <span class="token operator">&amp;</span>
+
+</code></pre></div><h2 id="查看ip"><a href="#查看ip" class="header-anchor">#</a> 查看ip</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">ip</span> addr show
+<span class="token function">ifconfig</span>
+</code></pre></div><h2 id="用户"><a href="#用户" class="header-anchor">#</a> 用户</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token comment"># 新建用户</span>
+<span class="token function">useradd</span> 用户名
+<span class="token comment"># 创建密码</span>
+<span class="token function">passwd</span> 用户名	密码
+<span class="token comment"># 删除用户</span>
+<span class="token function">userdel</span> 用户名
+<span class="token comment"># 切换用户</span>
+<span class="token function">su</span> 用户名
+
+<span class="token comment"># 查看所有用户的列表</span>
+<span class="token function">cat</span> /etc/passwd
+<span class="token comment"># 查看当前活跃的用户列表</span>
+w
+<span class="token comment"># 查看用户组</span>
+<span class="token function">cat</span> /etc/group
+
+<span class="token comment"># 创建docker组（如果没有的话）</span>
+<span class="token function">sudo</span> <span class="token function">groupadd</span> docker
+
+<span class="token comment"># 将当前用户加入docker组</span>
+<span class="token function">sudo</span> gpasswd -a <span class="token variable">${<span class="token environment constant">USER</span>}</span> docker
+
+<span class="token function">cat</span> /etc/passwd<span class="token operator">|</span><span class="token function">grep</span> -v nologin<span class="token operator">|</span><span class="token function">grep</span> -v <span class="token function">halt</span><span class="token operator">|</span><span class="token function">grep</span> -v <span class="token function">shutdown</span><span class="token operator">|</span><span class="token function">awk</span> -F<span class="token string">&quot;:&quot;</span> <span class="token string">'{ print <span class="token variable">$1</span>&quot;|&quot;<span class="token variable">$3</span>&quot;|&quot;<span class="token variable">$4</span> }'</span><span class="token operator">|</span><span class="token function">more</span>
+
+<span class="token comment"># ubuntu设置root密码</span>
+<span class="token function">sudo</span> <span class="token function">passwd</span>
+</code></pre></div><h2 id="文件"><a href="#文件" class="header-anchor">#</a> 文件</h2> <h3 id="压缩解压"><a href="#压缩解压" class="header-anchor">#</a> 压缩解压</h3> <div class="language-shell extra-class"><pre class="language-shell"><code>$ 压缩文件
+<span class="token function">zip</span> -r myfile.zip ./*
+<span class="token comment"># 将当前目录下的所有文件和文件夹全部压缩成myfile.zip文件,-r表示递归压缩子目录下所有文件.</span>
+
+$ 解压文件
+<span class="token function">unzip</span> -d ecsm_web ecsm_web.zip
+<span class="token function">unzip</span> -d custom front_custom_2017_04_21_09_35.zip
+<span class="token function">tar</span> zxvf nginx-1.10.3.tar.gz -C /zzz/bbs
+
+$ 解压
+<span class="token function">tar</span> –xvf file.tar //解压 tar包
+<span class="token function">tar</span> -xzvf file.tar.gz //解压tar.gz
+<span class="token function">tar</span> -xjvf file.tar.bz2   //解压 tar.bz2
+<span class="token function">tar</span> –xZvf file.tar.Z   //解压tar.Z
+<span class="token function">unrar</span> e file.rar //解压rar
+<span class="token function">unzip</span> file.zip //解压zip
+jar -xvf project.war //解压war
+
+$ 总结
+<span class="token number">1</span>、*.tar 用 <span class="token function">tar</span> –xvf 解压
+<span class="token number">2</span>、*.gz 用 <span class="token function">gzip</span> -d或者gunzip 解压
+<span class="token number">3</span>、*.tar.gz和*.tgz 用 <span class="token function">tar</span> –xzf 解压
+<span class="token number">4</span>、*.bz2 用 <span class="token function">bzip2</span> -d或者用bunzip2 解压
+<span class="token number">5</span>、*.tar.bz2用tar –xjf 解压
+<span class="token number">6</span>、*.Z 用 uncompress 解压
+<span class="token number">7</span>、*.tar.Z 用tar –xZf 解压
+<span class="token number">8</span>、*.rar 用 <span class="token function">unrar</span> e解压
+<span class="token number">9</span>、*.zip 用 <span class="token function">unzip</span> 解压
+</code></pre></div><h3 id="删除"><a href="#删除" class="header-anchor">#</a> 删除</h3> <p>linux删除目录很简单，很多人还是习惯用<code>rmdir</code>，不过一旦目录非空，就陷入深深的苦恼之中，现在使用<code>rm -rf</code>命令即可。</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">rm</span> -rf 目录名字
+</code></pre></div><ul><li>-r 就是向下递归，不管有多少级目录，一并删除</li> <li>-f 就是直接强行删除，不作任何提示的意思</li></ul> <p>我们使用<code>nodejs</code>时，一般会在根目录下生成<code>node_modules</code>，如果进行代码<code>copy</code>时，这些是不必要的，这时可以在上级目录批量把它们全删掉：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">find</span> ./ <span class="token operator">|</span> <span class="token function">grep</span> node_modules
+<span class="token function">find</span> <span class="token builtin class-name">.</span> -type d -name <span class="token string">&quot;node_modules&quot;</span> <span class="token operator">|</span> <span class="token function">xargs</span> <span class="token function">rm</span> -rf
+</code></pre></div><h3 id="重命名"><a href="#重命名" class="header-anchor">#</a> 重命名</h3> <p>linux下重命名文件或文件夹的命令<code>mv</code>既可以重命名，又可以移动文件或文件夹.</p> <p>例子：将目录A重命名为B</p> <div class="language- extra-class"><pre class="language-text"><code>mv A B
+</code></pre></div><p>例子：将/a目录移动到/b下，并重命名为c</p> <div class="language- extra-class"><pre class="language-text"><code>mv /a /b/c
+</code></pre></div><h3 id="复制文件夹"><a href="#复制文件夹" class="header-anchor">#</a> 复制文件夹</h3> <div class="language- extra-class"><pre class="language-text"><code>cp -Rf /home/user1/* /root/temp/
+</code></pre></div><p>将 <code>/home/user1</code>目录下的所有东西拷到<code>/root/temp/</code>下而不拷贝<code>user1</code>目录本身。
+即格式为：</p> <p><code>cp -Rf 原路径/ 目的路径/</code></p> <h3 id="详细信息"><a href="#详细信息" class="header-anchor">#</a> 详细信息</h3> <p>stat指令：文件/文件系统的详细信息显示</p> <p>使用格式：<code>stat 文件名</code></p> <p>stat命令主要用于显示文件或文件系统的详细信息，该命令的语法格式如下：</p> <ul><li>-f　　不显示文件本身的信息，显示文件所在文件系统的信息</li> <li>-L　　显示符号链接</li> <li>-t　　简洁模式，只显示摘要信息</li></ul> <h3 id="上传下载"><a href="#上传下载" class="header-anchor">#</a> 上传下载</h3> <p>在联网的情况下，执行命令即可：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>yum <span class="token function">install</span> -y lrzsz
+
+$ 上传命令
+rz 
+
+$ 下载命令
+sz 
+</code></pre></div><h2 id="安装图形化界面"><a href="#安装图形化界面" class="header-anchor">#</a> 安装图形化界面</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span>  yum groupinstall <span class="token string">&quot;GNOME Desktop&quot;</span> <span class="token string">&quot;Graphical Administration Tools&quot;</span>
+
+<span class="token function">sudo</span> <span class="token function">ln</span> -sf /lib/systemd/system/runlevel5.target /etc/systemd/system/default.target
+</code></pre></div><h2 id="安装wget"><a href="#安装wget" class="header-anchor">#</a> 安装wget</h2> <div class="language-shell extra-class"><pre class="language-shell"><code>yum -y <span class="token function">install</span> <span class="token function">wget</span>
+
+<span class="token function">wget</span> https://nodejs.org/dist/v8.1.4/node-v8.1.4-linux-x64.tar.xz
+</code></pre></div><h2 id="编辑文件"><a href="#编辑文件" class="header-anchor">#</a> 编辑文件</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">vim</span>
+<span class="token function">sudo</span> <span class="token function">nano</span> /
+</code></pre></div><p>编辑模式，使用vi进入文本后，按i开始编辑文本</p> <p>退出编辑模式，按ESC键，
+然后退出vi</p> <ul><li>:q!  不保存文件，强制退出vi命令</li> <li>:w   保存文件，不退出vi命令</li> <li>:wq  保存文件，退出vi命令</li></ul> <h2 id="生成64位编码"><a href="#生成64位编码" class="header-anchor">#</a> 生成64位编码</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">echo</span> -n <span class="token string">&quot;aaa&quot;</span> <span class="token operator">|</span> base64
+</code></pre></div><h2 id="安装ssh"><a href="#安装ssh" class="header-anchor">#</a> 安装ssh</h2> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> openssh-server
+</code></pre></div><p>安装完毕后<code>ssh</code>默认已启动。可以使用下述命令查看是否有进程在<code>22</code>端口上监听，即是否已启动：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">netstat</span> -nat <span class="token operator">|</span> <span class="token function">grep</span> <span class="token number">22</span>
+</code></pre></div><p>如果连接不了，则我们需要关闭掉防火墙</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> ufw disable
+</code></pre></div><h2 id="安装一般软件"><a href="#安装一般软件" class="header-anchor">#</a> 安装一般软件</h2> <p>以<code>nodejs</code>为例，最终解压目录假设为：<code>/usr/local/nodejs</code>，其下有<code>bin</code>目录，再下有<code>node</code>、<code>npm</code>两个命令。要想全局拥有这个变量，可以这样：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token function">sudo</span> <span class="token function">ln</span> -s /usr/local/nodejs/bin/node /usr/local/bin
+<span class="token function">sudo</span> <span class="token function">ln</span> -s /usr/local/nodejs/bin/npm /usr/local/bin
+</code></pre></div><p>也就是说，把可执行的命令文件，挂个软连接到<code>/usr/local/bin</code>目录下，这样系统查找命令就能找到了。可以这样测试：</p> <div class="language-shell extra-class"><pre class="language-shell"><code>node -v
+<span class="token function">npm</span> -v
+</code></pre></div><h2 id="用户环境变量"><a href="#用户环境变量" class="header-anchor">#</a> 用户环境变量</h2> <p>修改用户根目录下<code>~/.bashrc</code>，以<code>go</code>为例，在其中添加：</p> <div class="language-shell extra-class"><pre class="language-shell"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">&quot;/usr/local/go/bin:<span class="token environment constant">$PATH</span>&quot;</span>
+</code></pre></div><p>添加完后，当下就生效了。</p> <p>也可以在命令行中直接执行上述命令。</p></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/jiawei397/docs/edit/master/docs/note/linux/commands.md" target="_blank" rel="noopener noreferrer">提出宝贵意见</a> <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></div> <!----></footer> <!----> </main></div><div class="global-ui"><!----></div></div>
+    <script src="/docs/assets/js/app.f6e97648.js" defer></script><script src="/docs/assets/js/2.793e3b27.js" defer></script><script src="/docs/assets/js/74.821e73ea.js" defer></script>
+  </body>
+</html>
